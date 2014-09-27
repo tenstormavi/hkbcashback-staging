@@ -5,11 +5,12 @@ Created on Tue Sep 16 20:07:40 2014
 @author: harshitbahl
 """
 
+import bson
 from flask import Flask, render_template,session, redirect, url_for, flash
 from flask import request
 from flask.ext.bootstrap import Bootstrap
 from mongokit import Connection
-from flask.ext.login import login_user, logout_user
+from flask.ext.login import login_user, logout_user, login_required
 
 from flask.ext.script import Manager
 
@@ -28,13 +29,12 @@ db = connection[COLLECTION_QA]
 
 collection = db.users
 
-def reload_user(user_id):
-   return collection.User.find_one({'_id':user_id})
+
 
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
-login_manager.login_view = 'auth.login'
-login_manager.user_callback = reload_user
+login_manager.login_view = 'login'
+#login_manager.user_callback = reload_user
 bootstrap = Bootstrap(app)
 manager = Manager(app)
 login_manager.init_app(app)
@@ -44,25 +44,14 @@ login_manager.init_app(app)
 # register the User document with our current connection
 connection.register([User,UserTransaction])
 
+@login_manager.user_loader
+def reload_user(user_id):
+    userobj = bson.objectid.ObjectId(user_id)
+    return collection.User.find_one({'_id':userobj})
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    form = NameForm()
-    if form.validate_on_submit():
-        user = collection.find_one({'name': form.name.data})
-        if user is None:
-            user = collection.User()
-            user['name'] = form.name.data
-            user['password'] = form.password.data
-            collection.insert(user)
-            session['known'] = False
-        else:
-            session['known'] = True
-        session['name'] = form.name.data
-        form.name.data = ''
-        return redirect(url_for('index'))
-    return render_template('index.html',
-        form = form, name = session.get('name'),
-        known = session.get('known', False))
+    return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -70,7 +59,7 @@ def login():
     if form.validate_on_submit():
         user = collection.User.find_one({'email':form.email.data})
         if user and validate_password(user['password'], form.password.data):
-            login_user(user)
+            login_user(user, True)
             return redirect(url_for('user', UID = user.get_id()))
         flash('Invalid username or password.')
     return render_template('login.html', form=form)
@@ -114,11 +103,14 @@ def login_form():
             return redirect(url_for('browser_info'))
         flash('Our Record show you are already registered please use forgot password option')
     return render_template('login_form.html', form=form)
-        
-        
+
+@app.route('/usertransactions')
+def user_transaction():
+    return render_template('user_transaction.html')
         
 
 @app.route('/user/<UID>')
+@login_required
 def user(UID):
     return render_template('redirect.html',UID = UID)
     
@@ -127,6 +119,7 @@ def browser_info():
     return render_template('logout.html')
 
 @app.route("/logout")
+@login_required
 def logout():
     logout_user()
     return redirect(url_for('browser_info'))
