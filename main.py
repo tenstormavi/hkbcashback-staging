@@ -23,6 +23,7 @@ from utils import validate_password, password_hash, format_transaction
 from constant import USERHEADER_MAP
 # configuration
 app = Flask(__name__)
+app.config['DEBUG']=True
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = 'xcvjHJHNsnnnsHJKMNhhhhBN'
 #connection = Connection(app.config['MONGODB_HOST'],

@@ -1,1 +1,1 @@
-web: python main.py runserver --port=8000 -d
+web: gunicorn main:app
