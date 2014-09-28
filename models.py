@@ -12,6 +12,7 @@ class User(Document,UserMixin):
     __collection__ = 'users'
     __database__ = 'cashBackPlatform'
     structure = {
+        'name':str,
         'email': str,
         'password': str,
         'transaction':list,
@@ -46,7 +47,7 @@ class UserTransaction(Document):
     'VR':float,
     'NVR':float,
     'status':str,
-    'paid':float,
+    'cash_back_amount':float,
     'uKey':str,
     'transaction_value':float,
     'voucher_code':str,

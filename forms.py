@@ -8,7 +8,7 @@ from wtforms import StringField, SubmitField, PasswordField, DateTimeField
 from wtforms import BooleanField, IntegerField
 from wtforms import FloatField
 from flask.ext.wtf import Form
-from wtforms.validators import Required, Email, Length, any_of
+from wtforms.validators import Required, Email, Length, any_of, EqualTo
 
 class NameForm(Form):
     name = StringField('What is your name?', validators=[Required()])
@@ -16,16 +16,18 @@ class NameForm(Form):
     submit = SubmitField('Submit')
 
 class LoginForm(Form):
-    email = StringField('email', validators=[Required(), Length(1, 64),
+    email = StringField('Email', validators=[Required(), Length(1, 64),
                                              Email()])
     password = PasswordField('Password', validators=[Required()])
 #    remember_me = BooleanField('Keep me logged in')
     submit = SubmitField('Log In')
 
 class UserRegisteration(Form):
-    email = StringField('email', validators=[Required(), Length(1, 64),
+    email = StringField('Email', validators=[Required(), Length(1, 64),
                                              Email()])
-    password = PasswordField('Password', validators=[Required()])
+    password = PasswordField('Password', validators=[Required(), 
+                        EqualTo('password2', message='Passwords must match.')])
+    password2 = PasswordField('Confirm password', validators=[Required()])
     phonenumber = IntegerField('Phone Number', validators=[Required()])
     subscription = BooleanField('Email Subscription')
     submit = SubmitField('Submit')
@@ -43,18 +45,18 @@ class InputTransaction(Form):
     merchant_ref = StringField('Merchant Ref', validators=[Required()])
 #    UID:StringField('UID', validators=[Required()])
 #    MID = StringField('MID', validators=[])
-    merchant = StringField('Merchant', validators=[Required()])
+    merchant = StringField('Merchant Name', validators=[Required()])
 #    PID = StringField('PID', validators=[Required()])
-    product = StringField('Product', validators=[Required()])
-    referrer = StringField('Referrer', validators=[Required()])
+    product = StringField('Product Name', validators=[Required()])
+    referrer = StringField('Referred By')
 #    SR = DecimalField('SR')
 #    VR = DecimalField('VR')
 #    NVR = DecimalField('NVR')
     status  = StringField('Status', validators=[Required()])
-    paid  = FloatField('Paid Value')
+    cash_back_amount  = FloatField('Cash Back Amount')
 #    uKey  = StringField('uKey', validators=[Required()])
     transaction_value  = FloatField('Transaction Value')
-    voucher_code  = StringField('voucher_code', validators=[Required()])
+    voucher_code  = StringField('Voucher Code')
     
     submit = SubmitField('Submit')
 

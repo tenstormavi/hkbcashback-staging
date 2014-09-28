@@ -19,7 +19,7 @@ from config import MONGODB_HOST, MONGODB_PORT, COLLECTION_QA
 from forms import LoginForm, InputTransaction, UserRegisteration
 from models import User, UserTransaction
 from utils import validate_password, password_hash, format_transaction
-
+from constant import USERHEADER_MAP
 # configuration
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -61,7 +61,7 @@ def login():
         user = collection.User.find_one({'email':form.email.data})
         if user and validate_password(user['password'], form.password.data):
             login_user(user, True)
-            return redirect(request.args.get('next') or url_for(index))
+            return redirect(request.args.get('next') or url_for('index'))
         flash('Invalid username or password.')
     return render_template('login.html', form=form)
 
@@ -82,11 +82,12 @@ def transaction_form():
             transaction['product'] = form.product.data
             transaction['referrer'] = form.referrer.data
             transaction['status'] = form.status.data
-            transaction['paid'] = form.paid.data
+            transaction['cash_back_amount'] = form.cash_back_amount.data
             transaction['transaction_value']= form.transaction_value.data
             transaction['voucher_code']= form.voucher_code.data
             collection.update({'email':form.email.data}, {'$push': {'transaction': transaction}})
-            return redirect(url_for('browser_info'))
+            flash('Record added successfully')            
+            return redirect(url_for('transaction_form'))
         flash('Not a valid user')
     return render_template('transaction_form.html', form=form)
 
@@ -102,6 +103,7 @@ def registration_form():
             user['phonenumber']= form.phonenumber.data
             user['subscribed']  = form.subscription.data
             user.save()
+            flash('You can sign In now')
             return redirect(url_for('login'))
         flash('Our Record show you are already registered please use forgot password option')
     return render_template('login_form.html', form=form)
@@ -113,8 +115,8 @@ def user_transaction():
     user = current_user
     transaction = user.transaction
     format_info = format_transaction(transaction)
-    header = format_info.pop(0)
-    return render_template('user_transaction.html', header = header,
+    user_header = [USERHEADER_MAP.get(i) for i in format_info.pop(0)]
+    return render_template('user_transaction.html', header = user_header,
             content = format_info)
         
 

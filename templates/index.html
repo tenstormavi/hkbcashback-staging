@@ -1,17 +1,17 @@
 {% extends "base.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
-{% block title %}Flasky{% endblock %}
+{% block title %}CashDeal{% endblock %}
 
 {% block page_content %}
 <div class="page-header">
-    <h1>Hello 
+    <p>Hello 
     {% if current_user.is_authenticated() %}
-    	{{ current_user.email }}
+    	{{ current_user.email }} Welcome
 	{% else %}
-    	Stranger
-	{% endif %}!
-    Please login to continue</h1>
+    	Stranger! Please login to continue!
+	{% endif %}
+    </p>
 </div>
 
 {% endblock %}
