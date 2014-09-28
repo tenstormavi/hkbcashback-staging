@@ -28,7 +28,7 @@ app.config['SECRET_KEY'] = 'xcvjHJHNsnnnsHJKMNhhhhBN'
 #connection = Connection(app.config['MONGODB_HOST'],
 #                        app.config['MONGODB_PORT'])
 connection = Connection(os.environ.get('MONGOHQ_URL'))
-db = connection[os.environ.get('MONGOHQ_URL')]
+db = connection[os.environ.get('COLLECTION')]
 
 collection = db.users
 
