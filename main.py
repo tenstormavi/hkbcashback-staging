@@ -6,6 +6,7 @@ Created on Tue Sep 16 20:07:40 2014
 """
 
 import bson
+import os
 from flask import Flask, render_template,session, redirect, url_for, flash
 from flask import request
 from flask.ext.bootstrap import Bootstrap
@@ -24,9 +25,10 @@ from constant import USERHEADER_MAP
 app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = 'xcvjHJHNsnnnsHJKMNhhhhBN'
-connection = Connection(app.config['MONGODB_HOST'],
-                        app.config['MONGODB_PORT'])
-db = connection[COLLECTION_QA]
+#connection = Connection(app.config['MONGODB_HOST'],
+#                        app.config['MONGODB_PORT'])
+connection = Connection(os.environ.get('MONGOHQ_URL'))
+db = connection[os.environ.get('MONGOHQ_URL')]
 
 collection = db.users
 
