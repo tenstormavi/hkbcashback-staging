@@ -6,6 +6,7 @@ Created on Sun Sep 21 22:10:12 2014
 """
 
 from werkzeug.security import generate_password_hash, check_password_hash
+from constant import HEADER, USERHEADER
 
 def max_length(length):
     def validate(value):
@@ -29,3 +30,11 @@ def valid_status(status):
 
 def update_user_transaction(collection):
     return 
+
+def format_transaction(transactions):
+    rst = []
+    rst.append(USERHEADER)
+    for transaction in transactions:
+        rst.append([str(transaction.get(val)) for val in USERHEADER])
+    return rst
+        

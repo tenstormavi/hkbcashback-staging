@@ -11,14 +11,15 @@ from flask import request
 from flask.ext.bootstrap import Bootstrap
 from mongokit import Connection
 from flask.ext.login import login_user, logout_user, login_required
+from flask.ext.login import LoginManager, current_user
 
 from flask.ext.script import Manager
 
 from config import MONGODB_HOST, MONGODB_PORT, COLLECTION_QA
-from forms import NameForm, LoginForm, InputTransaction, UserRegisteration
+from forms import LoginForm, InputTransaction, UserRegisteration
 from models import User, UserTransaction
-from utils import validate_password, password_hash
-from flask.ext.login import LoginManager
+from utils import validate_password, password_hash, format_transaction
+
 # configuration
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -60,11 +61,12 @@ def login():
         user = collection.User.find_one({'email':form.email.data})
         if user and validate_password(user['password'], form.password.data):
             login_user(user, True)
-            return redirect(url_for('user', UID = user.get_id()))
+            return redirect(request.args.get('next') or url_for(index))
         flash('Invalid username or password.')
     return render_template('login.html', form=form)
 
 @app.route('/transactionForm', methods=['GET', 'POST'])
+@login_required
 def transaction_form():
     form = InputTransaction()
     if form.validate_on_submit():
@@ -88,8 +90,8 @@ def transaction_form():
         flash('Not a valid user')
     return render_template('transaction_form.html', form=form)
 
-@app.route('/loginform', methods=['GET', 'POST'])
-def login_form():
+@app.route('/registrationform', methods=['GET', 'POST'])
+def registration_form():
     form = UserRegisteration()
     if form.validate_on_submit():
         user = collection.User.find_one({'email':form.email.data})
@@ -100,13 +102,20 @@ def login_form():
             user['phonenumber']= form.phonenumber.data
             user['subscribed']  = form.subscription.data
             user.save()
-            return redirect(url_for('browser_info'))
+            return redirect(url_for('login'))
         flash('Our Record show you are already registered please use forgot password option')
     return render_template('login_form.html', form=form)
 
-@app.route('/usertransactions')
+@app.route('/usertransactions', methods=['GET', 'POST'])
+@login_required
 def user_transaction():
-    return render_template('user_transaction.html')
+#    user = collection.User.find_one({'email':'aashish@gmail.com'})
+    user = current_user
+    transaction = user.transaction
+    format_info = format_transaction(transaction)
+    header = format_info.pop(0)
+    return render_template('user_transaction.html', header = header,
+            content = format_info)
         
 
 @app.route('/user/<UID>')
