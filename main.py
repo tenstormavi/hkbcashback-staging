@@ -128,15 +128,15 @@ def user_transaction():
 def user(UID):
     return render_template('redirect.html',UID = UID)
     
-@app.route('/browserinfo')
-def browser_info():
+@app.route('/goodbyemessage')
+def goodbyemessage():
     return render_template('logout.html')
 
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('browser_info'))
+    return redirect(url_for('goodbyemessage'))
 
 if __name__ == '__main__':
     manager.run()
