@@ -4,44 +4,49 @@ Created on Tue Sep 16 20:07:40 2014
 
 @author: harshitbahl
 """
-
+""" os imports """
 import bson
 import os
+""" flask and flask extensions"""
 from flask import Flask, render_template,session, redirect, url_for, flash
 from flask import request
 from flask.ext.bootstrap import Bootstrap
-from mongokit import Connection
 from flask.ext.login import login_user, logout_user, login_required
 from flask.ext.login import LoginManager, current_user
-
 from flask.ext.script import Manager
-
-from config import MONGODB_HOST, MONGODB_PORT, COLLECTION_QA
+from flask.ext.mail import Mail
+"""DB Releated """
+from mongokit import Connection
+""" Custom Modules """
 from forms import LoginForm, InputTransaction, UserRegisteration
 from models import User, UserTransaction
+
+from config import MONGODB_HOST, MONGODB_PORT, COLLECTION_QA
+from config import MAIL_SERVER, MAIL_PORT, MAIL_USE_TLS
+from config import ENCASHMORE_MAIL_SUBJECT_PREFIX, ENCASHMORE_MAIL_SENDER, ENCASHMORE_ADMIN
+
+
 from utils import validate_password, password_hash, format_transaction
 from constant import USERHEADER_MAP
+
+
 # configuration
 app = Flask(__name__)
 app.config['DEBUG']=True
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = 'xcvjHJHNsnnnsHJKMNhhhhBN'
-#connection = Connection(app.config['MONGODB_HOST'],
-#                        app.config['MONGODB_PORT'])
 connection = Connection(os.environ.get('MONGOHQ_URL'))
 db = connection[os.environ.get('COLLECTION')]
-
 collection = db.users
-
-
-
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'login'
-#login_manager.user_callback = reload_user
+app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
 bootstrap = Bootstrap(app)
 manager = Manager(app)
 login_manager.init_app(app)
+mail = Mail(app)
 
 
 
@@ -106,6 +111,9 @@ def registration_form():
             user['phonenumber']= form.phonenumber.data
             user['subscribed']  = form.subscription.data
             user.save()
+            from email_utils import send_email
+            send_email(app.config['ENCASHMORE_ADMIN'], 'New User',
+                        'mail/new_user', user=user)
             flash('You can sign In now')
             return redirect(url_for('login'))
         flash('Our Record show you are already registered please use forgot password option')
