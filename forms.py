@@ -8,7 +8,7 @@ from wtforms import StringField, SubmitField, PasswordField, DateTimeField
 from wtforms import BooleanField, IntegerField
 from wtforms import FloatField
 from flask.ext.wtf import Form
-from wtforms.validators import Required, Email, Length, any_of, EqualTo
+from wtforms.validators import Required, Email, Length, any_of, EqualTo, Regexp,NumberRange
 
 class NameForm(Form):
     name = StringField('What is your name?', validators=[Required()])
@@ -28,7 +28,7 @@ class UserRegisteration(Form):
     password = PasswordField('Password', validators=[Required(), 
                         EqualTo('password2', message='Passwords must match.')])
     password2 = PasswordField('Confirm password', validators=[Required()])
-    phonenumber = IntegerField('Phone Number', validators=[Required()])
+    phonenumber = StringField('Phone Number', validators=[Required(),Regexp(r'^[789]\d{9}$', message='Not valid Phone Number')])
     subscription = BooleanField('Email Subscription')
     submit = SubmitField('Submit')
     

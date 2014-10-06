@@ -16,7 +16,7 @@ class User(Document,UserMixin):
         'email': str,
         'password': str,
         'transaction':list,
-        'phonenumber':int,
+        'phonenumber':str,
         'subscribed':bool
     }
     validators = {

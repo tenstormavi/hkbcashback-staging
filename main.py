@@ -60,7 +60,14 @@ def reload_user(user_id):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = collection.User.find_one({'email':form.email.data})
+        if user and validate_password(user['password'], form.password.data):
+            login_user(user, True)
+            return redirect(request.args.get('next') or url_for('index'))
+        flash('Invalid username or password.')
+    return render_template('index.html', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -108,7 +115,7 @@ def registration_form():
             user = collection.User()
             user['email'] = str(form.email.data)
             user['password']= password_hash(form.password.data)
-            user['phonenumber']= form.phonenumber.data
+            user['phonenumber']= str(form.phonenumber.data)
             user['subscribed']  = form.subscription.data
             user.save()
             from email_utils import send_email
@@ -117,6 +124,11 @@ def registration_form():
             flash('You can sign In now')
             return redirect(url_for('login'))
         flash('Our Record show you are already registered please use forgot password option')
+    else:
+        #TODO Need to fix this
+        if form.is_submitted():
+            if form.errors:
+                flash('Please input correct values')
     return render_template('login_form.html', form=form)
 
 @app.route('/usertransactions', methods=['GET', 'POST'])
@@ -144,7 +156,7 @@ def goodbyemessage():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('goodbyemessage'))
+    return redirect(url_for('index'))
 
 if __name__ == '__main__':
     manager.run()
