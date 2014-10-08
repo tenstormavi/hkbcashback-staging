@@ -48,9 +48,10 @@
 				<li class="dropdown">
         		<a href="#" class="dropdown-toggle" data-toggle="dropdown">Options<b class="caret"></b></a>
         		<ul class="dropdown-menu">
-          		<li><a href="{{ url_for('transaction_form') }}">Add Transaction</a></li>
-          		<li><a href="{{ url_for('user_transaction') }}">RecentTransaction</a></li>
-          		<!--<li><a href="#">Something else here</a></li>-->
+        		{% if current_user.get('isAdmin') %}
+          			<li><a href="{{ url_for('transaction_form') }}">Add Transaction</a></li>
+          		{% endif %}
+          		<li><a href="{{ url_for('user_transaction') }}">My Transactions</a></li>
           		<li class="divider"></li>
           		<li><a href="{{ url_for('logout') }}">Log Out</a></li>
         		</ul>
@@ -176,7 +177,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>About</h2>
+                    <h2>HOW IT WORKS</h2>
                     <hr class="star-light">
                 </div>
             </div>

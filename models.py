@@ -17,15 +17,22 @@ class User(Document,UserMixin):
         'password': str,
         'transaction':list,
         'phonenumber':str,
-        'subscribed':bool
+        'subscribed':bool,
+        'isAdmin':bool,
     }
     validators = {
         'email': max_length(50),
     }
+    
+    default_values = {'isAdmin':False}
+    
     use_dot_notation = True
     
     def get_id(self):
         return self._id.__str__()
+    
+    def isadmin(self):
+        return self.isadmin
         
     def __repr__(self):
         return '<User %s>' % (self.email)
