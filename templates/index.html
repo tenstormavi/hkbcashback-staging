@@ -38,7 +38,7 @@
                         <a href="#portfolio">Categories</a>
                     </li>
                         <li class="page-scroll">
-                        <a href="#about">About</a>
+                        <a href="#about">How It Works</a>
                     </li>
                     <li class="page-scroll">
                         <a href="#contact">Contact</a>
@@ -50,6 +50,7 @@
         		<ul class="dropdown-menu">
         		{% if current_user.get('isAdmin') %}
           			<li><a href="{{ url_for('transaction_form') }}">Add Transaction</a></li>
+          			<li><a href="{{ url_for('admin_search_transaction') }}">Search Transaction</a></li>
           		{% endif %}
           		<li><a href="{{ url_for('user_transaction') }}">My Transactions</a></li>
           		<li class="divider"></li>

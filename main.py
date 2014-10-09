@@ -18,7 +18,7 @@ from flask.ext.mail import Mail
 """DB Releated """
 from mongokit import Connection
 """ Custom Modules """
-from forms import LoginForm, InputTransaction, UserRegisteration
+from forms import LoginForm, InputTransaction, UserRegisteration, SearchUser
 from models import User, UserTransaction
 
 from config import MONGODB_HOST, MONGODB_PORT, COLLECTION_QA
@@ -83,28 +83,33 @@ def login():
 @app.route('/transactionForm', methods=['GET', 'POST'])
 @login_required
 def transaction_form():
-    form = InputTransaction()
-    if form.validate_on_submit():
-        transaction = collection.UserTransaction()
-        user = collection.User.find_one({'email':form.email.data})
-        if user:
-            transaction['click_time'] = form.click_time.data
-            transaction['transaction_time'] = form.transaction_time.data
-            transaction['transaction_date'] = form.transaction_date.data
-            transaction['transaction_id'] = form.transaction_id.data
-            transaction['merchant_ref'] = form.merchant_ref.data
-            transaction['merchant'] =  form.merchant.data
-            transaction['product'] = form.product.data
-            transaction['referrer'] = form.referrer.data
-            transaction['status'] = form.status.data
-            transaction['cash_back_amount'] = form.cash_back_amount.data
-            transaction['transaction_value']= form.transaction_value.data
-            transaction['voucher_code']= form.voucher_code.data
-            collection.update({'email':form.email.data}, {'$push': {'transaction': transaction}})
-            flash('Record added successfully')            
-            return redirect(url_for('transaction_form'))
-        flash('Not a valid user')
-    return render_template('transaction_form.html', form=form)
+    if current_user.get('isAdmin'):
+        form = InputTransaction()
+        if form.validate_on_submit():
+            transaction = collection.UserTransaction()
+            user = collection.User.find_one({'email':form.email.data})
+            if user:
+                transaction['click_time'] = form.click_time.data
+                transaction['transaction_time'] = form.transaction_time.data
+                transaction['transaction_date'] = form.transaction_date.data
+                transaction['transaction_id'] = form.transaction_id.data
+                transaction['merchant_ref'] = form.merchant_ref.data
+                transaction['merchant'] =  form.merchant.data
+                transaction['product'] = form.product.data
+                transaction['referrer'] = form.referrer.data
+                transaction['status'] = form.status.data
+                transaction['cash_back_amount'] = form.cash_back_amount.data
+                transaction['transaction_value']= form.transaction_value.data
+                transaction['voucher_code']= form.voucher_code.data
+                collection.update({'email':form.email.data}, {'$push': {'transaction': transaction}})
+                flash('Record added successfully')
+                from email_utils import send_email
+                send_email(app.config['ENCASHMORE_ADMIN'], 'Transaction added for %s'%form.email.data,
+                        'mail/transaction_added', user=user)
+                return redirect(url_for('transaction_form'))
+            flash('Not a valid user')
+        return render_template('transaction_form.html', form=form)
+    return render_template('not_authorized.html')
 
 @app.route('/registrationform', methods=['GET', 'POST'])
 def registration_form():
@@ -140,8 +145,39 @@ def user_transaction():
     format_info = format_transaction(transaction)
     user_header = [USERHEADER_MAP.get(i) for i in format_info.pop(0)]
     return render_template('user_transaction.html', header = user_header,
-            content = format_info)
-        
+            content = format_info, useremail = '')
+
+@app.route('/admin/<email>', methods=['GET', 'POST'])
+@login_required
+def admin_user_transaction(email):
+    if current_user.get('isAdmin'):
+        user = collection.User.find_one({'email':email})
+        transaction = user.transaction
+        format_info = format_transaction(transaction)
+        user_header = [USERHEADER_MAP.get(i) for i in format_info.pop(0)]
+        return render_template('user_transaction.html', header = user_header,
+                content = format_info, useremail=email)
+    return render_template('not_authorized.html')
+
+@app.route('/findtransaction', methods=['GET', 'POST'])
+@login_required
+def admin_search_transaction():
+    if current_user.get('isAdmin'):
+        form =SearchUser()
+        if form.validate_on_submit():
+            user = collection.User.find_one({'email':form.email.data})
+            if user:
+                return redirect(url_for('admin_user_transaction', email=form.email.data, method=['GET', 'POST']))
+            flash('Not a valid User %s'%form.email.data)
+        else:
+            #TODO Need to fix this
+            if form.is_submitted():
+                if form.errors:
+                    flash(form.errors)
+        return render_template('admin_search_user.html', form=form)
+    return render_template('not_authorized.html')
+    
+
 
 @app.route('/user/<UID>')
 @login_required

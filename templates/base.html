@@ -32,6 +32,7 @@
         		<ul class="dropdown-menu">
         		{% if current_user.get('isAdmin') %}
           			<li><a href="{{ url_for('transaction_form') }}">Add Transaction</a></li>
+          			<li><a href="{{ url_for('admin_search_transaction') }}">Search Transaction</a></li>
           		{% endif %}
           		<li><a href="{{ url_for('user_transaction') }}">My Transactions</a></li>
           		<li class="divider"></li>
@@ -51,6 +52,8 @@
 {% block header %}{% endblock %}
 
 {% block content %}
+
+
 <div class="container">
 	{% for message in get_flashed_messages() %}
     <div class="alert alert-warning">

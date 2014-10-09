@@ -31,9 +31,7 @@ class UserRegisteration(Form):
     phonenumber = StringField('Phone Number', validators=[Required(),Regexp(r'^[789]\d{9}$', message='Not valid Phone Number')])
     subscription = BooleanField('Email Subscription')
     submit = SubmitField('Submit')
-    
-    
-    
+
 
 class InputTransaction(Form):
     email = StringField('User Email', validators=[Required(), Length(1, 64),
@@ -61,4 +59,7 @@ class InputTransaction(Form):
     submit = SubmitField('Submit')
 
                                           
-    
+class SearchUser(Form):
+    email = StringField('User Email', validators=[Required(), Length(1, 64),
+                                             Email()])
+    submit = SubmitField('Submit')
