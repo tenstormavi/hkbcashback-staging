@@ -1,5 +1,4 @@
 {% extends "bootstrap/base.html" %}
-{% import "bootstrap/wtf.html" as wtf %}
 
 {% block styles %}
 {{super()}}
@@ -114,18 +113,18 @@
                                 <i class="fa fa-search-plus fa-3x"></i>
                             </div>
                         </div>
-                        <img class="img-responsive" src="{{url_for('.static', filename='img/portfolio/cabin.png')}}"  alt="">
+                        <img class="img-responsive" src="{{url_for('.static', filename='img/portfolio/Fashion.jpg')}}"  alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal2" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
-                             <!--   <i class="fa fa-search-plus fa-3x"></i>  //changing the image icon to text !! --> 
-                             <p> Eat Out ! </p>
+                             <i class="fa fa-search-plus fa-3x"></i> 
+                             <p> Explore! </p>
                             </div>
                         </div>
-                        <img src="{{url_for('.static', filename='img/portfolio/cake.png')}}" class="img-responsive" alt="">
+                        <img src="{{url_for('.static', filename='img/portfolio/Dining.jpg')}}" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -133,9 +132,10 @@
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
+                                <p> Explore! </p>
                             </div>
                         </div>
-                        <img src="{{url_for('.static', filename='img/portfolio/circus.png')}}" class="img-responsive" alt="">
+                        <img src="{{url_for('.static', filename='img/portfolio/Gifting.jpg')}}" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -143,9 +143,10 @@
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
+                                <p> Explore! </p>
                             </div>
                         </div>
-                        <img src="{{url_for('.static', filename='img/portfolio/game.png')}}" class="img-responsive" alt="">
+                        <img src="{{url_for('.static', filename='img/portfolio/Shopping.jpg')}}" class="img-responsive" alt="">
                     </a>
                 </div>
                 <div class="col-sm-4 portfolio-item">
@@ -153,21 +154,23 @@
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
+                                <p> Explore! </p>
                             </div>
                         </div>
-                        <img src="{{url_for('.static', filename='img/portfolio/safe.png')}}" class="img-responsive" alt="">
+                        <img src="{{url_for('.static', filename='img/portfolio/Travel.jpg')}}" class="img-responsive" alt="">
                     </a>
                 </div>
-                <div class="col-sm-4 portfolio-item">
+                <!--<div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
+                                <p> Explore! </p>
                             </div>
                         </div>
                         <img src="{{url_for('.static', filename='img/portfolio/submarine.png')}}" class="img-responsive" alt="">
                     </a>
-                </div>
+                </div>-->
             </div>
         </div>
     </section>
@@ -320,9 +323,9 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>Fashion</h2>
                             <hr class="star-primary">
-                            <img src="{{url_for('.static', filename='img/portfolio/cabin.png')}}" class="img-responsive img-centered" alt="">
+                            <img src="{{url_for('.static', filename='img/portfolio/Fashion.jpg')}}" class="img-responsive img-centered" alt="">
                             <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
@@ -357,11 +360,11 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Eat Out ! </h2>
+                            <h2>Dining</h2>
                             <hr class="star-primary">
                             
                           
-                          <img src="{{url_for('.static', filename='img/portfolio/cake1.png')}}" width="900" height="650" border="0" class="img-responsive img-centered" usemap="#map"/>
+                          <img src="{{url_for('.static', filename='img/portfolio/Dining.jpg')}}" width="900" height="650" border="0" class="img-responsive img-centered" usemap="#map"/>
 <map name="map">
 <!-- #$-:Image map file created by GIMP Image Map plug-in -->
 <!-- #$-:GIMP Image Map plug-in by Maurits Rijk -->
@@ -379,7 +382,9 @@
                             
                             <p>The Best Deals on Eating Out.
                             Redeem in 2 Steps ! <br> 
-                          1. Login <br> 2. Click On The Desired Deal <br> <i>*remember not to open any other pages while you shop !!</i></p>
+                          1. Login <br> 2. Click On The Desired Deal <br>
+                           <i>*remember not to open any other pages while you shop !!</i>
+                           <a>Click</a></p>
                      <!--       <ul class="list-inline item-details">
                                 <li>Client:
                                     <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
@@ -413,9 +418,9 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>Gifting</h2>
                             <hr class="star-primary">
-                            <img src="{{url_for('.static', filename='img/portfolio/circus.png')}}" class="img-responsive img-centered" alt="">
+                            <img src="{{url_for('.static', filename='img/portfolio/Gifting.jpg')}}" class="img-responsive img-centered" alt="">
                             <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
@@ -450,9 +455,9 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>Shopping</h2>
                             <hr class="star-primary">
-                            <img src="{{url_for('.static', filename='img/portfolio/game.png')}}" class="img-responsive img-centered" alt="">
+                            <img src="{{url_for('.static', filename='img/portfolio/Shopping.jpg')}}" class="img-responsive img-centered" alt="">
                             <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
@@ -487,9 +492,9 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>Travel</h2>
                             <hr class="star-primary">
-                            <img src="{{url_for('.static', filename='img/portfolio/safe.png')}}" class="img-responsive img-centered" alt="">
+                            <img src="{{url_for('.static', filename='img/portfolio/Travel.jpg')}}" class="img-responsive img-centered" alt="">
                             <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
                             <ul class="list-inline item-details">
                                 <li>Client:
@@ -525,7 +530,7 @@
                 <div class="row">
                     <div class="col-lg-8 col-lg-offset-2">
                         <div class="modal-body">
-                            <h2>Project Title</h2>
+                            <h2>Dipping</h2>
                             <hr class="star-primary">
                             <img src="{{url_for('.static', filename='img/portfolio/submarine.png')}}" class="img-responsive img-centered" alt="">
                             <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
@@ -550,27 +555,7 @@
             </div>
         </div>
     </div>
-<!-- Login Modal-->
-<div class="portfolio-modal modal fade" id="login" tabindex="-1" role="dialog" aria-hidden="true">
-	<div class="modal-content">
-		<div class="close-modal" data-dismiss="modal">
-        	<div class="lr">
-            	<div class="rl">
-                </div>
-            </div>
-        </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 col-lg-offset-2">
-                        <div class="modal-body">
-                        {{ wtf.quick_form(form) }}
-						<p>New Customer? <a href="/registrationform">Register</a></p>
-						</div>
-					</div>
-				</div>
-			</div>		
-	</div>
-</div>
+
 	{% block scripts %}
 	{{super()}}
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>

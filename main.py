@@ -27,6 +27,7 @@ from config import ENCASHMORE_MAIL_SUBJECT_PREFIX, ENCASHMORE_MAIL_SENDER, ENCAS
 
 
 from utils import validate_password, password_hash, format_transaction
+from utils import get_transaction_dict
 from constant import USERHEADER_MAP
 
 
@@ -60,20 +61,13 @@ def reload_user(user_id):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = collection.User.find_one({'email':form.email.data})
-        if user and validate_password(user['password'], form.password.data):
-            login_user(user, True)
-            return redirect(request.args.get('next') or url_for('index'))
-        flash('Invalid username or password.')
-    return render_template('index.html', form=form)
+    return render_template('index.html')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = collection.User.find_one({'email':form.email.data})
+        user = get_validate_user(form.email.data)
         if user and validate_password(user['password'], form.password.data):
             login_user(user, True)
             return redirect(request.args.get('next') or url_for('index'))
@@ -87,20 +81,8 @@ def transaction_form():
         form = InputTransaction()
         if form.validate_on_submit():
             transaction = collection.UserTransaction()
-            user = collection.User.find_one({'email':form.email.data})
-            if user:
-                transaction['click_time'] = form.click_time.data
-                transaction['transaction_time'] = form.transaction_time.data
-                transaction['transaction_date'] = form.transaction_date.data
-                transaction['transaction_id'] = form.transaction_id.data
-                transaction['merchant_ref'] = form.merchant_ref.data
-                transaction['merchant'] =  form.merchant.data
-                transaction['product'] = form.product.data
-                transaction['referrer'] = form.referrer.data
-                transaction['status'] = form.status.data
-                transaction['cash_back_amount'] = form.cash_back_amount.data
-                transaction['transaction_value']= form.transaction_value.data
-                transaction['voucher_code']= form.voucher_code.data
+            if get_validate_user(form.email.data):
+                get_transaction_dict(transaction, form)
                 collection.update({'email':form.email.data}, {'$push': {'transaction': transaction}})
                 flash('Record added successfully')
                 from email_utils import send_email
@@ -115,17 +97,19 @@ def transaction_form():
 def registration_form():
     form = UserRegisteration()
     if form.validate_on_submit():
-        user = collection.User.find_one({'email':form.email.data})
-        if not user:
+#        user = collection.User.find_one({'email':form.email.data})
+        if not get_validate_user(form.email.data):
             user = collection.User()
             user['email'] = str(form.email.data)
             user['password']= password_hash(form.password.data)
             user['phonenumber']= str(form.phonenumber.data)
             user['subscribed']  = form.subscription.data
             user.save()
+            
             from email_utils import send_email
             send_email(app.config['ENCASHMORE_ADMIN'], 'New User',
                         'mail/new_user', user=user)
+                        
             flash('You can sign In now')
             return redirect(url_for('login'))
         flash('Our Record show you are already registered please use forgot password option')
@@ -165,8 +149,7 @@ def admin_search_transaction():
     if current_user.get('isAdmin'):
         form =SearchUser()
         if form.validate_on_submit():
-            user = collection.User.find_one({'email':form.email.data})
-            if user:
+            if get_validate_user(form.email.data):
                 return redirect(url_for('admin_user_transaction', email=form.email.data, method=['GET', 'POST']))
             flash('Not a valid User %s'%form.email.data)
         else:
@@ -179,20 +162,21 @@ def admin_search_transaction():
     
 
 
+
 @app.route('/user/<UID>')
 @login_required
 def user(UID):
     return render_template('redirect.html',UID = UID)
-    
-@app.route('/goodbyemessage')
-def goodbyemessage():
-    return render_template('logout.html')
+
 
 @app.route("/logout")
 @login_required
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+def get_validate_user(user_email_id):
+    return collection.User.find_one({'email':user_email_id})
 
 if __name__ == '__main__':
     manager.run()
