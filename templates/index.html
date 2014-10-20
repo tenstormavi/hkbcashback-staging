@@ -111,6 +111,7 @@
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
+                                <p> Fashion! </p>
                             </div>
                         </div>
                         <img class="img-responsive" src="{{url_for('.static', filename='img/portfolio/Fashion.jpg')}}"  alt="">
@@ -121,7 +122,7 @@
                         <div class="caption">
                             <div class="caption-content">
                              <i class="fa fa-search-plus fa-3x"></i> 
-                             <p> Explore! </p>
+                             <p> Dining! </p>
                             </div>
                         </div>
                         <img src="{{url_for('.static', filename='img/portfolio/Dining.jpg')}}" class="img-responsive" alt="">
@@ -132,7 +133,7 @@
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
-                                <p> Explore! </p>
+                                <p> Gifting! </p>
                             </div>
                         </div>
                         <img src="{{url_for('.static', filename='img/portfolio/Gifting.jpg')}}" class="img-responsive" alt="">
@@ -143,7 +144,7 @@
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
-                                <p> Explore! </p>
+                                <p> Shopping! </p>
                             </div>
                         </div>
                         <img src="{{url_for('.static', filename='img/portfolio/Shopping.jpg')}}" class="img-responsive" alt="">
@@ -154,7 +155,7 @@
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
-                                <p> Explore! </p>
+                                <p> Travel! </p>
                             </div>
                         </div>
                         <img src="{{url_for('.static', filename='img/portfolio/Travel.jpg')}}" class="img-responsive" alt="">
@@ -362,43 +363,11 @@
                         <div class="modal-body">
                             <h2>Dining</h2>
                             <hr class="star-primary">
-                            
-                          
-                          <img src="{{url_for('.static', filename='img/portfolio/Dining.jpg')}}" width="900" height="650" border="0" class="img-responsive img-centered" usemap="#map"/>
-<map name="map">
-<!-- #$-:Image map file created by GIMP Image Map plug-in -->
-<!-- #$-:GIMP Image Map plug-in by Maurits Rijk -->
-<!-- #$-:Please do not edit lines starting with "#$" -->
-<!-- #$VERSION:2.3 -->
-<!-- #$AUTHOR:aashish -->
-<area shape="circle" coords="447,322,256" href="www.google.com" target="_blank"  />
-</map>
-                          
-                          
-<!--   
-                            <img src="img/portfolio/cake1.png" alt="Cashback for Eat Out !" width="900" height="650" class="img-responsive img-centered">
-                             <img name="placeHolder1" src="img/portfolio/cake1.png" width="900" height="650" alt="" class="img-responsive img-centered">
-                             -->
-                            
+                          		<img src="{{url_for('.static', filename='img/foodimage/diningofferMap.jpg')}}" width="900" height="651" border="0" class="img-responsive img-centered" usemap="#diningImageMap"/>
                             <p>The Best Deals on Eating Out.
                             Redeem in 2 Steps ! <br> 
                           1. Login <br> 2. Click On The Desired Deal <br>
-                           <i>*remember not to open any other pages while you shop !!</i>
-                           <a>Click</a></p>
-                     <!--       <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
-                            </ul> -->
+                           <i>*remember not to open any other pages while you shop !!</i></p>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Back</button>
                         </div>
                     </div>
@@ -555,6 +524,12 @@
             </div>
         </div>
     </div>
+<!-- Image Map -->
+	<map name="diningImageMap">
+	<area shape="rect" coords="1,48,884,210" href="{{ url_for('offer_link', OFFERID=10859) }}" target="_blank"/>
+	<area shape="rect" coords="2,247,388,638" href="{{ url_for('offer_link', OFFERID=11313) }}" target="_blank" />
+	<area shape="rect" coords="487,256,846,635" href="{{ url_for('offer_link', OFFERID=12861) }}" target="_blank" />
+	</map>
 
 	{% block scripts %}
 	{{super()}}

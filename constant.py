@@ -19,3 +19,7 @@ USERHEADER_MAP ={'transaction_id':'Transaction ID',
                  'cash_back_amount': 'Cash Back Amount',
                  'transaction_value':'Transaction Value',
                  'status':'Status',}
+
+DINING_IMAGE_MAP = {10859:"http://clk.omgt5.com/?AID=682085&PID=10859&;WID=55355",
+             11313:"http://clk.omgt5.com/?AID=682085&PID=11313&WID=55355" ,
+             12861:"http://clk.omgt5.com/?AID=682085&PID=12861&WID=55355" }

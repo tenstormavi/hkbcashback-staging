@@ -28,7 +28,7 @@ from config import ENCASHMORE_MAIL_SUBJECT_PREFIX, ENCASHMORE_MAIL_SENDER, ENCAS
 
 from utils import validate_password, password_hash, format_transaction
 from utils import get_transaction_dict
-from constant import USERHEADER_MAP
+from constant import USERHEADER_MAP, DINING_IMAGE_MAP
 
 
 # configuration
@@ -162,6 +162,14 @@ def admin_search_transaction():
     
 
 
+@app.route('/offer/<OFFERID>')
+@login_required
+def offer_link(OFFERID):
+    # Unicode need to be converted to int
+    link_val = DINING_IMAGE_MAP.get(int(OFFERID))
+    if link_val:
+        return redirect("%s&;UID=%s"%(link_val, current_user.get_id()))
+    return render_template('invalid_offer.html')
 
 @app.route('/user/<UID>')
 @login_required
