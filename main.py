@@ -19,7 +19,8 @@ from flask.ext.mail import Mail
 from mongokit import Connection
 """ Custom Modules """
 from forms import LoginForm, InputTransaction, UserRegisteration, SearchUser
-from models import User, UserTransaction
+from forms import InputMissingTransaction
+from models import User, UserTransaction, MissingTransaction
 
 from config import MONGODB_HOST, MONGODB_PORT, COLLECTION_QA
 from config import MAIL_SERVER, MAIL_PORT, MAIL_USE_TLS
@@ -52,7 +53,7 @@ mail = Mail(app)
 
 
 # register the User document with our current connection
-connection.register([User,UserTransaction])
+connection.register([User,UserTransaction, MissingTransaction])
 
 @login_manager.user_loader
 def reload_user(user_id):
@@ -87,11 +88,37 @@ def transaction_form():
                 flash('Record added successfully')
                 from email_utils import send_email
                 send_email(app.config['ENCASHMORE_ADMIN'], 'Transaction added for %s'%form.email.data,
-                        'mail/transaction_added', user=user)
+                        'mail/transaction_added', user=form.email.data)
                 return redirect(url_for('transaction_form'))
             flash('Not a valid user')
+        else:
+            #TODO Need to fix this
+            if form.is_submitted():
+                if form.errors:
+                    flash(form.errors)
         return render_template('transaction_form.html', form=form)
     return render_template('not_authorized.html')
+
+@app.route('/misssingTrasaction', methods=['GET', 'POST'])
+@login_required
+def misssing_trasaction():
+        form = InputMissingTransaction()
+        if form.validate_on_submit():
+            user_email = current_user.get('email')
+            missing_transaction = collection.MissingTransaction()
+            get_transaction_dict(missing_transaction, form)
+            collection.update({'email':user_email}, {'$push': {'missingtransaction': missing_transaction}})
+            flash('Record added successfully')
+            from email_utils import send_email
+            send_email(app.config['ENCASHMORE_ADMIN'], 'Missing Transaction added by %s'%user_email,
+                        'mail/missing_transaction', user=user_email)
+            return redirect(url_for('user_missing_transaction'))
+        else:
+            #TODO Need to fix this
+            if form.is_submitted():
+                if form.errors:
+                    flash(form.errors)
+        return render_template('missing_transaction_form.html', form=form)
 
 @app.route('/registrationform', methods=['GET', 'POST'])
 def registration_form():
@@ -126,10 +153,25 @@ def user_transaction():
 #    user = collection.User.find_one({'email':'aashish@gmail.com'})
     user = current_user
     transaction = user.transaction
-    format_info = format_transaction(transaction)
+    format_info = format_transaction(transaction, header = 'user')
     user_header = [USERHEADER_MAP.get(i) for i in format_info.pop(0)]
     return render_template('user_transaction.html', header = user_header,
             content = format_info, useremail = '')
+
+@app.route('/usermissingtransactions', methods=['GET', 'POST'])
+@login_required
+def user_missing_transaction():
+#    user = collection.User.find_one({'email':'aashish@gmail.com'})
+    user = current_user
+    try:
+        transaction = user.missingtransaction
+        format_info = format_transaction(transaction, header = 'missing')
+        user_header = [USERHEADER_MAP.get(i) for i in format_info.pop(0)]
+        return render_template('missing_transaction.html', header = user_header,
+                               content = format_info, useremail = '')
+    except AttributeError:
+        return render_template('missing_transaction.html', header = None,
+                               content = None, useremail = '')
 
 @app.route('/admin/<email>', methods=['GET', 'POST'])
 @login_required
@@ -137,7 +179,7 @@ def admin_user_transaction(email):
     if current_user.get('isAdmin'):
         user = collection.User.find_one({'email':email})
         transaction = user.transaction
-        format_info = format_transaction(transaction)
+        format_info = format_transaction(transaction, header = 'user')
         user_header = [USERHEADER_MAP.get(i) for i in format_info.pop(0)]
         return render_template('user_transaction.html', header = user_header,
                 content = format_info, useremail=email)

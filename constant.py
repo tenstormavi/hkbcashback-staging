@@ -18,7 +18,12 @@ USERHEADER_MAP ={'transaction_id':'Transaction ID',
                  'transaction_date':'Transaction Date',
                  'cash_back_amount': 'Cash Back Amount',
                  'transaction_value':'Transaction Value',
-                 'status':'Status',}
+                 'status':'Status',
+                 'merchant_ref': 'Merchant Ref',
+                 }
+MISSING_HEADER = ['transaction_date', 'merchant_ref', 'merchant', 'product',  
+                  'transaction_value', 'cash_back_amount', 'status']
+
 
 DINING_IMAGE_MAP = {10859:"http://clk.omgt5.com/?AID=682085&PID=10859&;WID=55355",
              11313:"http://clk.omgt5.com/?AID=682085&PID=11313&WID=55355" ,

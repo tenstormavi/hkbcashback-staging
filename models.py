@@ -16,6 +16,7 @@ class User(Document,UserMixin):
         'email': str,
         'password': str,
         'transaction':list,
+        'missingtransaction':list,
         'phonenumber':str,
         'subscribed':bool,
         'isAdmin':bool,
@@ -58,6 +59,24 @@ class UserTransaction(Document):
     'uKey':str,
     'transaction_value':float,
     'voucher_code':str,
+        }
+    
+    validators = {
+        'status': valid_status(['Paid','Not Paid']),
+    }
+    def __repr__(self):
+        return '<product %s>' % (self.product)
+
+class MissingTransaction(Document):
+    structure = {
+    'transaction_time':str,
+    'transaction_date':str,
+    'merchant_ref':str,
+    'merchant':str,
+    'product':str,
+    'status':str,
+    'cash_back_amount':float,
+    'transaction_value':float,
         }
     
     validators = {

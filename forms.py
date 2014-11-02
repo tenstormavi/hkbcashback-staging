@@ -4,7 +4,7 @@ Created on Sun Sep 21 22:01:41 2014
 
 @author: harshitbahl
 """
-from wtforms import StringField, SubmitField, PasswordField, DateTimeField
+from wtforms import StringField, SubmitField, PasswordField, DateTimeField, SelectField
 from wtforms import BooleanField, IntegerField
 from wtforms import FloatField
 from flask.ext.wtf import Form
@@ -50,7 +50,8 @@ class InputTransaction(Form):
 #    SR = DecimalField('SR')
 #    VR = DecimalField('VR')
 #    NVR = DecimalField('NVR')
-    status  = StringField('Status', validators=[Required()])
+    status  = SelectField('Not Paid', validators=[Required()], 
+                        choices=[('Not Paid','Not Paid'), ('Paid','Paid')])
     cash_back_amount  = FloatField('Cash Back Amount')
 #    uKey  = StringField('uKey', validators=[Required()])
     transaction_value  = FloatField('Transaction Value')
@@ -62,4 +63,12 @@ class InputTransaction(Form):
 class SearchUser(Form):
     email = StringField('User Email', validators=[Required(), Length(1, 64),
                                              Email()])
+    submit = SubmitField('Submit')
+    
+class InputMissingTransaction(Form):
+    transaction_date = StringField('Transaction Date', validators=[Required()])
+    merchant = StringField('Merchant Name', validators=[Required()])
+    merchant_ref = StringField('Merchant Ref', validators=[Required()])
+    product = StringField('Product Name', validators=[Required()])
+    transaction_value  = FloatField('Transaction Value')
     submit = SubmitField('Submit')

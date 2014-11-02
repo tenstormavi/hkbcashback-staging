@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<section class="success" id="about">
+        <div class="container">
+        <div class="row">
+                <div class="col-lg-12 text-center">
+                	<h3></h3>
+                    <h2>Add Missing Transaction</h2>
+                    <hr class="star-light">
+                </div>
+            </div>
+            <div class="row">
+            	<div class="col-lg-7 col-lg-offset-3">
+         <!--   <div class="col-lg-5">-->
+                	<form class="form-horizontal" method="post" role="form">
+                		<fieldset>
+                			<legend style="color: #FFF">Tell us what we missed...!</legend>
+    							<div class="form-group">
+    								{{ form.csrf_token }}
+    								<label for="Transaction Date" class="col-lg-3 col-lg-offset-1 control-label">Transaction Date:</label>
+    								<div class="col-lg-5 col-lg-offset-0.5">
+    									{{ form.transaction_date(width=40, class="form-control", placeholder="Transaction Date") }}
+    								</div>
+    							</div>    							
+    							<div class="form-group">
+    								<label for="Merchant Ref" class="col-lg-3 col-lg-offset-1 control-label">Merchant ref:</label>
+    								<div class="col-lg-5 col-lg-offset-0.5">
+    									{{ form.merchant_ref(width=40, class="form-control", placeholder="Merchant ref") }}
+    								</div>
+    							</div>
+    							<div class="form-group">
+    								<label for="Merchant" class="col-lg-3 col-lg-offset-1 control-label">Merchant:</label>
+    								<div class="col-lg-5 col-lg-offset-0.5">
+    									{{ form.merchant(width=40, class="form-control", placeholder="Merchant") }}
+    								</div>
+    							</div>    						
+    							<div class="form-group">
+    								<label for="Product" class="col-lg-3 col-lg-offset-1 control-label">Product:</label>
+    								<div class="col-lg-5 col-lg-offset-0.5">
+    									{{ form.product(width=40, class="form-control", placeholder="Product") }}
+    								</div>
+    							</div> 							    							    							
+    							<div class="form-group">
+    								<label for="Transaction Value" class="col-lg-3 col-lg-offset-1 control-label">Transaction Value:</label>
+    								<div class="col-lg-5 col-lg-offset-0.5">
+    									{{ form.transaction_value(width=40, class="form-control", placeholder="Transaction Value") }}
+    								</div>
+    							</div>  							    						
+    							<div class="form-group">
+    								<div class="col-lg-5 col-lg-offset-4">
+        								<input class="btn btn-xs btn-outline" id="submit" name="submit" type="submit" value="Submit" style="font-size:15px">
+        							</div>
+      							</div>
+                		</fieldset>
+                	</form>
+                </div>  
+            </div>
+        </div>
+    {{super()}}
+    </section>
+
+{% endblock %}

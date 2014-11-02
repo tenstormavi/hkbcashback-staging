@@ -1,1 +1,1 @@
-New Transaction updated for  {{ user.email }}.
+New Transaction updated for  {{ email }}.
