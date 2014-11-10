@@ -20,6 +20,10 @@ USERHEADER_MAP ={'transaction_id':'Transaction ID',
                  'transaction_value':'Transaction Value',
                  'status':'Status',
                  'merchant_ref': 'Merchant Ref',
+                 'email':'Username',
+                 'password':'Password',
+                 'password2':'Password',
+                 'phonenumber':'Phone Number'
                  }
 MISSING_HEADER = ['transaction_date', 'merchant_ref', 'merchant', 'product',  
                   'transaction_value', 'cash_back_amount', 'status']

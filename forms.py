@@ -9,6 +9,8 @@ from wtforms import BooleanField, IntegerField
 from wtforms import FloatField
 from flask.ext.wtf import Form
 from wtforms.validators import Required, Email, Length, any_of, EqualTo, Regexp,NumberRange
+from utils import missing_transaction_validation
+
 
 class NameForm(Form):
     name = StringField('What is your name?', validators=[Required()])
@@ -66,7 +68,7 @@ class SearchUser(Form):
     submit = SubmitField('Submit')
     
 class InputMissingTransaction(Form):
-    transaction_date = StringField('Transaction Date', validators=[Required()])
+    transaction_date = StringField('Transaction Date', validators=[Required(), missing_transaction_validation])
     merchant = StringField('Merchant Name', validators=[Required()])
     merchant_ref = StringField('Merchant Ref', validators=[Required()])
     product = StringField('Product Name', validators=[Required()])

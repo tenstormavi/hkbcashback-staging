@@ -84,3 +84,18 @@ class MissingTransaction(Document):
     }
     def __repr__(self):
         return '<product %s>' % (self.product)
+    
+class UserClickTrack(Document):
+    structure = {
+    'userEmail':str,
+    'userUID':str,
+    'offerID':int,
+    'clickDateTime':str,
+    'offerLink':str,
+        }
+    
+    validators = {
+    }
+    def __repr__(self):
+        return '<UserEmail %s>' % (self.UserEmail)
+    

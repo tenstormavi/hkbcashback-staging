@@ -7,6 +7,7 @@ Created on Tue Sep 16 20:07:40 2014
 """ os imports """
 import bson
 import os
+from datetime import datetime
 """ flask and flask extensions"""
 from flask import Flask, render_template,session, redirect, url_for, flash
 from flask import request
@@ -20,7 +21,7 @@ from mongokit import Connection
 """ Custom Modules """
 from forms import LoginForm, InputTransaction, UserRegisteration, SearchUser
 from forms import InputMissingTransaction
-from models import User, UserTransaction, MissingTransaction
+from models import User, UserTransaction, MissingTransaction, UserClickTrack
 
 from config import MONGODB_HOST, MONGODB_PORT, COLLECTION_QA
 from config import MAIL_SERVER, MAIL_PORT, MAIL_USE_TLS
@@ -28,7 +29,7 @@ from config import ENCASHMORE_MAIL_SUBJECT_PREFIX, ENCASHMORE_MAIL_SENDER, ENCAS
 
 
 from utils import validate_password, password_hash, format_transaction
-from utils import get_transaction_dict
+from utils import get_transaction_dict, get_errors
 from constant import USERHEADER_MAP, DINING_IMAGE_MAP
 
 
@@ -40,6 +41,7 @@ app.config['SECRET_KEY'] = 'xcvjHJHNsnnnsHJKMNhhhhBN'
 connection = Connection(os.environ.get('MONGOHQ_URL'))
 db = connection[os.environ.get('COLLECTION')]
 collection = db.users
+track_collection = db.userClickTrack
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'login'
@@ -53,7 +55,7 @@ mail = Mail(app)
 
 
 # register the User document with our current connection
-connection.register([User,UserTransaction, MissingTransaction])
+connection.register([User,UserTransaction, MissingTransaction, UserClickTrack])
 
 @login_manager.user_loader
 def reload_user(user_id):
@@ -72,7 +74,11 @@ def login():
         if user and validate_password(user['password'], form.password.data):
             login_user(user, True)
             return redirect(request.args.get('next') or url_for('index'))
-        flash('Invalid username or password.')
+        flash(['Invalid username or password.'])
+    else:
+        if form.is_submitted():
+            if form.errors:
+                flash(get_errors(form))
     return render_template('Login.html', form=form)
 
 @app.route('/transactionForm', methods=['GET', 'POST'])
@@ -85,17 +91,17 @@ def transaction_form():
             if get_validate_user(form.email.data):
                 get_transaction_dict(transaction, form)
                 collection.update({'email':form.email.data}, {'$push': {'transaction': transaction}})
-                flash('Record added successfully')
+                flash(['Record added successfully'])
                 from email_utils import send_email
                 send_email(app.config['ENCASHMORE_ADMIN'], 'Transaction added for %s'%form.email.data,
                         'mail/transaction_added', user=form.email.data)
                 return redirect(url_for('transaction_form'))
-            flash('Not a valid user')
+            flash(['Not a valid user'])
         else:
             #TODO Need to fix this
             if form.is_submitted():
                 if form.errors:
-                    flash(form.errors)
+                    flash(get_errors(form))
         return render_template('transaction_form.html', form=form)
     return render_template('not_authorized.html')
 
@@ -108,7 +114,7 @@ def misssing_trasaction():
             missing_transaction = collection.MissingTransaction()
             get_transaction_dict(missing_transaction, form)
             collection.update({'email':user_email}, {'$push': {'missingtransaction': missing_transaction}})
-            flash('Record added successfully')
+            flash(['Record added successfully'])
             from email_utils import send_email
             send_email(app.config['ENCASHMORE_ADMIN'], 'Missing Transaction added by %s'%user_email,
                         'mail/missing_transaction', user=user_email)
@@ -117,7 +123,7 @@ def misssing_trasaction():
             #TODO Need to fix this
             if form.is_submitted():
                 if form.errors:
-                    flash(form.errors)
+                    flash(get_errors(form))
         return render_template('missing_transaction_form.html', form=form)
 
 @app.route('/registrationform', methods=['GET', 'POST'])
@@ -137,14 +143,13 @@ def registration_form():
             send_email(app.config['ENCASHMORE_ADMIN'], 'New User',
                         'mail/new_user', user=user)
                         
-            flash('You can sign In now')
+            flash(['You can sign In now'])
             return redirect(url_for('login'))
-        flash('Our Record show you are already registered please use forgot password option')
+        flash(['Our Record show you are already registered please use forgot password option'])
     else:
-        #TODO Need to fix this
         if form.is_submitted():
             if form.errors:
-                flash('Please input correct values')
+                flash(get_errors(form))
     return render_template('login_form.html', form=form)
 
 @app.route('/usertransactions', methods=['GET', 'POST'])
@@ -193,12 +198,12 @@ def admin_search_transaction():
         if form.validate_on_submit():
             if get_validate_user(form.email.data):
                 return redirect(url_for('admin_user_transaction', email=form.email.data, method=['GET', 'POST']))
-            flash('Not a valid User %s'%form.email.data)
+            flash(['Not a valid User %s'%form.email.data])
         else:
             #TODO Need to fix this
             if form.is_submitted():
                 if form.errors:
-                    flash(form.errors)
+                    flash(get_errors(form))
         return render_template('admin_search_user.html', form=form)
     return render_template('not_authorized.html')
     
@@ -210,7 +215,15 @@ def offer_link(OFFERID):
     # Unicode need to be converted to int
     link_val = DINING_IMAGE_MAP.get(int(OFFERID))
     if link_val:
-        return redirect("%s&;UID=%s"%(link_val, current_user.get_id()))
+        final_link = "%s&;UID=%s"%(link_val, current_user.get_id())
+        click = track_collection.UserClickTrack()
+        click['userEmail']=str(current_user.email)
+        click['userUID']=current_user.get_id()
+        click['offerID']=int(OFFERID)
+        click['offerLink']=final_link
+        click['clickDateTime']=datetime.now().isoformat(' ')
+        click.save()
+        return redirect(final_link)
     return render_template('invalid_offer.html')
 
 @app.route('/user/<UID>')

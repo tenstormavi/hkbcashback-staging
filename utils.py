@@ -6,7 +6,9 @@ Created on Sun Sep 21 22:10:12 2014
 """
 
 from werkzeug.security import generate_password_hash, check_password_hash
-from constant import HEADER, USERHEADER, MISSING_HEADER
+from constant import HEADER, USERHEADER, MISSING_HEADER, USERHEADER_MAP
+from datetime import datetime
+from wtforms.validators import ValidationError
 
 def max_length(length):
     def validate(value):
@@ -45,5 +47,14 @@ def get_transaction_dict(transaction, form):
     for label, value in form.data.iteritems():
         transaction[label]=value
     return transaction
+
+def get_errors(form):
+    return ['Error in "%s" %s'%(USERHEADER_MAP.get(field), error[0])for field, error in form.errors.iteritems()]
+
+def missing_transaction_validation(form, field):
+    transaction_date =datetime.strptime(field.data, "%m/%d/%Y %I:%M %p")
+    time_delta = datetime.now() - transaction_date
+    if time_delta.days < 2:
+        raise ValidationError('Ticket can only be raised after 72 hrs of order')
     
         
