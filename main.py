@@ -278,11 +278,11 @@ def get_validate_user(user_email_id):
     
 def get_student_info(first=None, last=None):
     if first and last:
-        return student_collection.StudentInfo.find({'FirstName':first,'LastName':last})
+        return student_collection.StudentInfo.find({'FirstName':first.title(),'LastName':last.title()})
     elif first:
-        return student_collection.StudentInfo.find({'FirstName':first})
+        return student_collection.StudentInfo.find({'FirstName':first.title()})
     elif last:
-        return student_collection.StudentInfo.find({'LastName':last})
+        return student_collection.StudentInfo.find({'LastName':last.title()})
     else:
         return []
 
