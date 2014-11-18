@@ -78,7 +78,7 @@ def format_subject_info(info):
     
 
 def get_average(data):
-    return sum(data)/len(data)
+    return round(sum(data)/len(data), 1)
 
 def get_transaction_dict(transaction, form):
     for label, value in form.data.iteritems():
