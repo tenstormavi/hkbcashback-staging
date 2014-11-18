@@ -6,7 +6,8 @@ Created on Sun Sep 21 22:10:12 2014
 """
 
 from werkzeug.security import generate_password_hash, check_password_hash
-from constant import HEADER, USERHEADER, MISSING_HEADER, USERHEADER_MAP
+from constant import HEADER, USERHEADER, MISSING_HEADER, USERHEADER_MAP, STUDENT_HEADER
+from constant import STUDENT_INFO_HEADER, SUBJECT_INFO_HEADER
 from datetime import datetime
 from wtforms.validators import ValidationError
 
@@ -34,7 +35,7 @@ def format_transaction(transactions, header):
     rst = []
     if header == 'user':
         rst.append(USERHEADER)
-        header = USERHEADER
+        header = USERHEADER            
     else:
         rst.append(MISSING_HEADER)
         header = MISSING_HEADER
@@ -42,6 +43,42 @@ def format_transaction(transactions, header):
         rst.append([str(transaction.get(val)) for val in header])
     return rst
 
+
+def format_Student_info(infos):
+    rst = []
+    rst.append(STUDENT_HEADER)
+    header = STUDENT_HEADER
+    avg = [get_average(i.get('Subjects').values()) for i in infos] 
+    for info,a in zip(infos,avg):
+        info['AverageGrade']=a
+        info['ViewAdditionalInfo']='<strong><a style="color: #FFF" href="%s/%s">Click Here</a></strong>'%('SearchStudentInfo',str(info.get('_id')))
+    for info in infos:
+        rst.append([str(info.get(val)) for val in header])
+    return rst
+
+def format_detail_view(infos):
+    rst = []
+    rst.append(STUDENT_INFO_HEADER)
+    header = STUDENT_INFO_HEADER
+    avg = [get_average(i.get('Subjects').values()) for i in infos] 
+    for info,a in zip(infos,avg):
+        info['AverageGrade']=a
+    for info in infos:
+        rst.append([str(info.get(val)) for val in header])
+    return rst
+
+def format_subject_info(info):
+    rst = []
+    rst.append(SUBJECT_INFO_HEADER)
+    header = SUBJECT_INFO_HEADER
+    rst.append([str(info.get(val)) for val in header])
+    return rst
+    
+    
+    
+
+def get_average(data):
+    return sum(data)/len(data)
 
 def get_transaction_dict(transaction, form):
     for label, value in form.data.iteritems():

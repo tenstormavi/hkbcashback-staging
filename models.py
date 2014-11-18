@@ -98,4 +98,19 @@ class UserClickTrack(Document):
     }
     def __repr__(self):
         return '<UserEmail %s>' % (self.UserEmail)
+        
+        
+
+class StudentInfo(Document):
+    structure = {
+    'FirstName':str,
+    'LastName':str,
+    'EmailAddress':str,
+    'Subjects':dict,
+        }
+    
+    validators = {
+    }
+    def __repr__(self):
+        return '<FirstName %s>' % (self.FirstName)
     

@@ -20,8 +20,9 @@ from flask.ext.mail import Mail
 from mongokit import Connection
 """ Custom Modules """
 from forms import LoginForm, InputTransaction, UserRegisteration, SearchUser
-from forms import InputMissingTransaction
+from forms import InputMissingTransaction, StudentSearchForm, StudentInputForm
 from models import User, UserTransaction, MissingTransaction, UserClickTrack
+from models import StudentInfo
 
 from config import MONGODB_HOST, MONGODB_PORT, COLLECTION_QA
 from config import MAIL_SERVER, MAIL_PORT, MAIL_USE_TLS
@@ -29,8 +30,9 @@ from config import ENCASHMORE_MAIL_SUBJECT_PREFIX, ENCASHMORE_MAIL_SENDER, ENCAS
 
 
 from utils import validate_password, password_hash, format_transaction
-from utils import get_transaction_dict, get_errors
-from constant import USERHEADER_MAP, DINING_IMAGE_MAP
+from utils import get_transaction_dict, get_errors, format_Student_info, format_detail_view
+from utils import format_subject_info
+from constant import USERHEADER_MAP, DINING_IMAGE_MAP, STUDENT_HEADER_MAP
 
 
 # configuration
@@ -42,6 +44,7 @@ connection = Connection(os.environ.get('MONGOHQ_URL'))
 db = connection[os.environ.get('COLLECTION')]
 collection = db.users
 track_collection = db.userClickTrack
+student_collection = db.StudentInformation
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'login'
@@ -55,7 +58,7 @@ mail = Mail(app)
 
 
 # register the User document with our current connection
-connection.register([User,UserTransaction, MissingTransaction, UserClickTrack])
+connection.register([User,UserTransaction, MissingTransaction, UserClickTrack, StudentInfo])
 
 @login_manager.user_loader
 def reload_user(user_id):
@@ -237,9 +240,52 @@ def user(UID):
 def logout():
     logout_user()
     return redirect(url_for('index'))
+    
+@app.route('/SearchStudentInfo', methods=['GET', 'POST'])
+def search_student_info():
+    form =StudentSearchForm()
+    if form.validate_on_submit():
+        s_info = get_student_info(str(form.FirstName.data), str(form.LastName.data))
+        data = [i for i in s_info]
+        if data:
+            content = format_Student_info(data)
+            header = [STUDENT_HEADER_MAP.get(i) for i in content.pop(0)]
+            return render_template('student_search_screen.html', form=form, header = header,  content =content)
+        flash(['No Results found!'])
+    else:
+    #TODO Need to fix this
+        if form.is_submitted():
+            if form.errors:
+                flash(get_errors(form))
+    return render_template('student_search_screen.html', form=form)
 
+
+@app.route('/SearchStudentInfo/<UID>')
+def student(UID):
+    userobj = bson.objectid.ObjectId(UID)
+    info = student_collection.StudentInfo.find_one({'_id':userobj})
+    content = format_detail_view([info])
+    header = [STUDENT_HEADER_MAP.get(i) for i in content.pop(0)]
+    sub_content = format_subject_info(info['Subjects'])
+    sub_header = [STUDENT_HEADER_MAP.get(i) for i in sub_content.pop(0)]
+    
+    return render_template('student_info.html', content=content, header=header, 
+                sub_content = info['Subjects'].items(),  sub_header=sub_header                          
+                           )
+                           
 def get_validate_user(user_email_id):
     return collection.User.find_one({'email':user_email_id})
+    
+def get_student_info(first=None, last=None):
+    if first and last:
+        return student_collection.StudentInfo.find({'FirstName':first,'LastName':last})
+    elif first:
+        return student_collection.StudentInfo.find({'FirstName':first})
+    elif last:
+        return student_collection.StudentInfo.find({'LastName':last})
+    else:
+        return []
+
 
 if __name__ == '__main__':
     manager.run()

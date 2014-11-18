@@ -28,6 +28,21 @@ USERHEADER_MAP ={'transaction_id':'Transaction ID',
 MISSING_HEADER = ['transaction_date', 'merchant_ref', 'merchant', 'product',  
                   'transaction_value', 'cash_back_amount', 'status']
 
+STUDENT_HEADER = ['FirstName', 'LastName', 'AverageGrade', 'ViewAdditionalInfo']
+
+STUDENT_INFO_HEADER = ['FirstName', 'LastName', 'EmailAddress', 'AverageGrade']
+
+SUBJECT_INFO_HEADER = ['SubjectName', 'Marks']
+
+STUDENT_HEADER_MAP = {'FirstName':'First Name',
+                      'LastName' : 'Last Name',
+                      'AverageGrade': 'Average Grade',
+                      'ViewAdditionalInfo': 'View Additional Info',
+                      'EmailAddress':'Email Address',
+                      'SubjectName': 'Subject Name',
+                      'Marks':'Marks'
+                      }
+
 
 DINING_IMAGE_MAP = {10859:"http://clk.omgt5.com/?AID=682085&PID=10859&;WID=55355",
              11313:"http://clk.omgt5.com/?AID=682085&PID=11313&WID=55355" ,

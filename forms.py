@@ -74,3 +74,16 @@ class InputMissingTransaction(Form):
     product = StringField('Product Name', validators=[Required()])
     transaction_value  = FloatField('Transaction Value')
     submit = SubmitField('Submit')
+
+class StudentSearchForm(Form):
+    FirstName = StringField('first Name')
+    LastName = StringField('Last Name')
+    submit = SubmitField('Submit')
+
+class StudentInputForm(Form):
+    FirstName = StringField('first Name')
+    LastName = StringField('Last Name')
+    EmailAddress = StringField('Last Name')
+    Subject = StringField('Subject')
+    submit = SubmitField('Submit')
+    
