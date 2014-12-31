@@ -33,7 +33,7 @@ from config import ENCASHMORE_MAIL_SUBJECT_PREFIX, ENCASHMORE_MAIL_SENDER, ENCAS
 from utils import validate_password, password_hash, format_transaction
 from utils import get_transaction_dict, get_errors, format_Student_info, format_detail_view
 from utils import format_subject_info, format_admin_transaction
-from constant import USERHEADER_MAP, DINING_IMAGE_MAP, STUDENT_HEADER_MAP
+from constant import USERHEADER_MAP, ORDER_MAP, STUDENT_HEADER_MAP
 
 
 # configuration
@@ -228,7 +228,7 @@ def admin_search_transaction():
 @login_required
 def offer_link(OFFERID):
     # Unicode need to be converted to int
-    link_val = DINING_IMAGE_MAP.get(int(OFFERID))
+    link_val = ORDER_MAP.get(int(OFFERID))
     if link_val:
         final_link = "%s&;UID=%s"%(link_val, current_user.get_id())
         click = track_collection.UserClickTrack()

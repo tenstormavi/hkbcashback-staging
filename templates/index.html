@@ -40,7 +40,7 @@
                         <a href="#about">How It Works</a>
                     </li>
                     <li class="page-scroll">
-                        <a href="#contact">Contact</a>
+                        <a href="#contact">Contact US</a>
                     </li>
                     
 			{% if current_user.is_authenticated() %}
@@ -84,7 +84,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <img class="img-responsive" src="{{url_for('.static', filename='img/Logo_Encashmore .jpg')}}" alt="">
+                    <img class="img-responsive" src="{{url_for('.static', filename='img/encash_logo.png')}}" alt="">
                     <div class="intro-text">
                         <span class="name">Encashmore !</span>
                         <hr class="star-light">
@@ -163,17 +163,17 @@
                         <img src="{{url_for('.static', filename='img/portfolio/Travel.jpg')}}" class="img-responsive" alt="">
                     </a>
                 </div>
-                <!--<div class="col-sm-4 portfolio-item">
+                <div class="col-sm-4 portfolio-item">
                     <a href="#portfolioModal6" class="portfolio-link" data-toggle="modal">
                         <div class="caption">
                             <div class="caption-content">
                                 <i class="fa fa-search-plus fa-3x"></i>
-                                <p> Explore! </p>
+                                <p> Other </p>
                             </div>
                         </div>
-                        <img src="{{url_for('.static', filename='img/portfolio/submarine.png')}}" class="img-responsive" alt="">
+                        <img src="{{url_for('.static', filename='img/portfolio/Icon-Others_Cashback-Coupons-Furniture-Recharge-Groupon.jpg')}}" class="img-responsive" alt="">
                     </a>
-                </div>-->
+                </div>
             </div>
         </div>
     </section>
@@ -209,7 +209,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12 text-center">
-                    <h2>Contact Me</h2>
+                    <h2>Contact Us</h2>
                     <hr class="star-primary">
                 </div>
             </div>
@@ -282,7 +282,7 @@
                                 <a href="" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
                             </li>-->
                             <li>
-                                <a href="https://twitter.com/encashmore" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                                <a href="https://twitter.com/encashmore" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
                             </li>
                           <!--  <li>
                                 <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
@@ -382,22 +382,11 @@
                         <div class="modal-body">
                             <h2>Gifting</h2>
                             <hr class="star-primary">
-                            <img src="{{url_for('.static', filename='img/portfolio/Gifting.jpg')}}" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                            <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
-                            </ul>
+                            <img src="{{url_for('.static', filename='img/giftImage/Cashback-Deals-Gifts-Flowers-Boquets.jpg')}}" class="img-responsive img-centered" alt="" usemap="#giftImageMap">
+                            <p>The Best Deals on Eating Out.
+                            Redeem in 2 Steps ! <br> 
+                          	1. Login <br> 2. Click On The Desired Deal <br>
+                           	<i>*remember not to open any other pages while you shop !!</i></p>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
@@ -419,22 +408,11 @@
                         <div class="modal-body">
                             <h2>Shopping</h2>
                             <hr class="star-primary">
-                            <img src="{{url_for('.static', filename='img/portfolio/Shopping.jpg')}}" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                            <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
-                            </ul>
+                            <img src="{{url_for('.static', filename='img/shoppingImage/Cashback-Deals-Shopping-Apparel-Mobiles.jpg')}}" class="img-responsive img-centered" alt="" usemap="#shoppingImageMap">
+							<p>The Best Deals on Shopping.
+                            Redeem in 2 Steps ! <br> 
+                          	1. Login <br> 2. Click On The Desired Deal <br>
+                           	<i>*remember not to open any other pages while you shop !!</i></p>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
@@ -456,22 +434,11 @@
                         <div class="modal-body">
                             <h2>Travel</h2>
                             <hr class="star-primary">
-                            <img src="{{url_for('.static', filename='img/portfolio/Travel.jpg')}}" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                            <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
-                            </ul>
+                            <img src="{{url_for('.static', filename='img/travelimage/Cashback-Deals-Travel-Hotels-Flights.jpg')}}" class="img-responsive img-centered" alt="" usemap="#flightImageMap">
+                            <p>The Best Deals on Travel.
+                            Redeem in 2 Steps ! <br> 
+                          	1. Login <br> 2. Click On The Desired Deal <br>
+                           <i>*remember not to open any other pages while you shop !!</i></p>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
@@ -494,22 +461,11 @@
                         <div class="modal-body">
                             <h2>Dipping</h2>
                             <hr class="star-primary">
-                            <img src="{{url_for('.static', filename='img/portfolio/submarine.png')}}" class="img-responsive img-centered" alt="">
-                            <p>Use this area of the page to describe your project. The icon above is part of a free icon set by <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
-                            <ul class="list-inline item-details">
-                                <li>Client:
-                                    <strong><a href="http://startbootstrap.com">Start Bootstrap</a>
-                                    </strong>
-                                </li>
-                                <li>Date:
-                                    <strong><a href="http://startbootstrap.com">April 2014</a>
-                                    </strong>
-                                </li>
-                                <li>Service:
-                                    <strong><a href="http://startbootstrap.com">Web Development</a>
-                                    </strong>
-                                </li>
-                            </ul>
+                            <img src="{{url_for('.static', filename='img/otherImage/Cashback-Deals-Others-Recharge-Furniture.jpg')}}" class="img-responsive img-centered" alt="" usemap="#otherImageMap">
+							<p>The Best Deals on Travel.
+                            Redeem in 2 Steps ! <br> 
+                          	1. Login <br> 2. Click On The Desired Deal <br>
+                           <i>*remember not to open any other pages while you shop !!</i></p>
                             <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
                         </div>
                     </div>
@@ -530,7 +486,46 @@
 	<area shape="rect" coords="148,587,532,842" alt="Watchkart - Cashback of Rs 100 on every order" href="{{ url_for('offer_link', OFFERID=11896) }}" target="_blank" />
 	<area shape="rect" coords="769,573,1187,844" alt="Bluestone - Cashback of Rs 750 on every order" href="{{ url_for('offer_link', OFFERID=13298) }}" target="_blank" />
 	</map>
+	
+	<map name="flightImageMap">
+	<area shape="rect" coords="249,117,626,374" alt="Hotels.com - Cashback of 5% on every booking" href="{{ url_for('offer_link', OFFERID=9807) }}" target="_blank" />
+	<area shape="rect" coords="97,415,390,535" alt="Yatra.com - Cashback of upto 9% on hotels & 425 on flights" href="{{ url_for('offer_link', OFFERID=10332) }}" target="_blank" />
+	<area shape="rect" coords="475,421,780,527" alt="AsiaRooms - Cashback of 5% on every booking" href="{{ url_for('offer_link', OFFERID=11446) }}" target="_blank" />
+	</map>
 
+	<map name="giftImageMap">
+	<area shape="rect" coords="155,196,559,366" alt="bookmyflowers - Cashback of 10% on every order" href="{{ url_for('offer_link', OFFERID=9401) }}" target="_blank"/>
+	<area shape="rect" coords="749,173,1126,363" alt="Floweraura - Cashback of 15%  on every order" href="{{ url_for('offer_link', OFFERID=10940) }}" target="_blank" />
+	<area shape="rect" coords="164,520,575,691" alt="Indiagiftsportal - Cashback of Rs 80 on every order" href="{{ url_for('offer_link', OFFERID=13495) }}" target="_blank" />
+	<area shape="rect" coords="739,521,1139,694" alt="Fernsnpetals - Cashback of 12% on every order" href="{{ url_for('offer_link', OFFERID=7970) }}" target="_blank" />
+	</map>
+
+
+	<map name="shoppingImageMap">
+	<area shape="rect" coords="13,65,233,178" alt="Homeshop18 - Cashback of 1% on every order" href="{{ url_for('offer_link', OFFERID=9394) }}" target="_blank"/>
+	<area shape="rect" coords="248,64,581,179" alt="Shopclues - Cashback of upto 4% on every order" href="{{ url_for('offer_link', OFFERID=10359) }}" target="_blank" />
+	<area shape="rect" coords="600,77,866,167" alt="Snapdeal - Cashback of upto 8% on every order" href="{{ url_for('offer_link', OFFERID=8053) }}" target="_blank" />
+	<area shape="rect" coords="13,198,231,276" alt="Myntra - Cashback of upto 14%  on every order" href="{{ url_for('offer_link', OFFERID=12185) }}" target="_blank" />
+	<area shape="rect" coords="242,200,574,320" alt="Zovi - Cashback of Rs 130 on every order" href="{{ url_for('offer_link', OFFERID=8422) }}" target="_blank" />
+	<area shape="rect" coords="598,187,869,294" alt="Amazon - Cashback of upto 12% on every order" href="{{ url_for('offer_link', OFFERID=9401) }}" target="_blank" />
+	<area shape="rect" coords="4,302,237,437" alt="Nykaa - Cashback of 5% on every order" href="{{ url_for('offer_link', OFFERID=13171) }}" target="_blank" />
+	<area shape="rect" coords="241,330,573,451" alt="Inkfruit - Cashback of Rs 150 on every order" href="{{ url_for('offer_link', OFFERID=9222) }}" target="_blank" />
+	<area shape="rect" coords="598,328,866,442" alt="Jabong - Cashback of 7%  on every order" href="{{ url_for('offer_link', OFFERID=9170) }}" target="_blank" />
+	<area shape="rect" coords="23,462,237,615" alt="StarCJ - Cashback of Rs 50 on every order" href="{{ url_for('offer_link', OFFERID=10109) }}" target="_blank" />
+	<area shape="rect" coords="261,480,571,597" alt="Fashionara - Cashback of 5% on every order" href="{{ url_for('offer_link', OFFERID=9828) }}" target="_blank" />
+	<area shape="rect" coords="593,480,871,593" alt="Paytm - Cashback of 2% on every order" href="{{ url_for('offer_link', OFFERID=11365) }}" target="_blank" />
+	</map>
+
+	<map name="otherImageMap">
+	<area shape="rect" coords="41,40,271,139" alt="Pepperfry - Cashback of 7% on every order" href="{{ url_for('offer_link', OFFERID=11289) }}" target="_blank" />
+	<area shape="rect" coords="311,36,536,143" alt="Groupon - Cashback of 5% on every order" href="{{ url_for('offer_link', OFFERID=11010) }}" target="_blank" />
+	<area shape="rect" coords="575,36,833,145" alt="Paytm - Cashback of 2% on every order" href="{{ url_for('offer_link', OFFERID=11365) }}" target="_blank" />
+	<area shape="rect" coords="44,163,354,333" alt="Fabfurnish - Cashback of 8% on every order" href="{{ url_for('offer_link', OFFERID=9319) }}" target="_blank" />
+	<area shape="rect" coords="384,160,826,303" alt="Chumbak - Cashback of Rs 85 on every order" href="{{ url_for('offer_link', OFFERID=12429) }}" target="_blank" />
+	<area shape="rect" coords="126,351,458,501" alt="Mobikwik - Cashback of Rs 8 on every recharge" href="{{ url_for('offer_link', OFFERID=13255) }}" target="_blank" />
+	<area shape="rect" coords="520,318,821,615" alt="ITC Foods - Cashback of Rs 45 on every order" href="{{ url_for('offer_link', OFFERID=11965) }}" target="_blank" />
+	<area shape="rect" coords="96,519,484,635" alt="Printvenue - Cashback of Rs 150 on every order" href="{{ url_for('offer_link', OFFERID=10036) }}" target="_blank" />
+	</map>
 	{% block scripts %}
 	{{super()}}
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>

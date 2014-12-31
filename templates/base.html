@@ -72,25 +72,25 @@
 {% endblock %}
 
  <!-- Footer -->
+    <!-- Footer -->
     <footer class="text-center">
         <div class="footer-above">
             <div class="container">
                 <div class="row">
-                    <div class="footer-col col-md-4">
-                        <h4>Location</h4>
-                        <p>3481 Melrose Place<br>Beverly Hills, CA 90210</p>
+                    <div class="footer-col col-md-4">                      
+						<input type=button class="btn btn-outline" value="Term and Conditions" onClick="javascript:popUp('/termcondition')">
                     </div>
                     <div class="footer-col col-md-4">
-                        <h4>Around the Web</h4>
+                        
                         <ul class="list-inline">
                             <li>
                                 <a href="https://www.facebook.com/encashmore" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>
                             </li>
+                            <!--<li>
+                                <a href="" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
+                            </li>-->
                             <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>
-                            </li>
-                            <li>
-                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                                <a href="https://twitter.com/encashmore" target="_blank" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
                             </li>
                           <!--  <li>
                                 <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
@@ -101,10 +101,8 @@
                         </ul>
                     </div>
                     <div class="footer-col col-md-4">
-                        <h4>About Freelancer</h4>
-                        <p>Freelance is a free to use, open source Bootstrap theme created by <a href="http://startbootstrap.com">Start Bootstrap</a>.</p>
-                    </div>
-                </div>
+                        <input type=button class="btn btn-outline" value="FAQ" onClick="javascript:popUp('/faq')">
+                	</div>
             </div>
         </div>
         <div class="footer-below">
@@ -116,7 +114,7 @@
                 </div>
             </div>
         </div>
-    </footer>	
+    </footer>
 	
 	{% block scripts %}
 	{{super()}}
@@ -128,7 +126,7 @@
 	<script src="{{url_for('.static', filename='js/freelancer.js')}}"></script>
 	<script src="{{url_for('.static', filename='js/moment.js')}}"></script>
 	<script src="{{url_for('.static', filename='js/bootstrap-datetimepicker.js')}}"></script>
-        <script type="text/javascript">
+    <script type="text/javascript">
             // When the document is ready
             $(document).ready(function () { 
                 $('#example1').datetimepicker({
@@ -136,6 +134,15 @@
                 });  
             });
         </script>
+	<SCRIPT LANGUAGE="JavaScript">
+	<!--
+	function popUp(URL) {
+	day = new Date();
+	id = day.getTime();
+	eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=400,height=400');");
+	}
 
+	// -->
+	</script>
 	{% endblock %}
 {% endblock %}
