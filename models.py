@@ -4,9 +4,11 @@ Created on Sun Sep 21 22:07:11 2014
 
 @author: harshitbahl
 """
-from flask.ext.login import UserMixin
+from flask.ext.login import UserMixin, current_app
 from mongokit import Document
 from utils import max_length, valid_status
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+
 
 class User(Document,UserMixin):
     __collection__ = 'users'
@@ -37,6 +39,22 @@ class User(Document,UserMixin):
         
     def __repr__(self):
         return '<User %s>' % (self.email)
+
+    def get_token(self, expiration=1800):
+        s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        return s.dumps({'user': self._id}).decode('utf-8')
+
+    @staticmethod
+    def verify_token(token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return None
+        id = data.get('user')
+        if id:
+            return User.query.get(id)
+        return None
 
 class UserTransaction(Document):
     structure = {

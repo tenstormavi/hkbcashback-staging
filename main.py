@@ -20,6 +20,7 @@ from flask.ext.mail import Mail
 from mongokit import Connection
 """ Custom Modules """
 from forms import LoginForm, InputTransaction, UserRegisteration, SearchUser
+from forms import ContactUs
 from forms import InputMissingTransaction, StudentSearchForm, StudentInputForm
 from models import User, UserTransaction, MissingTransaction, UserClickTrack
 from models import StudentInfo
@@ -31,7 +32,7 @@ from config import ENCASHMORE_MAIL_SUBJECT_PREFIX, ENCASHMORE_MAIL_SENDER, ENCAS
 
 from utils import validate_password, password_hash, format_transaction
 from utils import get_transaction_dict, get_errors, format_Student_info, format_detail_view
-from utils import format_subject_info
+from utils import format_subject_info, format_admin_transaction
 from constant import USERHEADER_MAP, DINING_IMAGE_MAP, STUDENT_HEADER_MAP
 
 
@@ -67,7 +68,18 @@ def reload_user(user_id):
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    form = ContactUs()
+    if form.is_submitted():
+        from email_utils import send_email
+        send_email(app.config['ENCASHMORE_ADMIN'], 'New Message from %s'%form.email.data,
+                        'mail/contactform',
+                        email=form.email.data,
+                        name=form.name.data, 
+                        phone = form.phonenumber.data,
+                        message = form.message.data
+                        )
+        return redirect(request.args.get('next') or url_for('index'))
+    return render_template('index.html', form=form)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -187,7 +199,7 @@ def admin_user_transaction(email):
     if current_user.get('isAdmin'):
         user = collection.User.find_one({'email':email})
         transaction = user.transaction
-        format_info = format_transaction(transaction, header = 'user')
+        format_info = format_admin_transaction(transaction, header = 'user')
         user_header = [USERHEADER_MAP.get(i) for i in format_info.pop(0)]
         return render_template('user_transaction.html', header = user_header,
                 content = format_info, useremail=email)
@@ -240,38 +252,45 @@ def user(UID):
 def logout():
     logout_user()
     return redirect(url_for('index'))
-    
-@app.route('/SearchStudentInfo', methods=['GET', 'POST'])
-def search_student_info():
-    form =StudentSearchForm()
-    if form.validate_on_submit():
-        s_info = get_student_info(str(form.FirstName.data), str(form.LastName.data))
-        data = [i for i in s_info]
-        if data:
-            content = format_Student_info(data)
-            header = [STUDENT_HEADER_MAP.get(i) for i in content.pop(0)]
-            return render_template('student_search_screen.html', form=form, header = header,  content =content)
-        flash(['No Results found!'])
-    else:
-    #TODO Need to fix this
-        if form.is_submitted():
-            if form.errors:
-                flash(get_errors(form))
-    return render_template('student_search_screen.html', form=form)
 
+@app.route("/termcondition")
+def termcondition():
+    return render_template('terms_and_conditions.html')
 
-@app.route('/SearchStudentInfo/<UID>')
-def student(UID):
-    userobj = bson.objectid.ObjectId(UID)
-    info = student_collection.StudentInfo.find_one({'_id':userobj})
-    content = format_detail_view([info])
-    header = [STUDENT_HEADER_MAP.get(i) for i in content.pop(0)]
-    sub_content = format_subject_info(info['Subjects'])
-    sub_header = [STUDENT_HEADER_MAP.get(i) for i in sub_content.pop(0)]
-    
-    return render_template('student_info.html', content=content, header=header, 
-                sub_content = info['Subjects'].items(),  sub_header=sub_header                          
-                           )
+@app.route("/faq")
+def faq():
+    return render_template('faq.html')
+#@app.route('/SearchStudentInfo', methods=['GET', 'POST'])
+#def search_student_info():
+#    form =StudentSearchForm()
+#    if form.validate_on_submit():
+#        s_info = get_student_info(str(form.FirstName.data), str(form.LastName.data))
+#        data = [i for i in s_info]
+#        if data:
+#            content = format_Student_info(data)
+#            header = [STUDENT_HEADER_MAP.get(i) for i in content.pop(0)]
+#            return render_template('student_search_screen.html', form=form, header = header,  content =content)
+#        flash(['No Results found!'])
+#    else:
+#    #TODO Need to fix this
+#        if form.is_submitted():
+#            if form.errors:
+#                flash(get_errors(form))
+#    return render_template('student_search_screen.html', form=form)
+#
+#
+#@app.route('/SearchStudentInfo/<UID>')
+#def student(UID):
+#    userobj = bson.objectid.ObjectId(UID)
+#    info = student_collection.StudentInfo.find_one({'_id':userobj})
+#    content = format_detail_view([info])
+#    header = [STUDENT_HEADER_MAP.get(i) for i in content.pop(0)]
+#    sub_content = format_subject_info(info['Subjects'])
+#    sub_header = [STUDENT_HEADER_MAP.get(i) for i in sub_content.pop(0)]
+#    
+#    return render_template('student_info.html', content=content, header=header, 
+#                sub_content = info['Subjects'].items(),  sub_header=sub_header                          
+#                           )
                            
 def get_validate_user(user_email_id):
     return collection.User.find_one({'email':user_email_id})

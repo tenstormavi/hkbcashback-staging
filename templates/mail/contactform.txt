@@ -1,0 +1,7 @@
+New Message from {{ email }}.
+Name:
+{{ name }}.
+Phone:
+{{ phone }}.
+Message : 
+{{ message }}.

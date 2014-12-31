@@ -25,7 +25,7 @@
 			{% for info in content %}
 				<tr>
 				{% for i in info %}
-					<td>{{ i }}</td>
+					<td>{{ i|safe }}</td>
 				{% endfor %}
 				</tr>
 			{% endfor %}

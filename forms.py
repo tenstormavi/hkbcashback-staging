@@ -35,6 +35,15 @@ class UserRegisteration(Form):
     submit = SubmitField('Submit')
 
 
+class ContactUs(Form):
+    name = StringField('Name', validators=[Required()])
+    email = StringField('Email', validators=[Required(), Length(1, 64),
+                                             Email()])
+    phonenumber = StringField('Phone Number', validators=[Required(),Regexp(r'^[789]\d{9}$', message='Not valid Phone Number')])
+    message = StringField('Name', validators=[Required()])
+    submit = SubmitField('Send')
+
+
 class InputTransaction(Form):
     email = StringField('User Email', validators=[Required(), Length(1, 64),
                                              Email()])

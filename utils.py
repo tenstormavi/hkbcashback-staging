@@ -43,6 +43,20 @@ def format_transaction(transactions, header):
         rst.append([str(transaction.get(val)) for val in header])
     return rst
 
+def format_admin_transaction(transactions, header):
+    rst = []
+    if header == 'user':
+        rst.append(USERHEADER)
+        header = USERHEADER            
+    else:
+        rst.append(MISSING_HEADER)
+        header = MISSING_HEADER
+    for transaction in transactions:
+        data = [str(transaction.get(val)) for val in header]
+        data.append('<strong><a style="color: #FFF" href="%s/%s">Click Here</a></strong>'%('adminAction',str(transaction.get('transaction_id'))))
+        rst.append(data)
+    return rst
+
 
 def format_Student_info(infos):
     rst = []
