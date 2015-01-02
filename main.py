@@ -20,8 +20,8 @@ from flask.ext.mail import Mail
 from mongokit import Connection
 """ Custom Modules """
 from forms import LoginForm, InputTransaction, UserRegisteration, SearchUser
-from forms import ContactUs
-from forms import InputMissingTransaction, StudentSearchForm, StudentInputForm
+from forms import ContactUs, Redeem
+from forms import InputMissingTransaction
 from models import User, UserTransaction, MissingTransaction, UserClickTrack
 from models import StudentInfo
 
@@ -175,6 +175,14 @@ def user_transaction():
     transaction = user.transaction
     format_info = format_transaction(transaction, header = 'user')
     user_header = [USERHEADER_MAP.get(i) for i in format_info.pop(0)]
+    form = Redeem()
+    if form.is_submitted():
+        from email_utils import send_email
+        send_email(app.config['ENCASHMORE_ADMIN'], 'Redeem Request from %s'%user.email,
+                        'mail/redeem',
+                        email=user.email
+                        )
+        flash(['We have received your redeem request we will start working on it'])
     return render_template('user_transaction.html', header = user_header,
             content = format_info, useremail = '')
 

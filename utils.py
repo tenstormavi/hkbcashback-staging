@@ -103,7 +103,7 @@ def get_errors(form):
     return ['Error in "%s" %s'%(USERHEADER_MAP.get(field), error[0])for field, error in form.errors.iteritems()]
 
 def missing_transaction_validation(form, field):
-    transaction_date =datetime.strptime(field.data, "%m/%d/%Y %I:%M %p")
+    transaction_date =datetime.strptime(field.data, "%m/%d/%Y")
     time_delta = datetime.now() - transaction_date
     if time_delta.days < 2:
         raise ValidationError('Ticket can only be raised after 72 hrs of order')

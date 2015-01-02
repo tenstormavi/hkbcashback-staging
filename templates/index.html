@@ -270,7 +270,7 @@
             <div class="container">
                 <div class="row">
                     <div class="footer-col col-md-4">                      
-						<input type=button class="btn btn-outline" value="Term and Conditions" onClick="javascript:popUp('/termcondition')">
+						<input type=button class="btn btn-outline" value="Terms and Conditions" onClick="javascript:popUp('/termcondition')">
                     </div>
                     <div class="footer-col col-md-4">
                         
@@ -474,12 +474,6 @@
         </div>
     </div>
 <!-- Image Map -->
-	<map name="diningImageMap">
-	<area shape="rect" coords="1,48,884,210" href="{{ url_for('offer_link', OFFERID=10859) }}" target="_blank"/>
-	<area shape="rect" coords="2,247,388,638" href="{{ url_for('offer_link', OFFERID=11313) }}" target="_blank" />
-	<area shape="rect" coords="487,256,846,635" href="{{ url_for('offer_link', OFFERID=12861) }}" target="_blank" />
-	</map>
-
 	<map name="fashionImageMap">
 	<area shape="rect" coords="127,139,531,399" alt="Lenskart - Cashback Rs 100 on every order" href="{{ url_for('offer_link', OFFERID=11897) }}" target="_blank" />
 	<area shape="rect" coords="795,139,1163,399" alt="Jewelskart - Cashback of Rs 100 on every order" href="{{ url_for('offer_link', OFFERID=11898) }}" target="_blank" />
@@ -526,6 +520,14 @@
 	<area shape="rect" coords="520,318,821,615" alt="ITC Foods - Cashback of Rs 45 on every order" href="{{ url_for('offer_link', OFFERID=11965) }}" target="_blank" />
 	<area shape="rect" coords="96,519,484,635" alt="Printvenue - Cashback of Rs 150 on every order" href="{{ url_for('offer_link', OFFERID=10036) }}" target="_blank" />
 	</map>
+	
+	<map name="diningImageMap">
+	<area shape="rect" coords="113,102,387,282" alt="KFC - Cashback of Rs 45 on every order" href="{{ url_for('offer_link', OFFERID=12861) }}" target="_blank" />
+	<area shape="rect" coords="469,110,793,285" alt="Dominos - Cashback of Rs 20 on every order" href="{{ url_for('offer_link', OFFERID=9706) }}" target="_blank" />
+	<area shape="rect" coords="119,398,383,555" alt="JustEat - Cashback of upto Rs 120 on every order" href="{{ url_for('offer_link', OFFERID=10859) }}" target="_blank" />
+	<area shape="rect" coords="473,395,792,554" alt="Foodpanda - Cashback of upto Rs 175 on every order" href="{{ url_for('offer_link', OFFERID=11313) }}" target="_blank" />
+	</map>
+	
 	{% block scripts %}
 	{{super()}}
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>

@@ -43,6 +43,8 @@ class ContactUs(Form):
     message = StringField('Name', validators=[Required()])
     submit = SubmitField('Send')
 
+class Redeem(Form):
+    submit = SubmitField('Send')
 
 class InputTransaction(Form):
     email = StringField('User Email', validators=[Required(), Length(1, 64),
