@@ -40,7 +40,7 @@ from constant import USERHEADER_MAP, ORDER_MAP, STUDENT_HEADER_MAP
 app = Flask(__name__)
 app.config['DEBUG']=True
 app.config.from_object(__name__)
-app.config['SECRET_KEY'] = 'xcvjHJHNsnnnsHJKMNhhhhBN'
+app.config['SECRET_KEY'] = 'xcvjHJHNsnnnsHJKMNhhhhBNljhgfdvbfdgk'
 connection = Connection(os.environ.get('MONGOHQ_URL'))
 db = connection[os.environ.get('COLLECTION')]
 collection = db.users
@@ -148,17 +148,25 @@ def registration_form():
 #        user = collection.User.find_one({'email':form.email.data})
         if not get_validate_user(form.email.data):
             user = collection.User()
-            user['email'] = str(form.email.data)
-            user['password']= password_hash(form.password.data)
-            user['phonenumber']= str(form.phonenumber.data)
-            user['subscribed']  = form.subscription.data
+            user['email']		 = str(form.email.data)
+            user['password']	 = password_hash(form.password.data)
+            user['phonenumber']  = str(form.phonenumber.data)
+            user['subscribed']   = form.subscription.data
             user.save()
             
             from email_utils import send_email
-            send_email(app.config['ENCASHMORE_ADMIN'], 'New User',
-                        'mail/new_user', user=user)
-                        
+            
+            send_email(app.config['ENCASHMORE_ADMIN'], 
+            			'New User',
+                        'mail/new_user', 
+                         user=user)
+                      
+            send_email([str(form.email.data)],
+                      'Welcome to Enchasmore',
+                       'mail/new_user_client')
+                       
             flash(['You can sign In now'])
+            
             return redirect(url_for('login'))
         flash(['Our Record show you are already registered please use forgot password option'])
     else:
@@ -268,50 +276,10 @@ def termcondition():
 @app.route("/faq")
 def faq():
     return render_template('faq.html')
-#@app.route('/SearchStudentInfo', methods=['GET', 'POST'])
-#def search_student_info():
-#    form =StudentSearchForm()
-#    if form.validate_on_submit():
-#        s_info = get_student_info(str(form.FirstName.data), str(form.LastName.data))
-#        data = [i for i in s_info]
-#        if data:
-#            content = format_Student_info(data)
-#            header = [STUDENT_HEADER_MAP.get(i) for i in content.pop(0)]
-#            return render_template('student_search_screen.html', form=form, header = header,  content =content)
-#        flash(['No Results found!'])
-#    else:
-#    #TODO Need to fix this
-#        if form.is_submitted():
-#            if form.errors:
-#                flash(get_errors(form))
-#    return render_template('student_search_screen.html', form=form)
-#
-#
-#@app.route('/SearchStudentInfo/<UID>')
-#def student(UID):
-#    userobj = bson.objectid.ObjectId(UID)
-#    info = student_collection.StudentInfo.find_one({'_id':userobj})
-#    content = format_detail_view([info])
-#    header = [STUDENT_HEADER_MAP.get(i) for i in content.pop(0)]
-#    sub_content = format_subject_info(info['Subjects'])
-#    sub_header = [STUDENT_HEADER_MAP.get(i) for i in sub_content.pop(0)]
-#    
-#    return render_template('student_info.html', content=content, header=header, 
-#                sub_content = info['Subjects'].items(),  sub_header=sub_header                          
-#                           )
                            
 def get_validate_user(user_email_id):
     return collection.User.find_one({'email':user_email_id})
     
-def get_student_info(first=None, last=None):
-    if first and last:
-        return student_collection.StudentInfo.find({'FirstName':first.title(),'LastName':last.title()})
-    elif first:
-        return student_collection.StudentInfo.find({'FirstName':first.title()})
-    elif last:
-        return student_collection.StudentInfo.find({'LastName':last.title()})
-    else:
-        return []
 
 
 if __name__ == '__main__':
