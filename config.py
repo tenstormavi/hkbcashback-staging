@@ -14,4 +14,4 @@ MAIL_PORT = 587
 MAIL_USE_TLS = True
 ENCASHMORE_MAIL_SUBJECT_PREFIX = '[ENCASHMORE]'
 ENCASHMORE_MAIL_SENDER = 'admin@encashmore.com'
-ENCASHMORE_ADMIN = ['harshit.bahl@me.com','aashishnakra@gmail.com']
+ENCASHMORE_ADMIN = ['harshit.bahl@me.com','aashishnakra@gmail.com','admin@encashmore.com']
