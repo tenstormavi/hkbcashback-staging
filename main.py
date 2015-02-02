@@ -246,13 +246,14 @@ def offer_link(OFFERID):
     # Unicode need to be converted to int
     link_val = ORDER_MAP.get(int(OFFERID))
     if link_val:
-        final_link = "%s&;UID=%s"%(link_val, current_user.get_id())
-        click = track_collection.UserClickTrack()
-        click['userEmail']=str(current_user.email)
-        click['userUID']=current_user.get_id()
-        click['offerID']=int(OFFERID)
-        click['offerLink']=final_link
-        click['clickDateTime']=datetime.now().isoformat(' ')
+        final_link = "%s&UID=%s"%(link_val, current_user.get_id())
+        
+        click                  = track_collection.UserClickTrack()
+        click['userEmail']     =str(current_user.email)
+        click['userUID']       =current_user.get_id()
+        click['offerID']       =int(OFFERID)
+        click['offerLink']     =final_link
+        click['clickDateTime'] =datetime.now().isoformat(' ')
         click.save()
         return redirect(final_link)
     return render_template('invalid_offer.html')
