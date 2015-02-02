@@ -148,7 +148,7 @@ def registration_form():
 #        user = collection.User.find_one({'email':form.email.data})
         if not get_validate_user(form.email.data):
             user = collection.User()
-            user['email']		 = str(form.email.data)
+            user['email']		 = str(form.email.data).lower()
             user['password']	 = password_hash(form.password.data)
             user['phonenumber']  = str(form.phonenumber.data)
             user['subscribed']   = form.subscription.data
@@ -279,7 +279,7 @@ def faq():
     return render_template('faq.html')
                            
 def get_validate_user(user_email_id):
-    return collection.User.find_one({'email':user_email_id})
+    return collection.User.find_one({'email':user_email_id.lower()})
     
 
 
