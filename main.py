@@ -258,6 +258,25 @@ def offer_link(OFFERID):
         return redirect(final_link)
     return render_template('invalid_offer.html')
 
+
+@app.route('/offer/amazon')
+@login_required
+def amazon_offer_link():
+    # Unicode need to be converted to int
+    link_val = 'http://www.amazon.in/?&tag=682085-21'
+    if link_val:
+        final_link = "%s&ascsubtag=%s"%(link_val, current_user.get_id())
+        
+        click                  = track_collection.UserClickTrack()
+        click['userEmail']     =str(current_user.email)
+        click['userUID']       =current_user.get_id()
+        click['offerID']       =123456
+        click['offerLink']     =final_link
+        click['clickDateTime'] =datetime.now().isoformat(' ')
+        click.save()
+        return redirect(final_link)
+    return render_template('invalid_offer.html')
+
 @app.route('/user/<UID>')
 @login_required
 def user(UID):
