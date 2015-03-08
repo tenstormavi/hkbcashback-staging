@@ -31,6 +31,7 @@ class UserRegisteration(Form):
                         EqualTo('password2', message='Passwords must match.')])
     password2 = PasswordField('Confirm password', validators=[Required()])
     phonenumber = StringField('Phone Number', validators=[Required(),Regexp(r'^[789]\d{9}$', message='Not valid Phone Number')])
+    referralcode = StringField('Referral Code')
     subscription = BooleanField('Email Subscription')
     submit = SubmitField('Submit')
 

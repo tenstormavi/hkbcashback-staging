@@ -23,7 +23,7 @@ from forms import LoginForm, InputTransaction, UserRegisteration, SearchUser
 from forms import ContactUs, Redeem
 from forms import InputMissingTransaction
 from models import User, UserTransaction, MissingTransaction, UserClickTrack
-from models import StudentInfo
+
 
 from config import MONGODB_HOST, MONGODB_PORT, COLLECTION_QA
 from config import MAIL_SERVER, MAIL_PORT, MAIL_USE_TLS
@@ -36,21 +36,29 @@ from utils import format_subject_info, format_admin_transaction
 from constant import USERHEADER_MAP, ORDER_MAP, STUDENT_HEADER_MAP
 
 
-# configuration
+# Configuration
 app = Flask(__name__)
 app.config['DEBUG']=True
 app.config.from_object(__name__)
-app.config['SECRET_KEY'] = 'xcvjHJHNsnnnsHJKMNhhhhBNljhgfdvbfdgk'
-connection = Connection(os.environ.get('MONGOHQ_URL'))
-db = connection[os.environ.get('COLLECTION')]
-collection = db.users
-track_collection = db.userClickTrack
-student_collection = db.StudentInformation
-login_manager = LoginManager()
+app.config['SECRET_KEY']         = 'xcvjHJHNsnnnsHJKMNhhhhBNljhgfdvbfdgk'
+
+# DataBase Loading
+connection                       = Connection(os.environ.get('MONGOHQ_URL'))
+db                               = connection[os.environ.get('COLLECTION')]
+collection                       = db.users
+track_collection                 = db.userClickTrack
+referral_code    				           = db.referralCode
+
+# Login Configuration
+login_manager 					 = LoginManager()
 login_manager.session_protection = 'strong'
-login_manager.login_view = 'login'
-app.config['MAIL_USERNAME'] = os.environ.get('MAIL_USERNAME')
-app.config['MAIL_PASSWORD'] = os.environ.get('MAIL_PASSWORD')
+login_manager.login_view         = 'login'
+
+# Mail Configuration
+app.config['MAIL_USERNAME']      = os.environ.get('MAIL_USERNAME')
+app.config['MAIL_PASSWORD']      = os.environ.get('MAIL_PASSWORD')
+
+#Other Config
 bootstrap = Bootstrap(app)
 manager = Manager(app)
 login_manager.init_app(app)
@@ -59,7 +67,7 @@ mail = Mail(app)
 
 
 # register the User document with our current connection
-connection.register([User,UserTransaction, MissingTransaction, UserClickTrack, StudentInfo])
+connection.register([User,UserTransaction, MissingTransaction, UserClickTrack])
 
 @login_manager.user_loader
 def reload_user(user_id):
@@ -145,35 +153,29 @@ def misssing_trasaction():
 def registration_form():
     form = UserRegisteration()
     if form.validate_on_submit():
-#        user = collection.User.find_one({'email':form.email.data})
-        if not get_validate_user(form.email.data):
-            user = collection.User()
-            user['email']		 = str(form.email.data).lower()
-            user['password']	 = password_hash(form.password.data)
+        if get_validate_user(form.email.data):
+            flash(['Our Record show you are already registered please use forgot password option'])
+            return render_template('login_form.html', form=form)
+        if not get_valid_referralCode(form.referralcode.data):
+            flash(['Invalid Referral Code Please add correct referral Code'])
+            return render_template('login_form.html', form=form)
+        else:
+            user                 = collection.User()
+            user['email']        = str(form.email.data).lower()
+            user['password']     = password_hash(form.password.data)
             user['phonenumber']  = str(form.phonenumber.data)
             user['subscribed']   = form.subscription.data
+            user['referralcode'] = str(form.referralcode.data)
             user.save()
-            
-            from email_utils import send_email
-            
-            send_email(app.config['ENCASHMORE_ADMIN'], 
-            			'New User',
-                        'mail/new_user', 
-                         user=user)
-                      
-            send_email([str(form.email.data)],
-                      'Welcome to Enchasmore',
-                       'mail/new_user_client')
-                       
-            flash(['You can sign In now'])
-            
+            new_user_notification(user, form.email.data)
+            flash('You can sign In now')
             return redirect(url_for('login'))
-        flash(['Our Record show you are already registered please use forgot password option'])
     else:
         if form.is_submitted():
             if form.errors:
                 flash(get_errors(form))
     return render_template('login_form.html', form=form)
+
 
 @app.route('/usertransactions', methods=['GET', 'POST'])
 @login_required
@@ -296,11 +298,31 @@ def termcondition():
 @app.route("/faq")
 def faq():
     return render_template('faq.html')
-                           
+
+###########################################################
+# Helper functions ###
+                          
 def get_validate_user(user_email_id):
     return collection.User.find_one({'email':user_email_id.lower()})
-    
 
+def get_valid_referralCode(referralcode):
+    if not referralcode:
+        return True
+    else:
+        return referral_code.find_one({'referralcode':str(referralcode)})  
+
+def new_user_notification(user, email):
+    from email_utils import send_email
+    #FIX 
+    send_email(app.config['ENCASHMORE_ADMIN'], 
+             'New User',
+             'mail/new_user', 
+             user=user)
+                      
+    send_email([str(email)],
+             'Welcome to Enchasmore',
+             'mail/new_user_client')
+	
 
 if __name__ == '__main__':
     manager.run()

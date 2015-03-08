@@ -22,6 +22,7 @@ class User(Document,UserMixin):
         'phonenumber':str,
         'subscribed':bool,
         'isAdmin':bool,
+        'referralcode':str,
     }
     validators = {
         'email': max_length(50),
@@ -116,19 +117,5 @@ class UserClickTrack(Document):
     }
     def __repr__(self):
         return '<UserEmail %s>' % (self.UserEmail)
-        
-        
 
-class StudentInfo(Document):
-    structure = {
-    'FirstName':str,
-    'LastName':str,
-    'EmailAddress':str,
-    'Subjects':dict,
-        }
-    
-    validators = {
-    }
-    def __repr__(self):
-        return '<FirstName %s>' % (self.FirstName)
     
