@@ -65,7 +65,10 @@ class InputTransaction(Form):
 #    VR = DecimalField('VR')
 #    NVR = DecimalField('NVR')
     status  = SelectField('Not Paid', validators=[Required()], 
-                        choices=[('Not Paid','Not Paid'), ('Paid','Paid')])
+                        choices=[('Not Paid','Not Paid'),
+                                 ('Paid','Paid'), 
+                                 ('Tracked','Tracked'), 
+                                 ('Confirmed','Confirmed')])
     cash_back_amount  = FloatField('Cash Back Amount')
 #    uKey  = StringField('uKey', validators=[Required()])
     transaction_value  = FloatField('Transaction Value')
