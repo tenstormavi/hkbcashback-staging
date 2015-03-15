@@ -1,7 +1,9 @@
 {% extends "bootstrap/base.html" %}
-
 {% block styles %}
 {{super()}}
+{% block title %}Encashmore – Cashback , Discounts Codes and Coupons on Online Shopping{% endblock %}
+<meta name="Description" content="Description Get Extra Cashback, offers, codes, coupons on Online Shopping sites like Amazon, Flipkart, Snapdeal, Yatra, Myntra and many more."/>
+<meta name="keywords" content="Cashback, vouchers, coupons, discounts, offers, deals, promo codes, Flipkart, Amazon, Snapdeal, Yatra, Justeat" />
 <link rel="stylesheet"
       href="{{url_for('.static', filename='css/freelancer.css')}}?{{ git_last_commit}}">
 <!--fonts-->
@@ -581,6 +583,14 @@
                         			
                         			<img  src="{{url_for('.static', filename='img/shoppingImage/myntra_cashback.jpg')}}"  class="img-responsive" alt="">
                     				</a>
+                					</div>
+                			<div class="row">
+                					<div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                    					<a target="_blank" href={{ url_for('offer_link', OFFERID=9828) }} class="">
+                        			
+                        			<img  src="{{url_for('.static', filename='img/shoppingImage/koovs-cashback.jpg')}}"  class="img-responsive" alt="">
+                    				</a>
+                					</div>
                 					</div>
                 				</div>
                             <!--<img src="{{url_for('.static', filename='img/shoppingImage/Cashback-Deals-Shopping-Apparel-Mobiles.jpg')}}" class="img-responsive img-centered" alt="" usemap="#shoppingImageMap">-->

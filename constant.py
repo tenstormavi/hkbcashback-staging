@@ -83,4 +83,5 @@ ORDER_MAP = {10859:"http://clk.omgt5.com/?AID=682085&PID=10859&WID=55355",
             12495:"http://clk.omgt5.com/?AID=682085&PID=12495&WID=55355",
             11482:"http://clk.omgt5.com/?AID=682085&PID=11482&WID=55355",
             9706 :"http://clk.omgt5.com/?AID=682085&PID=9706&WID=55355",
+            13318:"http://clk.omgt5.com/?AID=682085&PID=13318&WID=55355",
              }
