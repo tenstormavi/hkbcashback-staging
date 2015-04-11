@@ -43,7 +43,11 @@ app.config.from_object(__name__)
 app.config['SECRET_KEY']         = 'xcvjHJHNsnnnsHJKMNhhhhBNljhgfdvbfdgk'
 
 # DataBase Loading
-connection                       = Connection(os.environ.get('MONGOHQ_URL'))
+env = os.environ.get('CASH_BACK_ENV')
+if env == 'PROD':
+    connection = Connection(os.environ.get('MONGOHQ_URL'))
+else:
+    connection = Connection(os.environ.get('MONGOLAB_URI'))
 db                               = connection[os.environ.get('COLLECTION')]
 collection                       = db.users
 track_collection                 = db.userClickTrack
