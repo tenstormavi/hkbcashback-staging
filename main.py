@@ -21,7 +21,7 @@ from mongokit import Connection
 """ Custom Modules """
 from forms import LoginForm, InputTransaction, UserRegisteration, SearchUser
 from forms import ContactUs, Redeem
-from forms import InputMissingTransaction
+from forms import InputMissingTransaction, ResetPassword, ResetPasswordSubmit
 from models import User, UserTransaction, MissingTransaction, UserClickTrack
 
 
@@ -33,14 +33,14 @@ from config import ENCASHMORE_MAIL_SUBJECT_PREFIX, ENCASHMORE_MAIL_SENDER, ENCAS
 from utils import validate_password, password_hash, format_transaction
 from utils import get_transaction_dict, get_errors, format_Student_info, format_detail_view
 from utils import format_subject_info, format_admin_transaction
-from constant import USERHEADER_MAP, ORDER_MAP, STUDENT_HEADER_MAP
+from constant import USERHEADER_MAP, ORDER_MAP
 
 
 # Configuration
 app = Flask(__name__)
 app.config['DEBUG']=True
 app.config.from_object(__name__)
-app.config['SECRET_KEY']         = 'xcvjHJHNsnnnsHJKMNhhhhBNljhgfdvbfdgk'
+app.config['SECRET_KEY'] = os.environ.get('cash_back_secret_key')
 
 # DataBase Loading
 env = os.environ.get('CASH_BACK_ENV')
@@ -51,7 +51,7 @@ else:
 db                               = connection[os.environ.get('COLLECTION')]
 collection                       = db.users
 track_collection                 = db.userClickTrack
-referral_code    				           = db.referralCode
+referral_code    				 = db.referralCode
 
 # Login Configuration
 login_manager 					 = LoginManager()
@@ -294,6 +294,50 @@ def user(UID):
 def logout():
     logout_user()
     return redirect(url_for('index'))
+
+@app.route('/forgotpassword', methods=['GET', 'POST'])
+def forgot_password():
+    form = ResetPassword(request.form)
+    if form.validate_on_submit():
+        email = form.email.data
+        user = collection.User.find_one({'email':email})
+        if user:
+            token = user.get_token()
+            link = request.host_url.__str__()+'resetpassword?token='+token
+            from email_utils import send_email
+            send_email([str(user.email)], 'Forget Password', 'mail/forgotpassword', link=link)
+            flash('Reset password request received!')
+            return redirect(url_for('login'))
+        else:
+            flash('This email id is not registered. Please register first.')
+            return redirect(url_for('login'))
+    else:
+        if form.is_submitted():
+            if form.errors:
+                flash(get_errors(form))
+    return render_template('forgotpassword.html', form=form)
+
+@app.route("/resetpassword", methods=['GET', 'POST'])
+def reset_password():
+    token = request.args.get('token')
+    user_id_obj = User.verify_token(token)
+    user = collection.User.find_one({'_id': user_id_obj})
+    if token and user:
+        form = ResetPasswordSubmit(request.form)
+        if form.validate_on_submit():
+            newpass= password_hash(form.password.data)
+            collection.update({'email': user.email}, {'$set': {'password': newpass}})
+            flash("Password updated successfully")
+            return redirect(url_for('login'))
+        else:
+            if form.is_submitted():
+                if form.errors:
+                    for er in get_errors(form):
+                        flash(er)
+        return render_template('resetpassword.html', form=form)
+    flash('Your token has expired please request new from forgot password link')
+    return redirect(url_for('login'))
+
 
 @app.route("/termcondition")
 def termcondition():

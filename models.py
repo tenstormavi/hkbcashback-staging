@@ -8,9 +8,10 @@ from flask.ext.login import UserMixin, current_app
 from mongokit import Document
 from utils import max_length, valid_status
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+import bson
 
 
-class User(Document,UserMixin):
+class User(Document, UserMixin):
     __collection__ = 'users'
     __database__ = 'cashBackPlatform'
     structure = {
@@ -43,7 +44,7 @@ class User(Document,UserMixin):
 
     def get_token(self, expiration=1800):
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
-        return s.dumps({'user': self._id}).decode('utf-8')
+        return s.dumps({'user': self.get_id()}).decode('utf-8')
 
     @staticmethod
     def verify_token(token):
@@ -54,7 +55,7 @@ class User(Document,UserMixin):
             return None
         id = data.get('user')
         if id:
-            return User.query.get(id)
+            return bson.objectid.ObjectId(id)
         return None
 
 class UserTransaction(Document):

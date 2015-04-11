@@ -101,4 +101,15 @@ class StudentInputForm(Form):
     EmailAddress = StringField('Last Name')
     Subject = StringField('Subject')
     submit = SubmitField('Submit')
+
+
+class ResetPassword(Form):
+    email = StringField('Email', validators=[Required(), Email(),])
+    submit = SubmitField('Submit')
+
+class ResetPasswordSubmit(Form):
+    password = PasswordField('Password', validators=[Required(),
+                        EqualTo('password2', message='Passwords must match.')])
+    password2 = PasswordField('Confirm password', validators=[Required()])
+    submit = SubmitField('Submit')
     
