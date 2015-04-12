@@ -42,7 +42,7 @@ class User(Document, UserMixin):
     def __repr__(self):
         return '<User %s>' % (self.email)
 
-    def get_token(self, expiration=1800):
+    def get_token(self, expiration=21600):
         s = Serializer(current_app.config['SECRET_KEY'], expiration)
         return s.dumps({'user': self.get_id()}).decode('utf-8')
 

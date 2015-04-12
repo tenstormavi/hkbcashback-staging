@@ -306,7 +306,7 @@ def forgot_password():
             link = request.host_url.__str__()+'resetpassword?token='+token
             from email_utils import send_email
             send_email([str(user.email)], 'Forget Password', 'mail/forgotpassword', link=link)
-            flash('Reset password request received!')
+            flash('Please check your mail for the reset instructions!')
             return redirect(url_for('login'))
         else:
             flash('This email id is not registered. Please register first.')

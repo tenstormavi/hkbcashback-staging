@@ -9,8 +9,7 @@ HEADER = ['merchant', 'status', 'product', 'NVR', 'click_time', 'SR', 'transacti
 			  'MID', 'cash_back_amount', 'transaction_value', 'VR', 'transaction_date',
 			  'uKey', 'referrer', 'PID', 'merchant_ref', 'voucher_code', 'transaction_id','UID']
 
-USERHEADER = ['transaction_id', 'product', 'merchant', 'transaction_date', 
-              'transaction_value', 'cash_back_amount', 'status']
+USERHEADER = ['transaction_id', 'merchant', 'transaction_date', 'cash_back_amount', 'status']
 
 USERHEADER_MAP ={'transaction_id'   :'Transaction ID',
                  'product'          :'Product Name',
