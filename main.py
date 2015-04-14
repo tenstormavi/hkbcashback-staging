@@ -8,6 +8,7 @@ Created on Tue Sep 16 20:07:40 2014
 import bson
 import os
 from datetime import datetime
+import requests
 """ flask and flask extensions"""
 from flask import Flask, render_template,session, redirect, url_for, flash
 from flask import request
@@ -30,7 +31,7 @@ from config import MAIL_SERVER, MAIL_PORT, MAIL_USE_TLS
 from config import ENCASHMORE_MAIL_SUBJECT_PREFIX, ENCASHMORE_MAIL_SENDER, ENCASHMORE_ADMIN
 
 
-from utils import validate_password, password_hash, format_transaction
+from utils import validate_password, password_hash, format_transaction, coupon_codes
 from utils import get_transaction_dict, get_errors, format_Student_info, format_detail_view
 from utils import format_subject_info, format_admin_transaction
 from constant import USERHEADER_MAP, ORDER_MAP
@@ -40,7 +41,8 @@ from constant import USERHEADER_MAP, ORDER_MAP
 app = Flask(__name__)
 app.config['DEBUG']=True
 app.config.from_object(__name__)
-app.config['SECRET_KEY'] = os.environ.get('cash_back_secret_key')
+app.config['SECRET_KEY']         = 'xcvjHJHNsnnnsHJKMNhhhhBNljhgfdvbfdgk'
+#app.config['SECRET_KEY'] = os.environ.get('cash_back_secret_key')
 
 # DataBase Loading
 env = os.environ.get('CASH_BACK_ENV')
@@ -96,7 +98,10 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
+    remember_me = False
     if form.validate_on_submit():
+        if 'remember_me' in request.form:
+            remember_me = True
         user = get_validate_user(form.email.data)
         if user and validate_password(user['password'], form.password.data):
             login_user(user, True)
@@ -337,6 +342,30 @@ def reset_password():
         return render_template('resetpassword.html', form=form)
     flash('Your token has expired please request new from forgot password link')
     return redirect(url_for('login'))
+
+@app.route("/fashion")
+def fashion():
+    return render_template('fashion.html', coupon_codes=coupon_codes())
+
+@app.route("/dining")
+def dining():
+    return render_template('dining.html', coupon_codes=coupon_codes())
+
+@app.route("/gifting")
+def gifting():
+    return render_template('gifting.html', coupon_codes=coupon_codes())
+
+@app.route("/shopping")
+def shopping():
+    return render_template('shopping.html', coupon_codes=coupon_codes())
+
+@app.route("/travel")
+def travel():
+    return render_template('travel.html', coupon_codes=coupon_codes())
+
+@app.route("/others")
+def others():
+    return render_template('others.html', coupon_codes=coupon_codes())
 
 
 @app.route("/termcondition")

@@ -10,6 +10,7 @@ from constant import HEADER, USERHEADER, MISSING_HEADER, USERHEADER_MAP, STUDENT
 from constant import STUDENT_INFO_HEADER, SUBJECT_INFO_HEADER
 from datetime import datetime
 from wtforms.validators import ValidationError
+import csv
 
 def max_length(length):
     def validate(value):
@@ -107,5 +108,16 @@ def missing_transaction_validation(form, field):
     time_delta = datetime.now() - transaction_date
     if time_delta.days < 2:
         raise ValidationError('Ticket can only be raised after 72 hrs of order')
-    
-        
+
+def coupon_codes():
+    vendor = []
+    f = open('/home/avinash/cedar-14-hkbcashback/coupons/CouponCodes.csv')
+    store = csv.reader(f)
+
+    for row in store:
+        temp = []
+        temp.append(row[1].decode('utf-8'))
+        temp.append(row[2].decode('utf-8'))
+        temp.append(row[7].decode('utf-8'))
+        vendor.append(temp)
+    return vendor   
