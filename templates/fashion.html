@@ -1,0 +1,251 @@
+{% extends "base2.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="static/css/sidebar.css" />
+        <script src="static/sidebar-js/modernizr.custom.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    </head>
+    <body class="cbp-spmenu-push">
+    
+<section class="success" id="about" style="padding: 50px 0;">
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h2>FASHION</h2>
+                <hr class="star-light">
+            </div>
+        </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                        <a id="showRight">              
+                        <img  src="{{url_for('.static', filename='img/fashionimage/bluestone-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <a id="showRight3">
+                        <img  src="{{url_for('.static', filename='img/fashionimage/jewelkart-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                </div>
+                &nbsp;
+                <p></p>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                        <a id="showRight4">           
+                        <img  src="{{url_for('.static', filename='img/fashionimage/lenskart-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <a id="showRight5">
+                        <img src="{{url_for('.static', filename='img/fashionimage/watchkart-cashback.jpg')}}" class="img-responsive" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</section>
+
+<div id="menu">
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s1">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:340px;height:210px;
+                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/fashionimage/bluestone-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=13298) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Bluestone.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>No Coupons Available.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s3">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:340px;height:210px;
+                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/fashionimage/jewelkart-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=11896) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Jewelskart.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>No Coupons Available.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s4">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:340px;height:210px;
+                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/fashionimage/lenskart-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=11897) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Lenskart.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>No Coupons Available.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s5">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:340px;height:210px;
+                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/fashionimage/watchkart-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=11898) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Watchkart.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>No Coupons Available.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </span>
+</div>
+
+        <script src="static/sidebar-js/classie.js"></script>
+        <script>
+            var menuRight = document.getElementById( 'cbp-spmenu-s1' ),
+                menuRight3 = document.getElementById( 'cbp-spmenu-s3' ),
+                menuRight4 = document.getElementById( 'cbp-spmenu-s4' ),
+                menuRight5 = document.getElementById( 'cbp-spmenu-s5' ),
+                showRight = document.getElementById( 'showRight' ),
+                showRight2 = document.getElementById( 'showRight2' ),
+                showRight3 = document.getElementById( 'showRight3' ),
+                showRight4 = document.getElementById( 'showRight4' ),
+                showRight5 = document.getElementById( 'showRight5' ),
+                about = document.getElementById( 'about' ),
+                menu = document.getElementById( 'menu' ),
+                body = document.body;
+
+            
+            showRight.onclick = function() {
+                classie.add(this,"active");
+                menuRight.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight3.onclick = function() {
+                classie.add(this,"active");
+                menuRight3.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight3.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight4.onclick = function() {
+                classie.add(this,"active");
+                menuRight4.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight4.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight5.onclick = function() {
+                classie.add(this,"active");
+                menuRight5.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight5.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight2.onclick = function() {
+                if (classie.has(showRight,"active")) {
+                    menuRight.style.right = '-400px';
+                    classie.remove(showRight,"active");
+                    body.style.overflow = "auto";
+                    about.style.opacity = '1';
+                } 
+            }
+        </script>
+    </body>
+</html>
+
+{% endblock %}
+

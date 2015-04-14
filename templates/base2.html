@@ -1,0 +1,106 @@
+{% extends "bootstrap/base.html" %}
+{% block styles %}
+{{super()}}
+<meta name="Description" content="Description Get Extra Cashback, offers, codes, coupons on Online Shopping sites like Amazon, Flipkart, Snapdeal, Yatra, Myntra and many more."/>
+<meta name="keywords" content="Cashback, vouchers, coupons, discounts, offers, deals, promo codes, Flipkart, Amazon, Snapdeal, Yatra, Justeat" />
+<link rel="stylesheet" href="{{url_for('.static', filename='css/freelancer.css')}}">
+<link rel="stylesheet" href="{{url_for('.static', filename='css/datepicker.css')}}">
+<!--fonts-->
+
+<link href="{{url_for('.static', filename='font-awesome-4.1.0/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block title %}Encashmore – Cashback , Discounts Codes and Coupons on Online Shopping{% endblock %}
+{% block body %}
+{% block navbar %}
+<nav class="navbar" style="background-color:#e7e7e7;min-height:70px;margin-bottom:0px;">
+    <div class="container">
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Encashmore</a>
+        </div>
+            <ul class="nav navbar-nav navbar-right">
+            {% if current_user.is_authenticated() %}
+                <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Options<b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                {% if current_user.get('isAdmin') %}
+                    <li><a href="{{ url_for('transaction_form') }}">Add Transaction</a></li>
+                    <li><a href="{{ url_for('admin_search_transaction') }}">Search Transaction</a></li>
+                {% endif %}
+                <li><a href="{{ url_for('user_transaction') }}">My Transactions</a></li>
+                <li><a href="{{ url_for('user_missing_transaction') }}">My Missed Transaction</a></li>
+                <li><a href="{{ url_for('misssing_trasaction') }}">Add Missing Transaction</a></li>
+                <li class="divider"></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                </ul>
+                </li>
+            {% else %}
+                <li class="page-scroll">
+                    <a href="{{ url_for('login') }}">Log In</a>
+                    </li>
+            
+            {% endif %}
+            </ul>
+        </div>
+</nav>
+{% endblock %}
+{% block header %}{% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    {% for messages in get_flashed_messages() %}    
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {% for message in messages %}
+                {{ message }}<br>
+            {% endfor %}
+        </div>  
+    {% endfor %}
+    {% block page_content %}{% endblock %}
+    </div>
+
+    
+{% endblock %}
+
+ 
+    
+    {% block scripts %}
+    {{super()}}
+    <script src="scripts/moment.js" type="text/javascript"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+    <script src="{{url_for('.static', filename='js/classie.js')}}"></script>
+    <script src="{{url_for('.static', filename='js/cbpAnimatedHeader.js')}}"></script>
+    <script src="{{url_for('.static', filename='js/jqBootstrapValidation.js')}}"></script>
+    <script src="{{url_for('.static', filename='js/freelancer.js')}}"></script>
+    <script src="{{url_for('.static', filename='js/moment.js')}}"></script>
+    <script src="{{url_for('.static', filename='js/bootstrap-datetimepicker.js')}}"></script>
+    <script type="text/javascript">
+            // When the document is ready
+            $(document).ready(function () { 
+                $('#example1').datetimepicker({
+                pickTime: false
+                });  
+            });
+        </script>
+    <SCRIPT LANGUAGE="JavaScript">
+    <!--
+    function popUp(URL) {
+    day = new Date();
+    id = day.getTime();
+    eval("page" + id + " = window.open(URL, '" + id + "', 'toolbar=0,scrollbars=1,location=0,statusbar=0,menubar=0,resizable=1,width=400,height=400');");
+    }
+
+    // -->
+    </script>
+    {% endblock %}
+{% endblock %}

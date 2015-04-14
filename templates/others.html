@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block content %}
+<section class="success" id="about">
+        <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <h3></h3>
+                <h2>OTHERS</h2>
+                <hr class="star-light">
+            </div>
+        </div>
+            <div class="container">
+                <div class="row">
+                                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=12429) }} class="">
+                                    
+                                    <img  src="{{url_for('.static', filename='img/otherImage/chumbak-cashback.jpg')}}"  class="img-responsive" alt="">
+                                    </a>
+                                    </div>
+                                    <div class="ccol-lg-3 col-sm-4 col-xs-6">
+                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=9319) }} class="">
+                                    
+                                    <img  src="{{url_for('.static', filename='img/otherImage/fabfurnish-cashback.jpg')}}"  class="img-responsive" alt="">
+                                    </a>
+                                    </div>
+                            </div>&nbsp;<p></p>
+                             <div class="row">
+                                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=11010) }} class="">
+                                    
+                                    <img  src="{{url_for('.static', filename='img/otherImage/groupon-cashback.jpg')}}"  class="img-responsive" alt="">
+                                    </a>
+                                    </div>
+                                    <div class="ccol-lg-3 col-sm-4 col-xs-6">
+                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=11965) }} class="">
+                                    
+                                    <img  src="{{url_for('.static', filename='img/otherImage/itcFoods-cashback.jpg')}}"  class="img-responsive" alt="">
+                                    </a>
+                                    </div>
+                            </div>&nbsp;<p></p>
+                             <div class="row">
+                                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=13255) }} class="">
+                                    
+                                    <img  src="{{url_for('.static', filename='img/otherImage/mobikwik-cashback.jpg')}}"  class="img-responsive" alt="">
+                                    </a>
+                                    </div>
+                                    <div class="ccol-lg-3 col-sm-4 col-xs-6">
+                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=11365) }} class="">
+                                    
+                                    <img  src="{{url_for('.static', filename='img/otherImage/paytm-cashback.jpg')}}"  class="img-responsive" alt="">
+                                    </a>
+                                    </div>
+                            </div>&nbsp;<p></p>
+                             <div class="row">
+                                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=11289) }} class="">
+                                    
+                                    <img  src="{{url_for('.static', filename='img/otherImage/pepperfry-cashback.jpg')}}"  class="img-responsive" alt="">
+                                    </a>
+                                    </div>
+                                    <div class="ccol-lg-3 col-sm-4 col-xs-6">
+                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=10036) }} class="">
+                                    
+                                    <img  src="{{url_for('.static', filename='img/otherImage/printvenue-cashback.jpg')}}"  class="img-responsive" alt="">
+                                    </a>
+                                    </div>
+                            </div>
+            </div>
+        </div>
+</section>
+
+{% endblock %}
