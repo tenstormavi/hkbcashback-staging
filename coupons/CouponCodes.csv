@@ -110,3 +110,7 @@ VoucherCodeId,Code,Description,ActivationDate,ExpiryDate,CategoryName,Status,Mer
 2569,GET300,Flat Rs.300 OFF on purchase of Rs.999 and above,09-03-2015 00:00,31-03-2015 00:00,,Active,Printvenue.com,Sale,,
 2570,GET150,Flat Rs.150 OFF on purchase of Rs.499 and above,09-03-2015 00:00,31-03-2015 00:00,,Active,Printvenue.com,Sale,,
 2571,DEAL1000,Flat Rs.1000 OFF on purchase of Rs.3999 and above,09-03-2015 00:00,31-03-2015 00:00,,Active,Printvenue.com,Sale,,
+2572,HELLO1000,Flat Rs.1000 OFF on purchase of Rs.3999 and above,09-03-2015 00:00,31-03-2015 00:00,,Active,Amazon.in,Sale,,
+2577,AMZ1000,Flat Rs.1000 OFF on purchase of Rs.3999 and above,09-03-2015 00:00,31-03-2015 00:00,,Active,Amazon.in,Sale,,
+2577,PAY1000,Flat Rs.1000 OFF on purchase of Rs.3999 and above,09-03-2015 00:00,31-03-2015 00:00,,Active,Paytm.com,Sale,,
+2577,PAY1000,Flat Rs.1000 OFF on purchase of Rs.3999 and above,09-03-2015 00:00,31-03-2015 00:00,,Active,Paytm.com,Sale,,
