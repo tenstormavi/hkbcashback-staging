@@ -10,13 +10,37 @@
     </head>
     <body class="cbp-spmenu-push">
     
-<section class="success" id="about" style="padding: 50px 0;background-image:/static/img/shopping.jpg;">
+<section class="success" id="about" style="padding: 50px 0;"> <!--background:url(/static/img/shopping.jpg);-->
         <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2>SHOPPING</h2>
                 <hr class="star-light">
             </div>
+        </div>
+        <div class="container" style="margin-left:270px;">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="carousel slide" data-ride="carousel" id="carousel-ex">
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-ex" data-slide-to="0" class="active"></li>
+                            <li data-target="#carousel-ex" data-slide-to="1"></li>
+                        </ol>
+                        <div class="carousel-inner">
+                            <div class="item active">
+                                <a target="_blank" href="http://clk.omgt5.com/?AID=682085&PID=13653&WID=55355">
+                                <img src="{{url_for('.static', filename='img/flipkart.jpg')}}" alt="image" height="260" width="600"></a>
+                            </div>
+                            <div class="item">
+                                <a target="_blank" href="http://clk.omgt5.com/?AID=682085&PID=13653&WID=55355">
+                                <img src="{{url_for('.static', filename='img/flipkart.jpg')}}" alt="image" height="260" width="600"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            &nbsp;
+            <p></p>
         </div>
             <div class="container">
                 <div class="row">
@@ -103,22 +127,23 @@
                 </div>
             </div>
         </div>
+        <a href="/"><button class="btn btn-primary btn-sm" style="width: 6em;margin-left:20px;">Back</button></a>
 </section>
 
 <div id="menu">
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s1">
             <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:353px;height:213px;
-                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/amazon-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
-            <a target="_blank" href={{ url_for('amazon_offer_link') }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <a target="_blank" href={{ url_for('amazon_offer_link') }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Amazon</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th>Description</th>
+                            <th style="padding-right:100px;">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -129,7 +154,7 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>No Coupons Available.</td>
+                            <td>Sorry! No Coupons at the moment.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -137,7 +162,7 @@
             </div>
             <div>
                 <hr>
-                <center><b>Terms & Condition</b></center>
+                <center><b>Terms & conditions</b></center>
                 <p><span style="font-size:14px;text-align: justify;">
                     <div style="color:red;">
                     1. The cashback on Amazon will be added to your account within 3 days.<br>
@@ -160,16 +185,16 @@
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s3">
             <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:213px;
-                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/paytm-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
-            <a target="_blank" href={{ url_for('offer_link', OFFERID=11365) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=11365) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Paytm</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th>Description</th>
+                            <th style="padding-right:100px;">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -180,11 +205,29 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>No Coupons Available.</td>
+                            <td>Sorry! No Coupons at the moment.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on Paytm will be added to your account within 2 days.<br>
+                    2.The cashback on Paytm is in addition to discounts after use of coupon codes.<br> 
+                    3.Add products to your Paytm cart only AFTER clicking out from Encashmore.<br>
+                    4.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    </div>
+                    5.Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    6.If possible clear your cookies and temporary file regularly.<br>
+                    7.In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    8.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    9.Prefer to use coupon codes provided on Encashmore.<br>
+                    10.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
             </div>
             </div>
         </span>
@@ -192,16 +235,16 @@
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s4">
             <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:213px;
-                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/snapdeal-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
-            <a target="_blank" href={{ url_for('offer_link', OFFERID=8053) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=8053) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Snapdeal</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th>Description</th>
+                            <th style="padding-right:100px;">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -212,11 +255,30 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>No Coupons Available.</td>
+                            <td>Sorry! No Coupons at the moment.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on Snapdeal will be added to your account within 2 days.<br>
+                    2.The cashback on Snapdeal is in addition to discounts after use of coupon codes.<br> 
+                    3.Login to your Snapdeal account only after clicking out from Encashmore.<br> 
+                    4.Add products to your Snapdeal cart only AFTER clicking out from Encashmore.<br>
+                    5.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    </div>
+                    6.Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7.If possible clear your cookies and temporary file regularly.<br>
+                    8.In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
             </div>
             </div>
         </span>
@@ -224,16 +286,16 @@
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s5">
             <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
-                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/myntra-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
-            <a target="_blank" href={{ url_for('offer_link', OFFERID=12185) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=12185) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Myntra</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th>Description</th>
+                            <th style="padding-right:100px;">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -244,11 +306,30 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>No Coupons Available.</td>
+                            <td>Sorry! No Coupons at the moment.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on Myntra will be added to your account within 2 days.<br>
+                    2.The cashback on Myntra is in addition to discounts after use of coupon codes.<br>
+                    3.Login to your Myntra account only after clicking out from Encashmore.<br>
+                    4.Add products to your Myntra cart only AFTER clicking out from Encashmore.<br>
+                    5.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    </div>
+                    6.Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7.If possible clear your cookies and temporary file regularly.<br>
+                    8.In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
             </div>
             </div>
         </span>
@@ -256,16 +337,16 @@
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s6">
             <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
-                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/jabong-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
-            <a target="_blank" href={{ url_for('offer_link', OFFERID=9170) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=9170) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Jabong</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th>Description</th>
+                            <th style="padding-right:100px;">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -276,11 +357,28 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>No Coupons Available.</td>
+                            <td>Sorry! No Coupons at the moment.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on Jabong will be added to your account within 2 days.<br>
+                    2.The cashback on Jabong is in addition to discounts after use of coupon codes.<br>
+                    3.The cashback on Jabong may track at lower rates if coupon codes are used.<br> 
+                    4.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    </div>
+                    5.Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    6.If possible clear your cookies and temporary file regularly.<br>
+                    7.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    8.Prefer to use coupon codes provided on Encashmore.<br>
+                    9.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
             </div>
             </div>
         </span>
@@ -288,16 +386,16 @@
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s7">
             <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
-                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/shopclues-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
-            <a target="_blank" href={{ url_for('offer_link', OFFERID=10359) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=10359) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Shopclues</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th>Description</th>
+                            <th style="padding-right:100px;">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -308,11 +406,28 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>No Coupons Available.</td>
+                            <td>Sorry! No Coupons at the moment.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on ShopClues will be added to your account within 2 days.<br>
+                    2.The cashback on ShopClues is in addition to discounts after use of coupon codes.<br>
+                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    </div>
+                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    5.If possible clear your cookies and temporary file regularly.<br>
+                    6.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    7.Prefer to use coupon codes provided on Encashmore.<br>
+                    8.Cashback is not applicable if the order is cancelled or returned.<br>
+
+                </span></p>
             </div>
             </div>
         </span>
@@ -320,16 +435,16 @@
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s8">
             <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
-                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/koovs-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
-            <a target="_blank" href={{ url_for('offer_link', OFFERID=13318) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=13318) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Koovs</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th>Description</th>
+                            <th style="padding-right:100px;">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -340,11 +455,30 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>No Coupons Available.</td>
+                            <td>Sorry! No Coupons at the moment.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on Koovs will be added to your account within 2 days.<br>
+                    2.The cashback on Koovs is in addition to discounts after use of coupon codes.<br> 
+                    3.Login to your Koovs account only after clicking out from Encashmore.<br> 
+                    4.Add products to your Koovs cart only AFTER clicking out from Encashmore.<br>
+                    5.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    </div>
+                    6.Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7.If possible clear your cookies and temporary file regularly.<br>
+                    8.In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
             </div>
             </div>
         </span>
@@ -352,16 +486,16 @@
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s9">
             <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
-                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/homeshop18-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
-            <a target="_blank" href={{ url_for('offer_link', OFFERID=9394) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=9394) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Homeshop18</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th>Description</th>
+                            <th style="padding-right:100px;">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -372,11 +506,27 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>No Coupons Available.</td>
+                            <td>Sorry! No Coupons at the moment.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on HomeShop18 will be added to your account within 2 days.<br>
+                    2.The cashback on HomeShop18 is in addition to discounts after use of coupon codes.<br>
+                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    </div>
+                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    5.If possible clear your cookies and temporary file regularly.<br>
+                    6.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    7.Prefer to use coupon codes provided on Encashmore.<br>
+                    8.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
             </div>
             </div>
         </span>
@@ -384,16 +534,16 @@
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s10">
             <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
-                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/fashionara-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
-            <a target="_blank" href={{ url_for('offer_link', OFFERID=9828) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=9828) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Fashionara</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th>Description</th>
+                            <th style="padding-right:100px;">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -404,11 +554,27 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>No Coupons Available.</td>
+                            <td>Sorry! No Coupons at the moment.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on Fashionara will be added to your account within 2 days.<br>
+                    2.The cashback on Fashionara is in addition to discounts after use of coupon codes.<br>
+                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    </div>
+                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    5.If possible clear your cookies and temporary file regularly.<br>
+                    6.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    7.Prefer to use coupon codes provided on Encashmore.<br>
+                    8.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
             </div>
             </div>
         </span>
@@ -416,16 +582,16 @@
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s11">
             <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
-                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/starcj-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
-            <a target="_blank" href={{ url_for('offer_link', OFFERID=10109) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=10109) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to StarCJ</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th>Description</th>
+                            <th style="padding-right:100px;">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -436,11 +602,27 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>No Coupons Available.</td>
+                            <td>Sorry! No Coupons at the moment.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on StarCJ will be added to your account within 2 days.<br>
+                    2.The cashback on StarCJ is in addition to discounts after use of coupon codes.<br>
+                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    </div>
+                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    5.If possible clear your cookies and temporary file regularly.<br>
+                    6.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    7.Prefer to use coupon codes provided on Encashmore.<br>
+                    8.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
             </div>
             </div>
         </span>
@@ -448,16 +630,16 @@
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s12">
             <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
-                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/nyka-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
-            <a target="_blank" href={{ url_for('offer_link', OFFERID=12957) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=12957) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Nykaa</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th>Description</th>
+                            <th style="padding-right:100px;">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -468,11 +650,27 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>No Coupons Available.</td>
+                            <td>Sorry! No Coupons at the moment.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on Nykaa will be added to your account within 2 days.<br>
+                    2.The cashback on Nykaa is in addition to discounts after use of coupon codes.<br> 
+                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    </div>
+                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    5.If possible clear your cookies and temporary file regularly.<br>
+                    6.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    7.Prefer to use coupon codes provided on Encashmore.<br>
+                    8.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
             </div>
             </div>
         </span>
@@ -480,16 +678,16 @@
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s13">
             <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:345px;height:207px;
-                                                margin-left:30px; min-height:0px; border-radius:5px;margin-top:10px;">
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/zovi-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
-            <a target="_blank" href={{ url_for('offer_link', OFFERID=8422) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">GO TO SITE</button></a>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=8422) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Zovi</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th>Description</th>
+                            <th style="padding-right:100px;">Description</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -500,11 +698,27 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>No Coupons Available.</td>
+                            <td>Sorry! No Coupons at the moment.</td>
                         </tr>
                     {% endfor %}
                     </tbody>
                 </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on Zovi will be added to your account within 2 days.<br>
+                    2.The cashback on Zovi is in addition to discounts after use of coupon codes.<br>
+                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    </div>
+                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    5.If possible clear your cookies and temporary file regularly.<br>
+                    6.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    7.Prefer to use coupon codes provided on Encashmore.<br>
+                    8.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
             </div>
             </div>
         </span>
