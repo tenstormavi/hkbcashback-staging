@@ -88,9 +88,6 @@ def format_subject_info(info):
     header = SUBJECT_INFO_HEADER
     rst.append([str(info.get(val)) for val in header])
     return rst
-    
-    
-    
 
 def get_average(data):
     return round(sum(data)/len(data), 1)
@@ -111,7 +108,7 @@ def missing_transaction_validation(form, field):
 
 def coupon_codes():
     vendor = []
-    f = open('/home/avinash/cedar-14-hkbcashback/coupons/CouponCodes.csv')
+    f = open('./coupons/CouponCodes.csv')
     store = csv.reader(f)
 
     for row in store:

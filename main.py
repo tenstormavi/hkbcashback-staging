@@ -8,7 +8,6 @@ Created on Tue Sep 16 20:07:40 2014
 import bson
 import os
 from datetime import datetime
-import requests
 """ flask and flask extensions"""
 from flask import Flask, render_template,session, redirect, url_for, flash
 from flask import request
@@ -41,8 +40,7 @@ from constant import USERHEADER_MAP, ORDER_MAP
 app = Flask(__name__)
 app.config['DEBUG']=True
 app.config.from_object(__name__)
-app.config['SECRET_KEY']         = 'xcvjHJHNsnnnsHJKMNhhhhBNljhgfdvbfdgk'
-#app.config['SECRET_KEY'] = os.environ.get('cash_back_secret_key')
+app.config['SECRET_KEY'] = os.environ.get('cash_back_secret_key')
 
 # DataBase Loading
 env = os.environ.get('CASH_BACK_ENV')
