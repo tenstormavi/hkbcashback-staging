@@ -1,50 +1,312 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
-<section class="success" id="about">
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="static/css/sidebar.css" />
+        <script src="static/sidebar-js/modernizr.custom.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    </head>
+    <body class="cbp-spmenu-push">
+    
+<section class="success" id="about" style="padding: 50px 0;">
         <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h3></h3>
                 <h2>DINING</h2>
                 <hr class="star-light">
             </div>
         </div>
             <div class="container">
                 <div class="row">
-                                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
-                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=9706) }} class="" >
-                                    
-                                    <img  src="{{url_for('.static', filename='img/foodimage/Dominos.jpg')}}"  class="img-responsive" alt="">
-                                    </a>
-                                    </div>
-                                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=11313) }} class="" >
-                                    
-                                    <img  src="{{url_for('.static', filename='img/foodimage/FoodPanda.jpg')}}"  class="img-responsive" alt="">
-                                    </a>
-                                    </div>
-                                </div>
-                                &nbsp;
-                            <p></p>
-                            <div class="row">
-                                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
-                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=10859) }} class="">
-                                    
-                                    <img  src="{{url_for('.static', filename='img/foodimage/Justeat.jpg')}}"  class="img-responsive" alt="">
-                                    </a>
-                                    </div>
-                                    <div class="col-lg-4 col-sm-6 col-xs-12">
-                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=11482) }} class="">
-                                    
-                                    <img  src="{{url_for('.static', filename='img/foodimage/Pizza_cashback.jpg')}}"  class="img-responsive" alt="">
-                                    </a>
-                                    </div>
-                                </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                        <a id="showRight">              
+                        <img  src="{{url_for('.static', filename='img/foodimage/dominos-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <a id="showRight3">
+                        <img  src="{{url_for('.static', filename='img/foodimage/foodpanda-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                </div>
+                &nbsp;
+                <p></p>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                        <a id="showRight4">           
+                        <img  src="{{url_for('.static', filename='img/foodimage/justeat-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <a id="showRight5">
+                        <img src="{{url_for('.static', filename='img/foodimage/pizza-cashback.jpg')}}" class="img-responsive" alt="">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
+        <a href="/"><button class="btn btn-primary btn-sm" style="width: 6em;margin-left:20px;">Back</button></a>
 </section>
+
+<div id="menu">
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s1">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:340px;height:210px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/foodimage/dominos-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=9706) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Dominos</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Dominos.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on Dominos will be added to your account within 2 days.<br>
+                    2.The cashback on Dominos is in addition to discounts after use of coupon codes. <br>
+                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    </div>
+                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    5.If possible clear your cookies and temporary file regularly.<br>
+                    6.Prefer to use coupon codes provided on Encashmore.<br>
+                    7.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s3">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:352px;height:212px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/foodimage/foodpanda-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=11313) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Foodpanda</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="FoodPanda.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on Foodpanda will be added to your account within 2 days.<br />
+                    2.The cashback on Foodpand is in addition to discounts after use of coupon codes. <br />
+                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br />
+                    </div>
+                    4.Complete your purchase in the same session after clicking out from Encashmore.<br />
+                    5.If possible clear your cookies and temporary file regularly.<br />
+                    6.Prefer to use coupon codes provided on Encashmore.<br />
+                    7.Cashback is not applicable if the order is cancelled or returned.<br />
+                </span></p>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s4">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:215px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/foodimage/justeat-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=10859) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Justeat</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Justeat.in" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on Justeat will be added to your account within 2 days.<br />
+                    2.The cashback on Justeat is in addition to discounts after use of coupon codes. <br />
+                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br />
+                    </div>
+                    4.Complete your purchase in the same session after clicking out from Encashmore.<br />
+                    5.If possible clear your cookies and temporary file regularly.<br />
+                    6.Prefer to use coupon codes provided on Encashmore.<br />
+                    7.Cashback is not applicable if the order is cancelled or returned.<br />
+                </span></p>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s5">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/foodimage/pizza-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=11482) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Pizzahut</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="PizzaHut.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1.The cashback on Pizza Hut will be added to your account within 2 days.<br />
+                    2.The cashback on Pizza Hut is in addition to discounts after use of coupon codes. <br />
+                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br />
+                    </div>
+                    4.Complete your purchase in the same session after clicking out from Encashmore.<br />
+                    5.If possible clear your cookies and temporary file regularly.<br />
+                    6.Prefer to use coupon codes provided on Encashmore.<br />
+                    7.Cashback is not applicable if the order is cancelled or returned.<br />
+                </span></p>
+            </div>
+            </div>
+        </span>
+</div>
+
+        <script src="static/sidebar-js/classie.js"></script>
+        <script>
+            var menuRight = document.getElementById( 'cbp-spmenu-s1' ),
+                menuRight3 = document.getElementById( 'cbp-spmenu-s3' ),
+                menuRight4 = document.getElementById( 'cbp-spmenu-s4' ),
+                menuRight5 = document.getElementById( 'cbp-spmenu-s5' ),
+                showRight = document.getElementById( 'showRight' ),
+                showRight2 = document.getElementById( 'showRight2' ),
+                showRight3 = document.getElementById( 'showRight3' ),
+                showRight4 = document.getElementById( 'showRight4' ),
+                showRight5 = document.getElementById( 'showRight5' ),
+                about = document.getElementById( 'about' ),
+                menu = document.getElementById( 'menu' ),
+                body = document.body;
+
+            
+            showRight.onclick = function() {
+                classie.add(this,"active");
+                menuRight.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight3.onclick = function() {
+                classie.add(this,"active");
+                menuRight3.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight3.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight4.onclick = function() {
+                classie.add(this,"active");
+                menuRight4.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight4.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight5.onclick = function() {
+                classie.add(this,"active");
+                menuRight5.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight5.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight2.onclick = function() {
+                if (classie.has(showRight,"active")) {
+                    menuRight.style.right = '-400px';
+                    classie.remove(showRight,"active");
+                    body.style.overflow = "auto";
+                    about.style.opacity = '1';
+                } 
+            }
+        </script>
+    </body>
+</html>
 
 {% endblock %}
 
