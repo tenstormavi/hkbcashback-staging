@@ -1,75 +1,528 @@
-{% extends "base.html" %}
+{% extends "base2.html" %}
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block content %}
-<section class="success" id="about">
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="static/css/sidebar.css" />
+        <script src="static/sidebar-js/modernizr.custom.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    </head>
+    <body class="cbp-spmenu-push">
+    
+<section class="success" id="about" style="padding: 50px 0;"> <!--background:url(/static/img/shopping.jpg);-->
         <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h3></h3>
                 <h2>OTHERS</h2>
                 <hr class="star-light">
             </div>
         </div>
             <div class="container">
                 <div class="row">
-                                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
-                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=12429) }} class="">
-                                    
-                                    <img  src="{{url_for('.static', filename='img/otherImage/chumbak-cashback.jpg')}}"  class="img-responsive" alt="">
-                                    </a>
-                                    </div>
-                                    <div class="ccol-lg-3 col-sm-4 col-xs-6">
-                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=9319) }} class="">
-                                    
-                                    <img  src="{{url_for('.static', filename='img/otherImage/fabfurnish-cashback.jpg')}}"  class="img-responsive" alt="">
-                                    </a>
-                                    </div>
-                            </div>&nbsp;<p></p>
-                             <div class="row">
-                                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
-                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=11010) }} class="">
-                                    
-                                    <img  src="{{url_for('.static', filename='img/otherImage/groupon-cashback.jpg')}}"  class="img-responsive" alt="">
-                                    </a>
-                                    </div>
-                                    <div class="ccol-lg-3 col-sm-4 col-xs-6">
-                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=11965) }} class="">
-                                    
-                                    <img  src="{{url_for('.static', filename='img/otherImage/itcFoods-cashback.jpg')}}"  class="img-responsive" alt="">
-                                    </a>
-                                    </div>
-                            </div>&nbsp;<p></p>
-                             <div class="row">
-                                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
-                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=13255) }} class="">
-                                    
-                                    <img  src="{{url_for('.static', filename='img/otherImage/mobikwik-cashback.jpg')}}"  class="img-responsive" alt="">
-                                    </a>
-                                    </div>
-                                    <div class="ccol-lg-3 col-sm-4 col-xs-6">
-                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=11365) }} class="">
-                                    
-                                    <img  src="{{url_for('.static', filename='img/otherImage/paytm-cashback.jpg')}}"  class="img-responsive" alt="">
-                                    </a>
-                                    </div>
-                            </div>&nbsp;<p></p>
-                             <div class="row">
-                                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
-                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=11289) }} class="">
-                                    
-                                    <img  src="{{url_for('.static', filename='img/otherImage/pepperfry-cashback.jpg')}}"  class="img-responsive" alt="">
-                                    </a>
-                                    </div>
-                                    <div class="ccol-lg-3 col-sm-4 col-xs-6">
-                                        <a target="_blank" href={{ url_for('offer_link', OFFERID=10036) }} class="">
-                                    
-                                    <img  src="{{url_for('.static', filename='img/otherImage/printvenue-cashback.jpg')}}"  class="img-responsive" alt="">
-                                    </a>
-                                    </div>
-                            </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                        <a id="showRight">              
+                        <img  src="{{url_for('.static', filename='img/otherimage/chumbak-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <a id="showRight3">
+                        <img  src="{{url_for('.static', filename='img/otherimage/fabfurnish-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                </div>
+                &nbsp;
+                <p></p>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                        <a id="showRight4">           
+                        <img  src="{{url_for('.static', filename='img/otherimage/groupon-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <a id="showRight5">
+                        <img src="{{url_for('.static', filename='img/otherimage/itcfoods-cashback.jpg')}}" class="img-responsive" alt="">
+                        </a>
+                    </div>
+                </div>
+                &nbsp;
+                <p></p>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                        <a id="showRight6">           
+                        <img  src="{{url_for('.static', filename='img/otherimage/mobikwik-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <a id="showRight7">
+                        <img src="{{url_for('.static', filename='img/otherimage/paytm-cashback.jpg')}}" class="img-responsive" alt="">
+                        </a>
+                    </div>
+                </div>
+                &nbsp;
+                <p></p>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
+                        <a id="showRight8">           
+                        <img  src="{{url_for('.static', filename='img/otherimage/pepperfry-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                    <div class="col-lg-4 col-sm-6 col-xs-12">
+                        <a id="showRight9">
+                        <img src="{{url_for('.static', filename='img/otherimage/printvenue-cashback.jpg')}}" class="img-responsive" alt="">
+                        </a>
+                    </div>
+                </div>
+                &nbsp;
+                <p></p>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-4">
+                        <a id="showRight10">           
+                        <img  src="{{url_for('.static', filename='img/otherimage/coke2home-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
+        <a href="/"><button class="btn btn-primary btn-sm" style="width: 6em;margin-left:20px;">Back</button></a>
 </section>
 
+<div id="menu">
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s1">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:353px;height:213px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/otherimage/chumbak-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=12429) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Chumbak</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Chumbak.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1. The cashback on Amazon will be added to your account within 3 days.<br>
+                    2. Login to your Amazon account only after clicking out from Encashmore.<br>
+                    3. Add products to your Amazon cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Amazon is in addition to discounts after use of coupon codes.
+                    </div>
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s3">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:213px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/otherimage/fabfurnish-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=9319) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Fabfurnish</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Fabfurnish.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s4">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:213px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/otherimage/groupon-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=11010) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Groupon</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Groupon.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s5">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/otherimage/itcfoods-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=11965) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Itcfoods</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="itcfoods.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s6">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/otherimage/mobikwik-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=13255) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Mobikwik</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Mobikwik.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s7">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/otherimage/paytm-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=11365) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Paytm</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Paytm.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s8">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/otherimage/pepperfry-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=11289) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Pepperfry</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Pepperfry.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s9">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/otherimage/printvenue-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=10036) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Printvenue</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Printvenue.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s10">
+            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:358px;height:210px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/otherimage/coke2home-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=12260) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Coke2home</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th style="padding-right:100px;">Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="coke2home.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>      
+                    {% else %}
+                        <tr>
+                            <td>Sorry! No Coupons at the moment.</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            </div>
+        </span>
+</div>
+
+        <script src="static/sidebar-js/classie.js"></script>
+        <script>
+            var menuRight = document.getElementById( 'cbp-spmenu-s1' ),
+                menuRight3 = document.getElementById( 'cbp-spmenu-s3' ),
+                menuRight4 = document.getElementById( 'cbp-spmenu-s4' ),
+                menuRight5 = document.getElementById( 'cbp-spmenu-s5' ),
+                menuRight6 = document.getElementById( 'cbp-spmenu-s6' ),
+                menuRight7 = document.getElementById( 'cbp-spmenu-s7' ),
+                menuRight8 = document.getElementById( 'cbp-spmenu-s8' ),
+                menuRight9 = document.getElementById( 'cbp-spmenu-s9' ),
+                menuRight10 = document.getElementById( 'cbp-spmenu-s10' ),
+                showRight = document.getElementById( 'showRight' ),
+                showRight2 = document.getElementById( 'showRight2' ),
+                showRight3 = document.getElementById( 'showRight3' ),
+                showRight4 = document.getElementById( 'showRight4' ),
+                showRight5 = document.getElementById( 'showRight5' ),
+                showRight6 = document.getElementById( 'showRight6' ),
+                showRight7 = document.getElementById( 'showRight7' ),
+                showRight8 = document.getElementById( 'showRight8' ),
+                showRight9 = document.getElementById( 'showRight9' ),
+                showRight10 = document.getElementById( 'showRight10' ),
+                about = document.getElementById( 'about' ),
+                menu = document.getElementById( 'menu' ),
+                body = document.body;
+
+            
+            showRight.onclick = function() {
+                classie.add(this,"active");
+                menuRight.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight3.onclick = function() {
+                classie.add(this,"active");
+                menuRight3.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight3.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight4.onclick = function() {
+                classie.add(this,"active");
+                menuRight4.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight4.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight5.onclick = function() {
+                classie.add(this,"active");
+                menuRight5.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight5.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight6.onclick = function() {
+                classie.add(this,"active");
+                menuRight6.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight6.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight7.onclick = function() {
+                classie.add(this,"active");
+                menuRight7.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight7.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight8.onclick = function() {
+                classie.add(this,"active");
+                menuRight8.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight8.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight9.onclick = function() {
+                classie.add(this,"active");
+                menuRight9.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight9.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight10.onclick = function() {
+                classie.add(this,"active");
+                menuRight10.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight10.style.overflow = "auto";
+                about.style.opacity = '0.4';
+                body.style.backgroundColor = "#aaaaaa";
+                body.style.display = 'block';
+            };
+
+            showRight2.onclick = function() {
+                if (classie.has(showRight,"active")) {
+                    menuRight.style.right = '-400px';
+                    classie.remove(showRight,"active");
+                    body.style.overflow = "auto";
+                    about.style.opacity = '1';
+                } 
+            }
+        </script>
+    </body>
+</html>
+
 {% endblock %}
+
