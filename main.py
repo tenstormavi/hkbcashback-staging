@@ -40,7 +40,8 @@ from constant import USERHEADER_MAP, ORDER_MAP
 app = Flask(__name__)
 app.config['DEBUG']=True
 app.config.from_object(__name__)
-app.config['SECRET_KEY'] = os.environ.get('cash_back_secret_key')
+app.config['SECRET_KEY']         = 'xcvjHJHNsnnnsHJKMNhhhhBNljhgfdvbfdgk'
+#app.config['SECRET_KEY'] = os.environ.get('cash_back_secret_key')
 
 # DataBase Loading
 env = os.environ.get('CASH_BACK_ENV')
