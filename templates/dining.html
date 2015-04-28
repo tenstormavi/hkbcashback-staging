@@ -54,8 +54,8 @@
 
 <div id="menu">
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s1">
-            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
-            <div class="boxed" rows="3" style="border: 3px solid #585858;width:340px;height:210px;
+            <button onclick="hide1()" class="btn-group-justified btn-info btn" style="text-align:center; padding:0.6em;">CLOSE</button>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:340px;height:215px;
                                                 margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/foodimage/dominos-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
@@ -65,7 +65,7 @@
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th style="padding-right:100px;">Description</th>
+                            <th><center>Description</center></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -76,7 +76,7 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>Sorry! No Coupons at the moment.</td>
+                            <td><td>Sorry! No Coupons at the moment.</td></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -101,7 +101,7 @@
         </span>
 
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s3">
-            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <button onclick="hide3()" class="btn-group-justified btn-info btn" style="text-align:center; padding:0.6em;">CLOSE</button>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:352px;height:212px;
                                                 margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/foodimage/foodpanda-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
@@ -112,7 +112,7 @@
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th style="padding-right:100px;">Description</th>
+                            <th><center>Description</center></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -123,7 +123,7 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>Sorry! No Coupons at the moment.</td>
+                            <td><td>Sorry! No Coupons at the moment.</td></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -148,7 +148,7 @@
         </span>
 
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s4">
-            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <button onclick="hide4()" class="btn-group-justified btn-info btn" style="text-align:center; padding:0.6em;">CLOSE</button>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:215px;
                                                 margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/foodimage/justeat-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
@@ -159,7 +159,7 @@
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th style="padding-right:100px;">Description</th>
+                            <th><center>Description</center></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -170,7 +170,7 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>Sorry! No Coupons at the moment.</td>
+                            <td><td>Sorry! No Coupons at the moment.</td></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -195,7 +195,7 @@
         </span>
 
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s5">
-            <a href="" id="showRight2" style="text-align:center; padding:1em;">CLOSE</a>
+            <button onclick="hide5()" class="btn-group-justified btn-info btn" style="text-align:center; padding:0.6em;">CLOSE</button>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
                                                 margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/foodimage/pizza-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
@@ -206,7 +206,7 @@
                     <thead>
                         <tr>
                             <th>Coupons</th>
-                            <th style="padding-right:100px;">Description</th>
+                            <th><center>Description</center></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -217,7 +217,7 @@
                         </tr>      
                     {% else %}
                         <tr>
-                            <td>Sorry! No Coupons at the moment.</td>
+                            <td><td>Sorry! No Coupons at the moment.</td></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -258,7 +258,7 @@
                 body = document.body;
 
             
-            showRight.onclick = function() {
+            showRight.onclick = function(e) {
                 classie.add(this,"active");
                 menuRight.style.right = '0px';
                 body.style.overflow = "hidden";
@@ -298,13 +298,28 @@
                 body.style.display = 'block';
             };
 
-            showRight2.onclick = function() {
-                if (classie.has(showRight,"active")) {
-                    menuRight.style.right = '-400px';
-                    classie.remove(showRight,"active");
-                    body.style.overflow = "auto";
-                    about.style.opacity = '1';
-                } 
+            function hide1(){
+                menuRight.style.right = '-400px';
+                body.style.overflow = "auto";
+                about.style.opacity = '1';
+            }
+
+            function hide3(){
+                menuRight3.style.right = '-400px';
+                body.style.overflow = "auto";
+                about.style.opacity = '1';
+            }
+
+            function hide4(){
+                menuRight4.style.right = '-400px';
+                body.style.overflow = "auto";
+                about.style.opacity = '1';
+            }
+
+            function hide5(){
+                menuRight5.style.right = '-400px';
+                body.style.overflow = "auto";
+                about.style.opacity = '1';
             }
         </script>
     </body>
