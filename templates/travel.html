@@ -65,10 +65,17 @@
                     </thead>
                     <tbody>
                     {% for x in coupon_codes if x[2]=="Asiarooms.com" %}
+                        {% if datetime.strptime(x[3], "%d-%m-%Y") >= x[4] %}
                         <tr>
                             <td><code>{{ x[0] }}</code></td>
                             <td>{{ x[1] }}</td>
-                        </tr>      
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>Coupon Expired.</td>
+                        </tr>
+                        {% endif %}      
                     {% else %}
                         <tr>
                             <td><td>Sorry! No Coupons at the moment.</td></td>
@@ -113,10 +120,17 @@
                     </thead>
                     <tbody>
                     {% for x in coupon_codes if x[2]=="Hotels.com" %}
+                        {% if datetime.strptime(x[3], "%d-%m-%Y") >= x[4] %}
                         <tr>
                             <td><code>{{ x[0] }}</code></td>
                             <td>{{ x[1] }}</td>
-                        </tr>      
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>Coupon Expired.</td>
+                        </tr>
+                        {% endif %}      
                     {% else %}
                         <tr>
                             <td><td>Sorry! No Coupons at the moment.</td></td>
@@ -161,10 +175,17 @@
                     </thead>
                     <tbody>
                     {% for x in coupon_codes if x[2]=="Yatra.com" %}
+                        {% if datetime.strptime(x[3], "%d-%m-%Y") >= x[4] %}
                         <tr>
                             <td><code>{{ x[0] }}</code></td>
                             <td>{{ x[1] }}</td>
-                        </tr>      
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>Coupon Expired.</td>
+                        </tr>
+                        {% endif %}      
                     {% else %}
                         <tr>
                             <td><td>Sorry! No Coupons at the moment.</td></td>

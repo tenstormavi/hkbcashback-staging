@@ -9,7 +9,7 @@
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     </head>
     <body class="cbp-spmenu-push">
-    
+    <div id="toggle"></div>
 <section class="success" id="about" style="padding: 50px 0;">
         <div class="container">
         <div class="row">
@@ -70,10 +70,17 @@
                     </thead>
                     <tbody>
                     {% for x in coupon_codes if x[2]=="Dominos.com" %}
+                        {% if datetime.strptime(x[3], "%d-%m-%Y") >= x[4] %}
                         <tr>
                             <td><code>{{ x[0] }}</code></td>
                             <td>{{ x[1] }}</td>
-                        </tr>      
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>Coupon Expired.</td>
+                        </tr>
+                        {% endif %}     
                     {% else %}
                         <tr>
                             <td><td>Sorry! No Coupons at the moment.</td></td>
@@ -117,10 +124,17 @@
                     </thead>
                     <tbody>
                     {% for x in coupon_codes if x[2]=="FoodPanda.com" %}
+                        {% if datetime.strptime(x[3], "%d-%m-%Y") >= x[4] %}
                         <tr>
                             <td><code>{{ x[0] }}</code></td>
                             <td>{{ x[1] }}</td>
-                        </tr>      
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>Coupon Expired.</td>
+                        </tr>
+                        {% endif %}      
                     {% else %}
                         <tr>
                             <td><td>Sorry! No Coupons at the moment.</td></td>
@@ -164,10 +178,17 @@
                     </thead>
                     <tbody>
                     {% for x in coupon_codes if x[2]=="Justeat.in" %}
+                        {% if datetime.strptime(x[3], "%d-%m-%Y") >= x[4] %}
                         <tr>
                             <td><code>{{ x[0] }}</code></td>
                             <td>{{ x[1] }}</td>
-                        </tr>      
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>Coupon Expired.</td>
+                        </tr>
+                        {% endif %}    
                     {% else %}
                         <tr>
                             <td><td>Sorry! No Coupons at the moment.</td></td>
@@ -211,10 +232,17 @@
                     </thead>
                     <tbody>
                     {% for x in coupon_codes if x[2]=="PizzaHut.com" %}
+                        {% if datetime.strptime(x[3], "%d-%m-%Y") >= x[4] %}
                         <tr>
                             <td><code>{{ x[0] }}</code></td>
                             <td>{{ x[1] }}</td>
-                        </tr>      
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>Coupon Expired.</td>
+                        </tr>
+                        {% endif %}     
                     {% else %}
                         <tr>
                             <td><td>Sorry! No Coupons at the moment.</td></td>

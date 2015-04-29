@@ -344,27 +344,27 @@ def reset_password():
 
 @app.route("/fashion")
 def fashion():
-    return render_template('fashion.html', coupon_codes=coupon_codes())
+    return render_template('fashion.html', coupon_codes=coupon_codes(), datetime=datetime)
 
 @app.route("/dining")
 def dining():
-    return render_template('dining.html', coupon_codes=coupon_codes())
+    return render_template('dining.html', coupon_codes=coupon_codes(), datetime=datetime)
 
 @app.route("/gifting")
 def gifting():
-    return render_template('gifting.html', coupon_codes=coupon_codes())
+    return render_template('gifting.html', coupon_codes=coupon_codes(), datetime=datetime)
 
 @app.route("/shopping")
 def shopping():
-    return render_template('shopping.html', coupon_codes=coupon_codes())
+    return render_template('shopping.html', coupon_codes=coupon_codes(), datetime=datetime)
 
 @app.route("/travel")
 def travel():
-    return render_template('travel.html', coupon_codes=coupon_codes())
+    return render_template('travel.html', coupon_codes=coupon_codes(), datetime=datetime)
 
 @app.route("/others")
 def others():
-    return render_template('others.html', coupon_codes=coupon_codes())
+    return render_template('others.html', coupon_codes=coupon_codes(), datetime=datetime)
 
 
 @app.route("/termcondition")
