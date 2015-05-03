@@ -12,7 +12,7 @@ from datetime import datetime
 from wtforms.validators import ValidationError
 import csv
 import time
-from datetime import datetime as dt
+from datetime import datetime
 
 def max_length(length):
     def validate(value):
@@ -112,15 +112,17 @@ def coupon_codes():
     vendor = []
     f = open('./coupons/CouponCodes.csv')
     store = csv.reader(f)
+    next(store, None)
     y = str(time.strftime("%d-%m-%Y"))
     a = datetime.strptime(y, "%d-%m-%Y")
 
     for row in store:
         temp = []
-        temp.append(row[1].decode('utf-8'))
-        temp.append(row[2].decode('utf-8'))
-        temp.append(row[7].decode('utf-8'))
-        temp.append(row[4].split(' ')[0].decode('utf-8'))
-        temp.append(a)
-        vendor.append(temp)
+        c = row[4].split(' ')[0]
+        b = datetime.strptime(c, "%d-%m-%Y")
+        if a <= b:
+            temp.append(row[1].decode('utf-8'))
+            temp.append(row[2].decode('utf-8'))
+            temp.append(row[7].decode('utf-8'))
+            vendor.append(temp)
     return vendor   
