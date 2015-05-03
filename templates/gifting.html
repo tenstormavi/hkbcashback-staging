@@ -7,18 +7,34 @@
         <link rel="stylesheet" type="text/css" href="static/css/sidebar.css" />
         <script src="static/sidebar-js/modernizr.custom.js"></script>
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script>
+        (function(f,b){
+            var c;
+            f.hj=f.hj||function(){(f.hj.q=f.hj.q||[]).push(arguments)};
+            f._hjSettings={hjid:31896, hjsv:4};
+            c=b.createElement("script");c.async=1;
+            c.src="//static.hotjar.com/c/hotjar-"+f._hjSettings.hjid+".js?sv="+f._hjSettings.hjsv;
+            b.getElementsByTagName("head")[0].appendChild(c); 
+        })(window,document);
+        </script>
     </head>
     <body class="cbp-spmenu-push">
-    
-<section class="success" id="about" style="padding: 50px 0;">
+    <div id="overlay"></div>
+<section class="success" id="about" style="padding: 50px 0; background-color:white;">
         <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2>GIFTING</h2>
-                <hr class="star-light">
+                <h2 style="color:#2c3e50">GIFTING</h2>
+                <hr class="star-primary">
             </div>
         </div>
             <div class="container">
+            <div class="bs-example container-fluid">
+                <div class="alert alert-success">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    If you are using Adblocker, it prevents us from tracking your transactions. Request you to turn it off & help us track your order!!
+                </div>
+            </div>
                 <div class="row">
                     <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-2">
                         <a id="showRight">              
@@ -54,7 +70,7 @@
 
 <div id="menu">
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s1">
-            <button onclick="hide1()" class="btn-group-justified btn-info btn" style="text-align:center; padding:0.6em;">CLOSE</button>
+            <button onclick="hide1()" class="btn-group-justified btn-info btn" style="text-align:right; padding:0.6em;font-weight:bold">X</button>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:348px;height:213px;
                                                 margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/giftimage/bookmyflowers-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
@@ -70,17 +86,10 @@
                     </thead>
                     <tbody>
                     {% for x in coupon_codes if x[2]=="Bookmyflowers.com" %}
-                        {% if datetime.strptime(x[3], "%d-%m-%Y") >= x[4] %}
                         <tr>
                             <td><code>{{ x[0] }}</code></td>
                             <td>{{ x[1] }}</td>
-                        </tr>
-                        {% else %}
-                        <tr>
-                            <td><code>{{ x[0] }}</code></td>
-                            <td>Coupon Expired.</td>
-                        </tr>
-                        {% endif %}      
+                        </tr>      
                     {% else %}
                         <tr>
                             <td><td>Sorry! No Coupons at the moment.</td></td>
@@ -93,7 +102,7 @@
         </span>
 
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s3">
-            <button onclick="hide3()" class="btn-group-justified btn-info btn" style="text-align:center; padding:0.6em;">CLOSE</button>
+            <button onclick="hide3()" class="btn-group-justified btn-info btn" style="text-align:right; padding:0.6em;font-weight:bold">X</button>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
                                                 margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/giftimage/fernsnpetals-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
@@ -109,17 +118,10 @@
                     </thead>
                     <tbody>
                     {% for x in coupon_codes if x[2]=="Fernsnpetals.com" %}
-                        {% if datetime.strptime(x[3], "%d-%m-%Y") >= x[4] %}
                         <tr>
                             <td><code>{{ x[0] }}</code></td>
                             <td>{{ x[1] }}</td>
-                        </tr>
-                        {% else %}
-                        <tr>
-                            <td><code>{{ x[0] }}</code></td>
-                            <td>Coupon Expired.</td>
-                        </tr>
-                        {% endif %}     
+                        </tr>     
                     {% else %}
                         <tr>
                             <td><td>Sorry! No Coupons at the moment.</td></td>
@@ -132,7 +134,7 @@
         </span>
 
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s4">
-            <button onclick="hide4()" class="btn-group-justified btn-info btn" style="text-align:center; padding:0.6em;">CLOSE</button>
+            <button onclick="hide4()" class="btn-group-justified btn-info btn" style="text-align:right; padding:0.6em;font-weight:bold">X</button>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:348px;height:213px;
                                                 margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/giftimage/indiangiftsportal-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
@@ -148,17 +150,10 @@
                     </thead>
                     <tbody>
                     {% for x in coupon_codes if x[2]=="Indiangiftsportal.com" %}
-                        {% if datetime.strptime(x[3], "%d-%m-%Y") >= x[4] %}
                         <tr>
                             <td><code>{{ x[0] }}</code></td>
                             <td>{{ x[1] }}</td>
-                        </tr>
-                        {% else %}
-                        <tr>
-                            <td><code>{{ x[0] }}</code></td>
-                            <td>Coupon Expired.</td>
-                        </tr>
-                        {% endif %}     
+                        </tr>     
                     {% else %}
                         <tr>
                             <td><td>Sorry! No Coupons at the moment.</td></td>
@@ -171,7 +166,7 @@
         </span>
 
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s5">
-            <button onclick="hide5()" class="btn-group-justified btn-info btn" style="text-align:center; padding:0.6em;">CLOSE</button>
+            <button onclick="hide5()" class="btn-group-justified btn-info btn" style="text-align:right; padding:0.6em;font-weight:bold">X</button>
             <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:210px;
                                                 margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/giftimage/flowersaura-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
@@ -187,17 +182,10 @@
                     </thead>
                     <tbody>
                     {% for x in coupon_codes if x[2]=="Flowersaura.com" %}
-                        {% if datetime.strptime(x[3], "%d-%m-%Y") >= x[4] %}
                         <tr>
                             <td><code>{{ x[0] }}</code></td>
                             <td>{{ x[1] }}</td>
-                        </tr>
-                        {% else %}
-                        <tr>
-                            <td><code>{{ x[0] }}</code></td>
-                            <td>Coupon Expired.</td>
-                        </tr>
-                        {% endif %}      
+                        </tr>      
                     {% else %}
                         <tr>
                             <td><td>Sorry! No Coupons at the moment.</td></td>
@@ -221,6 +209,7 @@
                 showRight3 = document.getElementById( 'showRight3' ),
                 showRight4 = document.getElementById( 'showRight4' ),
                 showRight5 = document.getElementById( 'showRight5' ),
+                overlay = document.getElementById( 'overlay' ),
                 about = document.getElementById( 'about' ),
                 menu = document.getElementById( 'menu' ),
                 body = document.body;
@@ -231,9 +220,8 @@
                 menuRight.style.right = '0px';
                 body.style.overflow = "hidden";
                 menuRight.style.overflow = "auto";
-                about.style.opacity = '0.4';
-                body.style.backgroundColor = "#aaaaaa";
                 body.style.display = 'block';
+                document.getElementById("overlay").style.zIndex = "999";
             };
 
             showRight3.onclick = function() {
@@ -241,9 +229,8 @@
                 menuRight3.style.right = '0px';
                 body.style.overflow = "hidden";
                 menuRight3.style.overflow = "auto";
-                about.style.opacity = '0.4';
-                body.style.backgroundColor = "#aaaaaa";
                 body.style.display = 'block';
+                document.getElementById("overlay").style.zIndex = "999";
             };
 
             showRight4.onclick = function() {
@@ -251,9 +238,8 @@
                 menuRight4.style.right = '0px';
                 body.style.overflow = "hidden";
                 menuRight4.style.overflow = "auto";
-                about.style.opacity = '0.4';
-                body.style.backgroundColor = "#aaaaaa";
                 body.style.display = 'block';
+                document.getElementById("overlay").style.zIndex = "999";
             };
 
             showRight5.onclick = function() {
@@ -261,33 +247,41 @@
                 menuRight5.style.right = '0px';
                 body.style.overflow = "hidden";
                 menuRight5.style.overflow = "auto";
-                about.style.opacity = '0.4';
-                body.style.backgroundColor = "#aaaaaa";
                 body.style.display = 'block';
+                document.getElementById("overlay").style.zIndex = "999";
+            };
+
+            overlay.onclick = function(){
+                menuRight.style.right = '-400px';
+                menuRight3.style.right = '-400px';
+                menuRight4.style.right = '-400px';
+                menuRight5.style.right = '-400px';
+                body.style.overflow = "auto";
+                document.getElementById("overlay").style.zIndex = "-1";
             };
 
             function hide1(){
                 menuRight.style.right = '-400px';
                 body.style.overflow = "auto";
-                about.style.opacity = '1';
+                document.getElementById("overlay").style.zIndex = "-1";
             }
 
             function hide3(){
                 menuRight3.style.right = '-400px';
                 body.style.overflow = "auto";
-                about.style.opacity = '1';
+                document.getElementById("overlay").style.zIndex = "-1";
             }
 
             function hide4(){
                 menuRight4.style.right = '-400px';
                 body.style.overflow = "auto";
-                about.style.opacity = '1';
+                document.getElementById("overlay").style.zIndex = "-1";
             }
 
             function hide5(){
                 menuRight5.style.right = '-400px';
                 body.style.overflow = "auto";
-                about.style.opacity = '1';
+                document.getElementById("overlay").style.zIndex = "-1";
             }
         </script>
     </body>
