@@ -15,7 +15,7 @@
 
 .cssanimations.csstransforms #note {
   -webkit-transform: translateY(-50px);
-  -webkit-animation: slideDown 10s 10.0s 1 ease forwards;
+  -webkit-animation: slideDown 25s 10.0s 1 ease forwards;
   -moz-transform:    translateY(-50px);
   -moz-animation:    slideDown 2.5s 1.0s 1 ease forwards;
   }
