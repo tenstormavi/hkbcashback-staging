@@ -142,6 +142,15 @@
                         </a>
                     </div>
                 </div>
+                &nbsp;
+                <p></p>
+                <div class="row">
+                    <div class="col-lg-4 col-sm-6 col-xs-12 col-lg-offset-4">
+                        <a id="showRight14">           
+                        <img  src="{{url_for('.static', filename='img/shoppingimage/inkfruit-cashback.jpg')}}"  class="img-responsive" alt="">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
         &nbsp;
@@ -219,14 +228,16 @@
                     2. Login to your Amazon account only after clicking out from Encashmore.<br>
                     3. Add products to your Amazon cart only AFTER clicking out from Encashmore.<br>
                     4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
-                    5. The cashback on Amazon is in addition to discounts after use of coupon codes.
+                    5. The cashback on Amazon is in addition to discounts after use of coupon codes.<br>
+                    6. No cashback on Yureka and OneplusOne smartphones.<br>
                     </div>
-                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
-                    7. If possible clear your cookies and temporary file regularly.<br>
-                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
-                    9. Cashback if often paid excluding taxes, delivery & other administrative charges<br>
-                    10.Prefer to use coupon codes provided on Encashmore.<br>
-                    11.Cashback is not applicable if the order is cancelled or returned.<br>
+                    7. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    8. If possible clear your cookies and temporary file regularly.<br>
+                    9. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    10. Cashback if often paid excluding taxes, delivery & other administrative charges<br>
+                    11. Prefer to use coupon codes provided on Encashmore.<br>
+                    12. Cashback is not applicable if the order is cancelled or returned.<br>
+                    13. Under rare circumstances cashback may be confirmed at a lower price than tracked.<br>
                 </span></p>
             </div>
             </div>
@@ -234,10 +245,33 @@
 
         <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s3">
             <button onclick="hide3()" class="btn-group-justified btn-info btn" style="text-align:right; padding:0.6em;font-weight:bold">X</button>
-            <div class="boxed" rows="3" style="border: 3px solid #585858;width:350px;height:213px;
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:356px;height:211px;
                                                 margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
             <iframe src="{{url_for('.static', filename='img2/shoppingimage/paytm-cashback.jpg')}}" scrolling="no" width="355" height="205" marginwidth="1" marginheight="1" frameborder="0">
             </iframe>
+            &nbsp;
+            <table border="2" class="table">
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>Cashback</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    <td>Electronics</td>
+                    <td>2.0%</td>
+                    </tr>
+                    <tr>
+                    <td>Recharges</td>
+                    <td>3.0%</td>
+                    </tr>
+                    <tr>
+                    <td>Everything Else</td>
+                    <td>5.0%</td>
+                    </tr>
+                </tbody>
+            </table>
             <a target="_blank" href={{ url_for('offer_link', OFFERID=11365) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Paytm</button></a>
             <div class="row">
                 <table class="table table-striped" style="margin-top:20px">
@@ -248,7 +282,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                    {% for x in coupon_codes if x[2]=="Paytm.com" %}
+                    {% for x in coupon_codes if x[2]=="Paytm" %}
                         <tr>
                             <td><code>{{ x[0] }}</code></td>
                             <td>{{ x[1] }}</td>
@@ -266,17 +300,18 @@
                 <center><b>Terms & Conditions</b></center>
                 <p><span style="font-size:14px;text-align: justify;">
                     <div style="color:red;">
-                    1.The cashback on Paytm will be added to your account within 2 days.<br>
-                    2.The cashback on Paytm is in addition to discounts after use of coupon codes.<br> 
-                    3.Add products to your Paytm cart only AFTER clicking out from Encashmore.<br>
-                    4.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    1. The cashback on Paytm will be added to your account within 3 working days.<br>
+                    2. Login to your Paytm account only after clicking out from Encashmore.<br>
+                    3. Add products to your Paytm cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Paytm is in addition to discounts after use of coupon codes.<br>
                     </div>
-                    5.Complete your purchase in the same session after clicking out from Encashmore.<br>
-                    6.If possible clear your cookies and temporary file regularly.<br>
-                    7.In case any of the best practices are not followed, the cashback might not get tracked.<br>
-                    8.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
-                    9.Prefer to use coupon codes provided on Encashmore.<br>
-                    10.Cashback is not applicable if the order is cancelled or returned.<br>
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
                 </span></p>
             </div>
             </div>
@@ -316,16 +351,16 @@
                 <center><b>Terms & Conditions</b></center>
                 <p><span style="font-size:14px;text-align: justify;">
                     <div style="color:red;">
-                    1.The cashback on Snapdeal will be added to your account within 2 days.<br>
-                    2.The cashback on Snapdeal is in addition to discounts after use of coupon codes.<br> 
-                    3.Login to your Snapdeal account only after clicking out from Encashmore.<br> 
-                    4.Add products to your Snapdeal cart only AFTER clicking out from Encashmore.<br>
-                    5.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    1. The cashback on Snapdeal will be added to your account within 3 working days.<br>
+                    2. Login to your Snapdeal account only after clicking out from Encashmore.<br>
+                    3. Add products to your Snapdeal cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Snapdeal is in addition to discounts after use of coupon codes.<br>
                     </div>
-                    6.Complete your purchase in the same session after clicking out from Encashmore.<br>
-                    7.If possible clear your cookies and temporary file regularly.<br>
-                    8.In case any of the best practices are not followed, the cashback might not get tracked.<br>
-                    9.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
                     10.Prefer to use coupon codes provided on Encashmore.<br>
                     11.Cashback is not applicable if the order is cancelled or returned.<br>
                 </span></p>
@@ -367,16 +402,16 @@
                 <center><b>Terms & Conditions</b></center>
                 <p><span style="font-size:14px;text-align: justify;">
                     <div style="color:red;">
-                    1.The cashback on Myntra will be added to your account within 2 days.<br>
-                    2.The cashback on Myntra is in addition to discounts after use of coupon codes.<br>
-                    3.Login to your Myntra account only after clicking out from Encashmore.<br>
-                    4.Add products to your Myntra cart only AFTER clicking out from Encashmore.<br>
-                    5.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    1. The cashback on Myntra will be added to your account within 3 working days.<br>
+                    2. Login to your Myntra account only after clicking out from Encashmore.<br>
+                    3. Add products to your Myntra cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Myntra is in addition to discounts after use of coupon codes.<br>
                     </div>
-                    6.Complete your purchase in the same session after clicking out from Encashmore.<br>
-                    7.If possible clear your cookies and temporary file regularly.<br>
-                    8.In case any of the best practices are not followed, the cashback might not get tracked.<br>
-                    9.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
                     10.Prefer to use coupon codes provided on Encashmore.<br>
                     11.Cashback is not applicable if the order is cancelled or returned.<br>
                 </span></p>
@@ -418,16 +453,18 @@
                 <center><b>Terms & Conditions</b></center>
                 <p><span style="font-size:14px;text-align: justify;">
                     <div style="color:red;">
-                    1.The cashback on Jabong will be added to your account within 2 days.<br>
-                    2.The cashback on Jabong is in addition to discounts after use of coupon codes.<br>
-                    3.The cashback on Jabong may track at lower rates if coupon codes are used.<br> 
-                    4.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    1. The cashback on Jabong will be added to your account within 3 working days.<br>
+                    2. Login to your Jabong account only after clicking out from Encashmore.<br>
+                    3. Add products to your Jabong cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Jabong is in addition to discounts after use of coupon codes.<br>
                     </div>
-                    5.Complete your purchase in the same session after clicking out from Encashmore.<br>
-                    6.If possible clear your cookies and temporary file regularly.<br>
-                    7.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
-                    8.Prefer to use coupon codes provided on Encashmore.<br>
-                    9.Cashback is not applicable if the order is cancelled or returned.<br>
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
                 </span></p>
             </div>
             </div>
@@ -467,16 +504,18 @@
                 <center><b>Terms & Conditions</b></center>
                 <p><span style="font-size:14px;text-align: justify;">
                     <div style="color:red;">
-                    1.The cashback on ShopClues will be added to your account within 2 days.<br>
-                    2.The cashback on ShopClues is in addition to discounts after use of coupon codes.<br>
-                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    1. The cashback on Shopclues will be added to your account within 3 working days.<br>
+                    2. Login to your Shopclues account only after clicking out from Encashmore.<br>
+                    3. Add products to your Shopclues cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Shopclues is in addition to discounts after use of coupon codes.<br>
                     </div>
-                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
-                    5.If possible clear your cookies and temporary file regularly.<br>
-                    6.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
-                    7.Prefer to use coupon codes provided on Encashmore.<br>
-                    8.Cashback is not applicable if the order is cancelled or returned.<br>
-
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
                 </span></p>
             </div>
             </div>
@@ -516,16 +555,16 @@
                 <center><b>Terms & Conditions</b></center>
                 <p><span style="font-size:14px;text-align: justify;">
                     <div style="color:red;">
-                    1.The cashback on Koovs will be added to your account within 2 days.<br>
-                    2.The cashback on Koovs is in addition to discounts after use of coupon codes.<br> 
-                    3.Login to your Koovs account only after clicking out from Encashmore.<br> 
-                    4.Add products to your Koovs cart only AFTER clicking out from Encashmore.<br>
-                    5.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    1. The cashback on Koovs will be added to your account within 3 working days.<br>
+                    2. Login to your Koovs account only after clicking out from Encashmore.<br>
+                    3. Add products to your Koovs cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Koovs is in addition to discounts after use of coupon codes.<br>
                     </div>
-                    6.Complete your purchase in the same session after clicking out from Encashmore.<br>
-                    7.If possible clear your cookies and temporary file regularly.<br>
-                    8.In case any of the best practices are not followed, the cashback might not get tracked.<br>
-                    9.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
                     10.Prefer to use coupon codes provided on Encashmore.<br>
                     11.Cashback is not applicable if the order is cancelled or returned.<br>
                 </span></p>
@@ -567,15 +606,18 @@
                 <center><b>Terms & Conditions</b></center>
                 <p><span style="font-size:14px;text-align: justify;">
                     <div style="color:red;">
-                    1.The cashback on HomeShop18 will be added to your account within 2 days.<br>
-                    2.The cashback on HomeShop18 is in addition to discounts after use of coupon codes.<br>
-                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    1. The cashback on Homeshop18 will be added to your account within 3 working days.<br>
+                    2. Login to your Homeshop18 account only after clicking out from Encashmore.<br>
+                    3. Add products to your Homeshop18 cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Homeshop18 is in addition to discounts after use of coupon codes.<br>
                     </div>
-                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
-                    5.If possible clear your cookies and temporary file regularly.<br>
-                    6.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
-                    7.Prefer to use coupon codes provided on Encashmore.<br>
-                    8.Cashback is not applicable if the order is cancelled or returned.<br>
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
                 </span></p>
             </div>
             </div>
@@ -615,15 +657,18 @@
                 <center><b>Terms & Conditions</b></center>
                 <p><span style="font-size:14px;text-align: justify;">
                     <div style="color:red;">
-                    1.The cashback on Fashionara will be added to your account within 2 days.<br>
-                    2.The cashback on Fashionara is in addition to discounts after use of coupon codes.<br>
-                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    1. The cashback on Fashionara will be added to your account within 3 working days.<br>
+                    2. Login to your Fashionara account only after clicking out from Encashmore.<br>
+                    3. Add products to your Fashionara cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Fashionara is in addition to discounts after use of coupon codes.<br>
                     </div>
-                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
-                    5.If possible clear your cookies and temporary file regularly.<br>
-                    6.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
-                    7.Prefer to use coupon codes provided on Encashmore.<br>
-                    8.Cashback is not applicable if the order is cancelled or returned.<br>
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
                 </span></p>
             </div>
             </div>
@@ -663,15 +708,18 @@
                 <center><b>Terms & Conditions</b></center>
                 <p><span style="font-size:14px;text-align: justify;">
                     <div style="color:red;">
-                    1.The cashback on StarCJ will be added to your account within 2 days.<br>
-                    2.The cashback on StarCJ is in addition to discounts after use of coupon codes.<br>
-                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    1. The cashback on Starcj will be added to your account within 3 working days.<br>
+                    2. Login to your Starcj account only after clicking out from Encashmore.<br>
+                    3. Add products to your Starcj cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Starcj is in addition to discounts after use of coupon codes.<br>
                     </div>
-                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
-                    5.If possible clear your cookies and temporary file regularly.<br>
-                    6.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
-                    7.Prefer to use coupon codes provided on Encashmore.<br>
-                    8.Cashback is not applicable if the order is cancelled or returned.<br>
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
                 </span></p>
             </div>
             </div>
@@ -711,15 +759,18 @@
                 <center><b>Terms & Conditions</b></center>
                 <p><span style="font-size:14px;text-align: justify;">
                     <div style="color:red;">
-                    1.The cashback on Nykaa will be added to your account within 2 days.<br>
-                    2.The cashback on Nykaa is in addition to discounts after use of coupon codes.<br> 
-                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    1. The cashback on Nykaa will be added to your account within 3 working days.<br>
+                    2. Login to your Nykaa account only after clicking out from Encashmore.<br>
+                    3. Add products to your Nykaa cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Nykaa is in addition to discounts after use of coupon codes.<br>
                     </div>
-                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
-                    5.If possible clear your cookies and temporary file regularly.<br>
-                    6.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
-                    7.Prefer to use coupon codes provided on Encashmore.<br>
-                    8.Cashback is not applicable if the order is cancelled or returned.<br>
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
                 </span></p>
             </div>
             </div>
@@ -759,15 +810,69 @@
                 <center><b>Terms & Conditions</b></center>
                 <p><span style="font-size:14px;text-align: justify;">
                     <div style="color:red;">
-                    1.The cashback on Zovi will be added to your account within 2 days.<br>
-                    2.The cashback on Zovi is in addition to discounts after use of coupon codes.<br>
-                    3.Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    1. The cashback on Zovi will be added to your account within 3 working days.<br>
+                    2. Login to your Zovi account only after clicking out from Encashmore.<br>
+                    3. Add products to your Zovi cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Zovi is in addition to discounts after use of coupon codes.<br>
                     </div>
-                    4.Complete your purchase in the same session after clicking out from Encashmore.<br>
-                    5.If possible clear your cookies and temporary file regularly.<br>
-                    6.Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
-                    7.Prefer to use coupon codes provided on Encashmore.<br>
-                    8.Cashback is not applicable if the order is cancelled or returned.<br>
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
+                </span></p>
+            </div>
+            </div>
+        </span>
+
+        <span class="cbp-spmenu cbp-spmenu-vertical cbp-spmenu-right" id="cbp-spmenu-s14">
+            <button onclick="hide14()" class="btn-group-justified btn-info btn" style="text-align:right; padding:0.6em;font-weight:bold">X</button>
+            <div class="boxed" rows="3" style="border: 3px solid #585858;width:345px;height:207px;
+                                                margin:auto; min-height:0px; border-radius:5px;margin-top:10px;">
+            <iframe src="{{url_for('.static', filename='img2/shoppingimage/inkfruit-cashback.jpg')}}" scrolling="no" width="355" height="200" marginwidth="1" marginheight="1" frameborder="0">
+            </iframe>
+            <a target="_blank" href={{ url_for('offer_link', OFFERID=9222) }} class=""><button class="btn btn-success btn-group btn-group-justified" style="margin-top:10px;">Go to Inkfruit</button></a>
+            <div class="row">
+                <table class="table table-striped" style="margin-top:20px">
+                    <thead>
+                        <tr>
+                            <th>Coupons</th>
+                            <th><center>Description</center></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {% for x in coupon_codes if x[2]=="Inkfruit.com" %}
+                        <tr>
+                            <td><code>{{ x[0] }}</code></td>
+                            <td>{{ x[1] }}</td>
+                        </tr>     
+                    {% else %}
+                        <tr>
+                            <td><td>Sorry! No Coupons at the moment.</td></td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div>
+                <hr>
+                <center><b>Terms & Conditions</b></center>
+                <p><span style="font-size:14px;text-align: justify;">
+                    <div style="color:red;">
+                    1. The cashback on Inkfruit will be added to your account within 3 working days.<br>
+                    2. Login to your Inkfruit account only after clicking out from Encashmore.<br>
+                    3. Add products to your Inkfruit cart only AFTER clicking out from Encashmore.<br>
+                    4. Do not visit other coupons or price comparisons sites after clicking-out from Encashmore.<br>
+                    5. The cashback on Inkfruit is in addition to discounts after use of coupon codes.<br>
+                    </div>
+                    6. Complete your purchase in the same session after clicking out from Encashmore.<br>
+                    7. If possible clear your cookies and temporary file regularly.<br>
+                    8. In case any of the best practices are not followed, the cashback might not get tracked.<br>
+                    9. Cashback if often paid excluding taxes, delivery & other administrative charges.<br>
+                    10.Prefer to use coupon codes provided on Encashmore.<br>
+                    11.Cashback is not applicable if the order is cancelled or returned.<br>
                 </span></p>
             </div>
             </div>
@@ -788,6 +893,7 @@
                 menuRight11 = document.getElementById( 'cbp-spmenu-s11' ),
                 menuRight12 = document.getElementById( 'cbp-spmenu-s12' ),
                 menuRight13 = document.getElementById( 'cbp-spmenu-s13' ),
+                menuRight14 = document.getElementById( 'cbp-spmenu-s14' ),
                 showRight = document.getElementById( 'showRight' ),
                 showRight2 = document.getElementById( 'showRight2' ),
                 showRight3 = document.getElementById( 'showRight3' ),
@@ -801,6 +907,7 @@
                 showRight11 = document.getElementById( 'showRight11' ),
                 showRight12 = document.getElementById( 'showRight12' ),
                 showRight13 = document.getElementById( 'showRight13' ),
+                showRight14 = document.getElementById( 'showRight14' ),
                 overlay = document.getElementById( 'overlay' ),
                 about = document.getElementById( 'about' ),
                 menu = document.getElementById( 'menu' ),
@@ -915,6 +1022,15 @@
                 document.getElementById("overlay").style.zIndex = "999";
             };
 
+            showRight14.onclick = function() {
+                classie.add(this,"active");
+                menuRight14.style.right = '0px';
+                body.style.overflow = "hidden";
+                menuRight14.style.overflow = "auto";
+                body.style.display = 'block';
+                document.getElementById("overlay").style.zIndex = "999";
+            };
+
             overlay.onclick = function(){
                 menuRight.style.right = '-400px';
                 menuRight3.style.right = '-400px';
@@ -928,6 +1044,7 @@
                 menuRight11.style.right = '-400px';
                 menuRight12.style.right = '-400px';
                 menuRight13.style.right = '-400px';
+                menuRight14.style.right = '-400px';
                 body.style.overflow = "auto";
                 document.getElementById("overlay").style.zIndex = "-1";
             };
@@ -1000,6 +1117,12 @@
 
             function hide13(){
                 menuRight13.style.right = '-400px';
+                body.style.overflow = "auto";
+                document.getElementById("overlay").style.zIndex = "-1";
+            }
+
+            function hide14(){
+                menuRight14.style.right = '-400px';
                 body.style.overflow = "auto";
                 document.getElementById("overlay").style.zIndex = "-1";
             }
